@@ -8,5 +8,6 @@
 </head>
 <body>
 	<label><h1>${success}</h1></label>
+	<a href="<c:url value="/signup/userlist"/>"/>List all existing users</a>
 </body>
 </html>

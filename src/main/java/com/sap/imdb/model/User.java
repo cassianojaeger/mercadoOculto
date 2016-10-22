@@ -18,7 +18,6 @@ public class User {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	
 	private int id;
 	@NotNull
 	@Size(min = 4, max = 100)

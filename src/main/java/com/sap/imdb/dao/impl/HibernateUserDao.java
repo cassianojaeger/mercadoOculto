@@ -23,7 +23,7 @@ public class HibernateUserDao extends HibernateDaoSupport implements UserDao{
 	@Override
 	public List<User> getListUser() {
 		return (List<User>) getHibernateTemplate()
-				.find("from com.sap.imdbr.model.User");
+				.find("from com.sap.imdb.model.User");
 	}
 
 	@Override
