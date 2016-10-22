@@ -1,13 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans" 
-       xmlns:context="http://www.springframework.org/schema/context"
-       xmlns:mvc="http://www.springframework.org/schema/mvc"
-      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-      xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-                             http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
-                             http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       					   http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+       					   http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
-    <context:annotation-config/>
-    <mvc:annotation-driven />
-    
+	<context:annotation-config />
+	<mvc:annotation-driven />
+
+<!-- Beans de service -->
+	<bean name="userService" class="com.sap.imdb.service.impl.DefaultUserService"/>
+
+<!-- Beans de dao -->
+	<bean name="hibernateUserDao"
+		class="com.sap.imdb.dao.impl.HibernateUserDao">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<!-- Permite diversas implementações, só muda o name -->
+	<alias name="hibernateUserDao" alias="userDao" />
 </beans>

@@ -4,22 +4,28 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>BBQ Grill Reservation</title>
+	<title>User sign up</title>
 </head>
 <body>
-<!-- 	<h1>Make Reservation</h1> -->
-<%-- 	<form:form modelAttribute="grillReservation" servletRelativeAction="/makeReservation" method="POST"> --%>
-<!-- 		Employee ID:  -->
-<%-- 		<form:input path="employeeId"/> --%>
-<%-- 		<form:errors path="employeeId"/><br> --%>
+	<h1>Register Account</h1>
+	<form:form modelAttribute="user" servletRelativeAction="/signup" method="POST">
+		Your name: 
+		<form:input path="name"/>
+		<form:errors path="name"/><br>
 		
-<!-- 		Reservation Date:  -->
-<%-- 		<form:input path="reservationDate" type="datetime-local"/> --%>
-<%-- 		<form:errors path="reservationDate"/><br> --%>
-<%-- 		<form:button>Save</form:button> --%>
-<%-- 	</form:form> --%>
+		Email: 
+		<form:input path="email" />
+		<form:errors path="email"/><br>
+		
+		Password: 
+		<form:input path="password" />
+		<form:errors path="password"/><br>
+		
+		<form:input type="hidden" path="userType" value="NORMAL" />
+		
+		<form:button>Save</form:button>
+	</form:form>
 
-${oi}
 		
 </body>
 </html>
