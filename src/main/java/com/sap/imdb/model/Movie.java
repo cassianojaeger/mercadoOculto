@@ -1,10 +1,7 @@
 package com.sap.imdb.model;
 
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
 
-import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -20,30 +17,32 @@ public class Movie {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private String id;
+	private int id;
 	@NotNull
 	private String title;
 	@NotNull
 	@DateTimeFormat(iso = ISO.DATE_TIME)
 	private LocalDateTime releaseDate;
 	@NotNull
-	@Lob
 	private String synopsis;
 	@NotNull
-	@DateTimeFormat(iso = ISO.DATE_TIME)
-	private LocalDateTime lenght;
+	private int minutesLenght;
 	@NotNull //tentar melhorar e usar um enumeration com dropdown list
 	private String genre;
-	@NotNull
-	@Lob
-	private String thumbnailPath;
-	@ElementCollection
-	private List<Integer> ratings = new ArrayList<Integer>();
+//	@NotNull
+//	@Lob
+//	private String thumbnailPath;
 	
-	public String getId() {
+//	@ElementCollection
+//	private List<Rating> ratings = new ArrayList<Rating>();
+//	@ElementCollection
+//	private List<Comment> comments = new ArrayList<Comment>();
+	
+
+	public int getId() {
 		return id;
 	}
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 	public String getTitle() {
@@ -64,11 +63,11 @@ public class Movie {
 	public void setSynopsis(String synopsis) {
 		this.synopsis = synopsis;
 	}
-	public LocalDateTime getLenght() {
-		return lenght;
+	public int getMinutesLenght() {
+		return minutesLenght;
 	}
-	public void setLenght(LocalDateTime lenght) {
-		this.lenght = lenght;
+	public void setMinutesLenght(int minutesLenght) {
+		this.minutesLenght = minutesLenght;
 	}
 	public String getGenre() {
 		return genre;
@@ -76,23 +75,5 @@ public class Movie {
 	public void setGenre(String genre) {
 		this.genre = genre;
 	}
-	public String getThumbnailPath() {
-		return thumbnailPath;
-	}
-	public void setThumbnailPath(String thumbnailPath) {
-		this.thumbnailPath = thumbnailPath;
-	}
-	public List<Integer> getRatings() {
-		return ratings;
-	}
-	public void setRatings(List<Integer> ratings) {
-		this.ratings = ratings;
-	}
-	@Override
-	public String toString() {
-		return "Movie [id=" + id + ", title=" + title + ", releaseDate=" + releaseDate + ", synopsis=" + synopsis
-				+ ", lenght=" + lenght + ", genre=" + genre + ", thumbnailPath=" + thumbnailPath + ", ratings="
-				+ ratings + "]";
-	}
-	
+
 }

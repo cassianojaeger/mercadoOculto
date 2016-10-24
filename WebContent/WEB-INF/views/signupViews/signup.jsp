@@ -8,7 +8,7 @@
 </head>
 <body>
 	<h1>Register Account</h1>
-	<form:form modelAttribute="user" servletRelativeAction="/signup" method="POST">
+	<form:form modelAttribute="user" servletRelativeAction="/signup/" method="POST">
 		Your name: 
 		<form:input path="name"/>
 		<form:errors path="name"/><br>

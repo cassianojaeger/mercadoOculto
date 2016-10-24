@@ -23,7 +23,7 @@ public class SignUpController {
 	private UserService userService;
 	
 	@RequestMapping(value="/", method = RequestMethod.GET)
-	public String signUp(Model model){
+	public String makeReservationForm(Model model){
 		model.addAttribute("user",new User());
 		return "/signupViews/signup";
 	}
@@ -36,22 +36,7 @@ public class SignUpController {
 			return "/signupViews/signup";
 		}
 			userService.saveUser(user);
-			return "redirect:/signup/success";
+			model.addAttribute("success", "User registration complete!");
+			return "/signupViews/success";
 	}
-	
-	@RequestMapping(value="/success", method = RequestMethod.GET)
-	public String successRegistration(Model model){
-		model.addAttribute("success", "User registration complete!");
-		return "/signupViews/success";
-	}
-	
-	@RequestMapping(value="/userlist", method = RequestMethod.GET)
-	public String userList(Model model){
-		List<User> users = userService.getListUser();
-		model.addAttribute("users", users);
-		return "/signupViews/userList";
-	}
-	
-	
-	
 }

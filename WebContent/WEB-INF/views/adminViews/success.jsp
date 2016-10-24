@@ -8,6 +8,6 @@
 </head>
 <body>
 	<label><h1>${success}</h1></label>
-	<a href="<c:url value="/admin/userlist"/>"/>List all existing users</a>
+	<a href="<c:url value="/home/"/>"/>List all existing movies</a>
 </body>
 </html>
