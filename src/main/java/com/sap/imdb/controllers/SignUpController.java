@@ -35,8 +35,8 @@ public class SignUpController {
 		if(bindingResult.hasErrors()){
 			return "/signupViews/signup";
 		}
-			userService.saveUser(user);
-			model.addAttribute("success", "User registration complete!");
-			return "/signupViews/success";
+		userService.saveUser(user);
+		model.addAttribute("success", "User registration complete!");
+		return "/signupViews/success";
 	}
 }

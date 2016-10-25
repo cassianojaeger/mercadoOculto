@@ -7,6 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
@@ -18,8 +19,14 @@ public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
+	
+	@NotNull
+	@Size(min = 4, max = 15)
+	private String username;
+	
 	@NotNull
 	@Size(min = 4, max = 100)
+	@Pattern(regexp = "[a-zA-Z ]+")
 	private String name;
 	
 	@NotNull
@@ -36,6 +43,12 @@ public class User {
 	@DateTimeFormat(iso = ISO.DATE_TIME)
 	private LocalDateTime lastLoginDate;
 
+	public String getUsername() {
+		return username;
+	}
+	public void setUsername(String username) {
+		this.username = username;
+	}
 	public String getName() {
 		return name;
 	}	

@@ -4,6 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<jsp:include page="../header.jsp"></jsp:include>
 	<title>Registering new Movie</title>
 </head>
 <body>
@@ -28,6 +29,8 @@
 		Genre: <br> 
 		<form:textarea path="genre" rows="10" cols="20"/>
 		<form:errors path="genre"/><br>
+		
+<!-- 		FAZER A THUMBNAIL AMANHA -->
 		
 		<form:button>Save</form:button>
 	</form:form>

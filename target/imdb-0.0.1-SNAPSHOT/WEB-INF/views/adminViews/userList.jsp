@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<jsp:include page="../header.jsp"></jsp:include>
 	<title>Users List</title>
 </head>
 <body>

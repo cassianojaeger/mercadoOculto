@@ -1,7 +1,9 @@
 package com.sap.imdb.model;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -24,21 +26,18 @@ public class Movie {
 	@DateTimeFormat(iso = ISO.DATE_TIME)
 	private LocalDateTime releaseDate;
 	@NotNull
+	@Column(length = 2048)
 	private String synopsis;
 	@NotNull
-	private int lenght;
+	private int length;
 	@NotNull //tentar melhorar e usar um enumeration com dropdown list
-	private String genre;
+	@Column(length = 1024)
+	private ArrayList<Genre> genre;
+	@NotNull
+	private String rating;
 //	@NotNull
 //	@Lob
 //	private String thumbnailPath;
-	
-//	@ElementCollection
-//	private List<Rating> ratings = new ArrayList<Rating>();
-//	@ElementCollection
-//	private List<Comment> comments = new ArrayList<Comment>();
-	
-
 	public int getId() {
 		return id;
 	}
@@ -63,17 +62,32 @@ public class Movie {
 	public void setSynopsis(String synopsis) {
 		this.synopsis = synopsis;
 	}
-	public int getLenght() {
-		return lenght;
+	public int getLength() {
+		return length;
 	}
-	public void setLenght(int lenght) {
-		this.lenght = lenght;
+	public void setLength(int length) {
+		this.length = length;
 	}
-	public String getGenre() {
+	public ArrayList<Genre> getGenre() {
 		return genre;
 	}
-	public void setGenre(String genre) {
+	public void setGenre(ArrayList<Genre> genre) {
 		this.genre = genre;
 	}
+	public String getRating() {
+		return rating;
+	}
+	public void setRating(String rating) {
+		this.rating = rating;
+	}
+	
+//	@ElementCollection
+//	private List<Rating> ratings = new ArrayList<Rating>();
+//	@ElementCollection
+//	private List<Comment> comments = new ArrayList<Comment>();
+	
+
+
+
 
 }

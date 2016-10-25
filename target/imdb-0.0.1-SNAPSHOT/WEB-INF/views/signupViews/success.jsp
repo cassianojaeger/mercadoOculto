@@ -4,6 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<jsp:include page="../header.jsp"></jsp:include>
 	<title>IMDB</title>
 </head>
 <body>

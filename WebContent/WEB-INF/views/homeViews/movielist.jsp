@@ -1,34 +1,75 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<jsp:include page="../header.jsp"></jsp:include>
 
+<style>
+a.list-group-item {
+	height: auto;
+	min-height: 220px;
+}
+
+a.list-group-item.active small {
+	color: #fff;
+}
+
+.stars {
+	margin: 20px auto 1px;
+}
+</style>
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="style.css" type="text/css">
-<title>IMDB Movies</title>
+<title>Mega Filmes IMDb</title>
 </head>
 <body>
-	<h1 style=" margin-left:7%">IMDB Movies</h1>
-
-
-
+	<br><br><br>
 	<c:forEach var="movies" items="${movies}">
-		<hr style="margin: 3% 10% 2% 10%">
-		<div id="one" style="float: left; margin-left:10%"><img alt="NAO TEM IMAGEM" itemprop="image" 
-			width="140px" height="200px" />
-			
+		<div class="container">
+			<div class="row">
+				<div class="well">
+					<div class="list-group">
+						<a href="<c:url value="/home/info/${movies.id}"/>"
+							class="list-group-item active">
+							<div class="media col-md-3">
+								<figure class="pull-left">
+									<img class="media-object img-rounded img-responsive"
+										src="http://placehold.it/350x250" alt="placehold.it/350x250">
+								</figure>
+							</div>
+							<div class="col-md-6">
+								<h2 class="list-group-item-heading">${movies.title}</h2>
+								<br>
+								<div class="stars" style="font-size: 40px;">
+									<span class="glyphicon glyphicon-star"></span> <span
+										class="glyphicon glyphicon-star"></span> <span
+										class="glyphicon glyphicon-star"></span> <span
+										class="glyphicon glyphicon-star"></span> <span
+										class="glyphicon glyphicon-star-empty"></span>
+								</div>
+								<p>
+									Average ${movies.rating} <small> / </small> 5
+								</p>
+							</div>
+							<div class="col-md-3 text-center">
+								<br>
+								<br>
+								<br>
+								<br>
+								<button type="button" class="btn btn-default btn-lg btn-block">
+									See more!</button>
+							</div>
+						</a>
+					</div>
+				</div>
+			</div>
 		</div>
-		
-		<div id="two" style="margin-left:10%; margin-right: 10%">
-			<h2>${movies.title} (${movies.releaseDate.year})</h2> 
-			<h5 style="margin-top:-10px">${movies.lenght} mins - ${movies.genre} </h5>
-			${movies.synopsis}<br> 
-			
-			<br>
-			
-		</div>
-		
-		<br><br><br><br><br><br>
 	</c:forEach>
 
+	<div style="margin-left: 7%; margin-top: 5%">
+		<a class="btn btn-primary"
+			href="<c:url value="/admin/registermovie"/>" />Add Movie</a>
+	</div>
 	<br>
+
 </body>
+<jsp:include page="../footer.jsp"></jsp:include>
+</html>

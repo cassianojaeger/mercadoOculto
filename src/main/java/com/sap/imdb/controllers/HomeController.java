@@ -8,6 +8,7 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.sap.imdb.model.Movie;
@@ -25,6 +26,13 @@ public class HomeController {
 		List<Movie> movies = movieService.getListMovie();
 		model.addAttribute("movies", movies);
 		return "/homeViews/movieList";
+	}
+	
+	@RequestMapping("/info/{id}")
+	public String getMovieInfo(@PathVariable("id") Integer id, Model model ){
+		Movie movie = movieService.getMovie(id);
+		model.addAttribute("movie", movie);
+		return "/homeViews/movieInfo";
 	}
 	
 }

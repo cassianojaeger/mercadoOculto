@@ -4,10 +4,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>IMDB</title>
+	<jsp:include page="../header.jsp"></jsp:include>
+	<title>Mega Filmes IMDb</title>
 </head>
 <body>
 	<label><h1>${success}</h1></label>
 	<a href="<c:url value="/admin/userlist"/>"/>List all existing users</a>
 </body>
+<jsp:include page="../footer.jsp"></jsp:include>
 </html>

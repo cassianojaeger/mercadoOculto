@@ -1,6 +1,6 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-
+<jsp:include page="../header.jsp"></jsp:include>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,7 +18,7 @@
 		<form:errors path="email"/><br>
 		
 		Password: 
-		<form:input path="password" />
+		<form:input path="password"/>
 		<form:errors path="password"/><br>
 		
 		<form:input type="hidden" path="admRights" value="false"/>
