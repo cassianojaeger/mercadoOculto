@@ -24,7 +24,7 @@ public class HomeController {
 	public String movieList(Model model){
 		List<Movie> movies = movieService.getListMovie();
 		model.addAttribute("movies", movies);
-		return "/homeViews/movielist";
+		return "/homeViews/movieList";
 	}
 	
 }

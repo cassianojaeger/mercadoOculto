@@ -22,12 +22,14 @@
 		<form:errors path="synopsis"/><br>
 		
 		Lenght: 
-		<form:input path="minutesLenght"/>
-		<form:errors path="minutesLenght"/><br>
+		<form:input path="lenght"/>
+		<form:errors path="lenght"/><br>
 		
 		Genre: <br> 
 		<form:textarea path="genre" rows="10" cols="20"/>
 		<form:errors path="genre"/><br>
+		
+<!-- 		FAZER A THUMBNAIL AMANHA -->
 		
 		<form:button>Save</form:button>
 	</form:form>

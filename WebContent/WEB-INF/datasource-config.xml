@@ -10,8 +10,6 @@
 	 	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
 
 
-
-
 	<!-- Data Source -->
 	<bean id="dataSourceDefault" class="org.apache.commons.dbcp.BasicDataSource">
 		<property name="driverClassName" value="org.hsqldb.jdbcDriver" />

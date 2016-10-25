@@ -26,7 +26,7 @@ public class Movie {
 	@NotNull
 	private String synopsis;
 	@NotNull
-	private int minutesLenght;
+	private int lenght;
 	@NotNull //tentar melhorar e usar um enumeration com dropdown list
 	private String genre;
 //	@NotNull
@@ -63,11 +63,11 @@ public class Movie {
 	public void setSynopsis(String synopsis) {
 		this.synopsis = synopsis;
 	}
-	public int getMinutesLenght() {
-		return minutesLenght;
+	public int getLenght() {
+		return lenght;
 	}
-	public void setMinutesLenght(int minutesLenght) {
-		this.minutesLenght = minutesLenght;
+	public void setLenght(int lenght) {
+		this.lenght = lenght;
 	}
 	public String getGenre() {
 		return genre;

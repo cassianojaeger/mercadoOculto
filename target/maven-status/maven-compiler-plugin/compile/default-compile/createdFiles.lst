@@ -1,7 +1,13 @@
 com\sap\imdb\dao\UserDao.class
-com\sap\imdb\model\User.class
 com\sap\imdb\controllers\SignUpController.class
-com\sap\imdb\service\impl\DefaultUserService.class
 com\sap\imdb\dao\impl\HibernateUserDao.class
-com\sap\imdb\model\User$UserType.class
+com\sap\imdb\service\MovieService.class
+com\sap\imdb\dao\MovieDao.class
+com\sap\imdb\model\User.class
+com\sap\imdb\service\impl\DefaultMovieService.class
+com\sap\imdb\dao\impl\HibernateMovieDao.class
+com\sap\imdb\service\impl\DefaultUserService.class
+com\sap\imdb\controllers\AdmController.class
+com\sap\imdb\controllers\HomeController.class
 com\sap\imdb\service\UserService.class
+com\sap\imdb\model\Movie.class

@@ -46,7 +46,7 @@ public class AdmController {
 			BindingResult bindingResult,Model model, 
 			RedirectAttributes redirectAttributes) throws Exception{
 		if(bindingResult.hasErrors()){
-			return "/admin/registermovie";
+			return "/adminViews/newMovie";
 		}
 		movieService.saveMovie(movie);
 		model.addAttribute("success", "Movie registration complete!");
