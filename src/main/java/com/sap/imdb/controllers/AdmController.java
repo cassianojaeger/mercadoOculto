@@ -27,7 +27,6 @@ public class AdmController {
 	
 	@Resource
 	private MovieService movieService;
-	//TODO: aeho
 	@RequestMapping(value="/movielist", method = RequestMethod.GET)
 	public String userList(Model model){
 		List<Movie> movies = movieService.getListMovie();
@@ -72,5 +71,12 @@ public class AdmController {
 		}		
 		movieService.updateMovie(movie);						
 		return new ModelAndView("redirect:/admconsole/movielist");		
+	}
+	
+	@RequestMapping("/deleteMovie/{id}")
+	public String deleteMovie(@PathVariable("id") Integer id){
+		Movie movie = movieService.getMovie(id);
+		movieService.removeMovie(movie);
+		return "redirect:/admconsole/movielist";		
 	}
 }

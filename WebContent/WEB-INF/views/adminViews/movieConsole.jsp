@@ -7,13 +7,13 @@
 <title>Users List</title>
 </head>
 <body>
-	<div style="width: 13%; margin: 0 auto">
+	<div style="width: 20%; margin: 0 auto; text-align: center">
 		<h1>Mega Filmes IMDb</h1>
 		<br> <br>
 		<table>
 			<tr>
-				<th>Id</th>
-				<th>Title</th>
+				<th>&nbsp;Id&nbsp;</th>
+				<th>&nbsp;Title&nbsp;</th>
 			</tr>
 			<c:forEach var="movie" items="${movies}">
 				<tr>
@@ -21,9 +21,9 @@
 					<td>${movie.title}  </td>
 
 					<td><a
-						href="<c:url value="/admconsole/editMovie/${movie.id}"/>" /> Change </a></td>
+						href="<c:url value="/admconsole/editMovie/${movie.id}"/>" />&nbsp;&nbsp;[ Change ]</a></td>
 					<td><a
-						href="<c:url value="/admconsole/deleteMovie/${movie.id}"/>" /> Delete </a></td>
+						href="<c:url value="/admconsole/deleteMovie/${movie.id}"/>" />&nbsp;&nbsp;[ Delete ] </a></td>
 				</tr>
 			</c:forEach>
 		</table>
