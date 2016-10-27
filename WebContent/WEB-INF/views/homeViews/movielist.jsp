@@ -3,23 +3,12 @@
 <!-- RETIRAR -->
 <%@page session="true"%>
 <!-- RETIRAR -->
-<style>
-a.list-group-item {
-	height: auto;
-	min-height: 220px;
-}
 
-a.list-group-item.active small {
-	color: #fff;
-}
-
-.stars {
-	margin: 20px auto 1px;
-}
-</style>
 <!DOCTYPE html>
 <html>
 <head>
+<link href="<c:url value="/resources/css/movielist.css"/>"
+	rel="stylesheet" type="text/css" />
 <title>Mega Filmes IMDb</title>
 </head>
 <body>
@@ -27,7 +16,6 @@ a.list-group-item.active small {
 	<br>
 	<br>
 	<br>
-	<h1>
 		<c:forEach var="movies" items="${movies}">
 			<div class="container">
 				<div class="row">
@@ -67,13 +55,7 @@ a.list-group-item.active small {
 			</div>
 		</c:forEach>
 
-		<div style="margin-left: 7%; margin-top: 5%">
-			<a class="btn btn-primary"
-				href="<c:url value="/admconsole/registermovie"/>" />Add Movie</a>
-		</div>
-
 		<br>
-<jsp:include page="../footer.jsp"></jsp:include>
 </body>
-
+<jsp:include page="../footer.jsp"></jsp:include>
 </html>

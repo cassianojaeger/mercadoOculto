@@ -30,8 +30,7 @@
 			<div class="collapse navbar-collapse"
 				id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
-					<li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
-					<li><a href="#">Link</a></li>
+
 
 					<sec:authorize access="isAuthenticated()">
 						<li class="dropdown"><a href="#" class="dropdown-toggle"
@@ -42,19 +41,34 @@
 								</p> <span class="caret"></span>
 						</a>
 							<ul class="dropdown-menu" role="menu">
-								<c:url var="logoutUrl" value="/logout" />
+								<li><c:url var="logoutUrl" value="/logout" />
 									<form class="form-inline" action="${logoutUrl}" method="post">
-										<input type="submit" value="Log out" class="btn btn-link" /> <input
-											type="hidden" name="${_csrf.parameterName}"
+										<input type="submit" value="Log out" class="btn btn-link" />
+										<input type="hidden" name="${_csrf.parameterName}"
 											value="${_csrf.token}" />
+									</form></li>
+								<li>
+									<form class="form-inline" action="/admconsole/registermovie"
+										method="GET">
+										<a class="btn btn-link" type="submit"
+											href="<c:url value="/admconsole/registermovie"/>" />Add
+										Movie</a>
 									</form>
-								
+
+								</li>
+								<li>
+									<form class="form-inline" action="/admconsole/movielist"
+										method="GET">
+										<a class="btn btn-link" type="submit"
+											href="<c:url value="/admconsole/movielist"/>" />Movie Console</a>
+									</form>
+								</li>
 							</ul></li>
 					</sec:authorize>
 				</ul>
 				<div id="login" class="navbar-form navbar-right">
 					<sec:authorize access="isAnonymous()">
-						<a class="btn btn-primary" href="<c:url value="/login"/>" />Login</a>
+						<a class="btn btn-primary" href="<c:url value="/login"/>" />Sign in</a>
 					</sec:authorize>
 					<a class="btn btn-primary" href="<c:url value="/signup/"/>" />Sign
 					up</a>

@@ -28,10 +28,10 @@
 			<li class="list-group-item">Title: ${movie.title}</li>
 			<li class="list-group-item">Release Date: ${movie.releaseDate.dayOfMonth}/${movie.releaseDate.monthValue}/${movie.releaseDate.year}</li>
 			<li class="list-group-item">Lenght: ${movie.length} minutes</li>
-			<li class="list-group-item">Genres: |
+			<li class="list-group-item">Genres: | <small style="color: #666666">
 			<c:forEach items="${movie.genre}" var="genre">
 				${genre} |			
-			</c:forEach>
+			</c:forEach></small>
 			
 			
 			</li>

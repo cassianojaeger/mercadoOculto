@@ -35,8 +35,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 
 		http.authorizeRequests().antMatchers("/admconsole/**").access("hasRole('ROLE_ADMIN')")
-				.antMatchers("/home").permitAll()
-				.antMatchers("/home/**").access("hasRole('ROLE_USER')")
-				.and().formLogin().defaultSuccessUrl("/home");
+				.antMatchers("/home**").permitAll()
+				.and().formLogin().defaultSuccessUrl("/home")
+				.and().formLogin().loginPage("/login").failureUrl("/login?error")
+				.usernameParameter("username").passwordParameter("password")
+				.and().logout().logoutSuccessUrl("/login?logout")
+				.and().exceptionHandling().accessDeniedPage("/403")
+				.and().csrf();;
 	}
 }

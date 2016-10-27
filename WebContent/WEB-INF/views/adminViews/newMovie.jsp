@@ -69,6 +69,7 @@
 					class="form-control" type="number" min="0" max="5" step="0.1"/>
 					<form:errors path="rating" />
 				</div>
+				
 			</div>
 			</br>
 			<div class="control-group">

@@ -8,27 +8,26 @@
 
 	<context:annotation-config />
 	<mvc:annotation-driven />
-
-<!-- Beans de service -->
-	<bean name="userService" class="com.sap.imdb.service.impl.DefaultUserService"/>
-	<bean name="movieService" class="com.sap.imdb.service.impl.DefaultMovieService"/>
-	<bean name="userDetailsService" class="com.sap.imdb.service.impl.MyUserDetailsService"/>
+	<mvc:resources mapping="/resources/**" location="/resources/" />
 	
+	<!-- Beans de service -->
+	<bean name="userService" class="com.sap.imdb.service.impl.DefaultUserService" />
+	<bean name="movieService" class="com.sap.imdb.service.impl.DefaultMovieService" />
+	<bean name="userDetailsService" class="com.sap.imdb.service.impl.MyUserDetailsService" />
 
-<!-- Beans de dao -->
-	<bean name="hibernateUserDao"
-		class="com.sap.imdb.dao.impl.HibernateUserDao">
+
+	<!-- Beans de dao -->
+	<bean name="hibernateUserDao" class="com.sap.imdb.dao.impl.HibernateUserDao">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
-	
-	<bean name="hibernateMovieDao"
-		class="com.sap.imdb.dao.impl.HibernateMovieDao">
+
+	<bean name="hibernateMovieDao" class="com.sap.imdb.dao.impl.HibernateMovieDao">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
-	
+
 	<!-- Permite diversas implementações, só muda o name -->
 	<alias name="hibernateUserDao" alias="userDao" />
 	<alias name="hibernateMovieDao" alias="movieDao" />
-	<alias name="userDetailsService" alias="userDetailsService"/>
-	
+	<alias name="userDetailsService" alias="userDetailsService" />
+
 </beans>
