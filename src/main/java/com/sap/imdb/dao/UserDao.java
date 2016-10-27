@@ -5,6 +5,9 @@ import java.util.List;
 import com.sap.imdb.model.User;
 
 public interface UserDao {
+	
+	User findByUserName(String username);
+	
 	void save(User user);
 	
 	void update(User user);

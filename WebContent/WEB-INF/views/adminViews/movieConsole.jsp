@@ -1,5 +1,5 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<%@page session="true"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,6 +9,7 @@
 <body>
 	<div style="width: 20%; margin: 0 auto; text-align: center">
 		<h1>Mega Filmes IMDb</h1>
+		<h1>Hello <c:out value="${sessionScope.name}"/></h1>
 		<br> <br>
 		<table>
 			<tr>

@@ -1,6 +1,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="sec"
+	uri="http://www.springframework.org/security/tags"%>
 <html>
-<head>
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
@@ -23,53 +24,50 @@
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="<c:url value="/home/"/>">Mega Filmes IMDb</a>
+				<a class="navbar-brand" href="<c:url value="/home/"/>">Mega
+					Filmes IMDb</a>
 			</div>
 			<div class="collapse navbar-collapse"
 				id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
 					<li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
 					<li><a href="#">Link</a></li>
-					<li class="dropdown"><a href="#" class="dropdown-toggle"
-						data-toggle="dropdown" role="button" aria-expanded="false">Dropdown
-							<span class="caret"></span>
-					</a>
-						<ul class="dropdown-menu" role="menu">
-							<li><a href="#">Action</a></li>
-							<li><a href="#">Another action</a></li>
-							<li><a href="#">Something else here</a></li>
-							<li class="divider"></li>
-							<li><a href="#">Separated link</a></li>
-							<li class="divider"></li>
-							<li><a href="#">One more separated link</a></li>
-						</ul></li>
+
+					<sec:authorize access="isAuthenticated()">
+						<li class="dropdown"><a href="#" class="dropdown-toggle"
+							data-toggle="dropdown" role="button" aria-expanded="false">
+								<p>
+									Hello
+									<sec:authentication property="principal.username" />
+								</p> <span class="caret"></span>
+						</a>
+							<ul class="dropdown-menu" role="menu">
+								<c:url var="logoutUrl" value="/logout" />
+									<form class="form-inline" action="${logoutUrl}" method="post">
+										<input type="submit" value="Log out" class="btn btn-link" /> <input
+											type="hidden" name="${_csrf.parameterName}"
+											value="${_csrf.token}" />
+									</form>
+								
+							</ul></li>
+					</sec:authorize>
 				</ul>
-				<form id="signin" class="navbar-form navbar-right" role="form">
-					<div class="input-group">
-						<span class="input-group-addon"><i
-							class="glyphicon glyphicon-user"></i></span> <input id="email"
-							type="email" class="form-control" name="email" value=""
-							placeholder="Username">
-					</div>
+				<div id="login" class="navbar-form navbar-right">
+					<sec:authorize access="isAnonymous()">
+						<a class="btn btn-primary" href="<c:url value="/login"/>" />Login</a>
+					</sec:authorize>
+					<a class="btn btn-primary" href="<c:url value="/signup/"/>" />Sign
+					up</a>
+				</div>
 
-					<div class="input-group">
-						<span class="input-group-addon"><i
-							class="glyphicon glyphicon-lock"></i></span> <input id="password"
-							type="password" class="form-control" name="password" value=""
-							placeholder="Password">
-					</div>
-
-					<button type="submit" class="btn btn-primary">Login</button>
-					<a class="btn btn-primary" href="<c:url value="/signup/"/>"/>Sign up</a>
-				</form>
 			</div>
 		</div>
 	</nav>
 
-<script>
-$(document).ready(function(){
-    $(".dropdown-toggle").dropdown();
-});
-</script>
+	<script>
+		$(document).ready(function() {
+			$(".dropdown-toggle").dropdown();
+		});
+	</script>
 </body>
 </html>

@@ -21,11 +21,11 @@ public class HomeController {
 	@Resource
 	private MovieService movieService;
 	
-	@RequestMapping("/")
+	@RequestMapping("")
 	public String movieList(Model model){
 		List<Movie> movies = movieService.getListMovie();
 		model.addAttribute("movies", movies);
-		return "/homeViews/movieList";
+		return "/homeViews/movielist";
 	}
 	
 	@RequestMapping("/info/{id}")

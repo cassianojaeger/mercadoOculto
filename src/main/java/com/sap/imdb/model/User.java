@@ -1,95 +1,88 @@
 package com.sap.imdb.model;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
-
-import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.format.annotation.DateTimeFormat.ISO;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "user")
 public class User {
-
+	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int id;
-	
-	@NotNull
-	@Size(min = 4, max = 15)
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
+    private String name;
+    private String email;
+    @Column(name = "username")
 	private String username;
-	
-	@NotNull
-	@Size(min = 4, max = 100)
-	@Pattern(regexp = "[a-zA-Z ]+")
-	private String name;
-	
-	@NotNull
-	private String email;
-	
-	@NotNull
-	@Size(min = 6, max = 20)
-	private String password;
-	
-	@NotNull
-	private boolean admRights;
-	
-	@NotNull
-	@DateTimeFormat(iso = ISO.DATE_TIME)
-	private LocalDateTime lastLoginDate;
+    private String password;
+    
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name="USER_ROLE")
+    private List<Role> roles;
+    private LocalDateTime lastLogin;
 
-	public String getUsername() {
-		return username;
+    public LocalDateTime getLastLogin() {
+		return lastLogin;
 	}
-	public void setUsername(String username) {
-		this.username = username;
+
+	public void setLastLogin(LocalDateTime lastLogin) {
+		this.lastLogin = lastLogin;
 	}
-	public String getName() {
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+    public String getName() {
 		return name;
-	}	
+	}
+
 	public void setName(String name) {
 		this.name = name;
 	}
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
-	}
+
 	public String getEmail() {
 		return email;
 	}
+
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public String getPassword() {
-		return password;
-	}
-	public void setPassword(String password) {
-		this.password = password;
-	}
-	public boolean getAdmRights() {
-		return admRights;
-	}
-	public void setAdmRights(boolean admRights) {
-		this.admRights = admRights;
-	}
-	public LocalDateTime getLastLoginDate() {
-		return lastLoginDate;
-	}
-	public void setLastLoginDate(LocalDateTime lastLoginDate) {
-		this.lastLoginDate = lastLoginDate;
-	}
 
-	@Override
-	public String toString() {
-		return "User [id=" + id + ", name=" + name + ", email=" + email + ", password=" + password + ", admRights="
-				+ admRights + ", lastLoginDate=" + lastLoginDate + "]";
-	}
-	
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public List<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<Role> roles) {
+        this.roles = roles;
+    }
 }

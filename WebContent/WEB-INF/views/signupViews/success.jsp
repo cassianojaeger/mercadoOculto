@@ -9,7 +9,6 @@
 </head>
 <body>
 	<label><h1>${success}</h1></label>
-	<a href="<c:url value="/admin/userlist"/>"/>List all existing users</a>
 </body>
 <jsp:include page="../footer.jsp"></jsp:include>
 </html>

@@ -1,7 +1,5 @@
 package com.sap.imdb.controllers;
 
-import java.util.List;
-
 import javax.annotation.Resource;
 import javax.validation.Valid;
 
@@ -22,13 +20,13 @@ public class SignUpController {
 	@Resource
 	private UserService userService;
 	
-	@RequestMapping(value="/", method = RequestMethod.GET)
+	@RequestMapping(value="", method = RequestMethod.GET)
 	public String makeReservationForm(Model model){
 		model.addAttribute("user",new User());
 		return "/signupViews/signup";
 	}
 	
-	@RequestMapping(value="/", method = RequestMethod.POST)
+	@RequestMapping(value="", method = RequestMethod.POST)
 	public String makeReservationForm(@Valid User user, 
 			BindingResult bindingResult,Model model, 
 			RedirectAttributes redirectAttributes) throws Exception{

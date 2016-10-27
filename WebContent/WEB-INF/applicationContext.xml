@@ -12,6 +12,8 @@
 <!-- Beans de service -->
 	<bean name="userService" class="com.sap.imdb.service.impl.DefaultUserService"/>
 	<bean name="movieService" class="com.sap.imdb.service.impl.DefaultMovieService"/>
+	<bean name="userDetailsService" class="com.sap.imdb.service.impl.MyUserDetailsService"/>
+	
 
 <!-- Beans de dao -->
 	<bean name="hibernateUserDao"
@@ -27,4 +29,6 @@
 	<!-- Permite diversas implementações, só muda o name -->
 	<alias name="hibernateUserDao" alias="userDao" />
 	<alias name="hibernateMovieDao" alias="movieDao" />
+	<alias name="userDetailsService" alias="userDetailsService"/>
+	
 </beans>

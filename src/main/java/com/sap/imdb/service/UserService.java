@@ -5,6 +5,9 @@ import java.util.List;
 import com.sap.imdb.model.User;
 
 public interface UserService {
+	
+	User findByUsername(String username);
+	
 	void saveUser(User user);
 	
 	void updateUser(User user);
@@ -14,4 +17,6 @@ public interface UserService {
 	User getUser(int id);
 	
 	List<User> getListUser();
+
+	
 }

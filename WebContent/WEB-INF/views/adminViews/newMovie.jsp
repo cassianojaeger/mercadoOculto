@@ -1,6 +1,6 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-
+<%@page session="true"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,7 +10,7 @@
 <body>
 
 	<form:form class="form-horizontal" modelAttribute="movie"
-		servletRelativeAction="/admin/registermovie" method="POST">
+		servletRelativeAction="/admconsole/registermovie" method="POST">
 		<fieldset style="width: 50%; margin: 0 auto">
 			<label><h1>Movie Registration</h1></label>
 			<div class="control-group">

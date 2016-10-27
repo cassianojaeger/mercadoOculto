@@ -1,10 +1,12 @@
 package com.sap.imdb.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
 
 import com.sap.imdb.dao.UserDao;
+import com.sap.imdb.model.Role;
 import com.sap.imdb.model.User;
 import com.sap.imdb.service.UserService;
 
@@ -14,7 +16,12 @@ public class DefaultUserService implements UserService{
 	private UserDao userDao;
 	
 	@Override
-	public void saveUser(User user) {		
+    public User findByUsername(String username) {
+        return userDao.findByUserName(username);
+    }
+	
+	@Override
+	public void saveUser(User user) {			
 		userDao.save(user);
 	}
 
