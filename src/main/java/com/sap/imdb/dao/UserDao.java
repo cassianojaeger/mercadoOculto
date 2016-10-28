@@ -17,5 +17,7 @@ public interface UserDao {
 	User getUser(int id);
 	
 	List<User> getListUser();
+
+	Boolean alreadyHasUsername(User user);
 }
 

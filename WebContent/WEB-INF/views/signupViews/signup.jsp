@@ -48,7 +48,7 @@
 <title>Admin</title>
 </head>
 <body>
-	<div class="container" style="width: 20%; margin: 0 auto">
+	<div class="container" style="width: 20%; margin: 0 auto; margin-top: -5%">
 		<div class="row main">
 			<div class="panel-heading">
 				<div class="panel-title text-center">
@@ -59,7 +59,9 @@
 			<div class="main-login main-center">
 				<form:form class="form-horizontal" modelAttribute="user"
 					servletRelativeAction="/signup" method="POST">
-
+					<c:if test="${not empty error}">
+						<div class="error">${error}</div>
+					</c:if>
 					<div class="form-group">
 						<label for="name" class="cols-sm-2 control-label">Your
 							Name</label>
@@ -87,7 +89,7 @@
 							</div>
 						</div>
 					</div>
-
+					
 					<div class="form-group">
 						<label for="username" class="cols-sm-2 control-label">Username</label>
 						<div class="cols-sm-10">

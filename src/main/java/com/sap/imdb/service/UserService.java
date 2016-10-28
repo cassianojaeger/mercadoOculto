@@ -8,15 +8,19 @@ public interface UserService {
 	
 	User findByUsername(String username);
 	
-	void saveUser(User user);
+	void saveUser(User user) throws Exception;
 	
-	void updateUser(User user);
+	void updateUser(User user) throws Exception;
 	
 	void removeUser(User user);
 	
 	User getUser(int id);
 	
 	List<User> getListUser();
+
+	
+
+
 
 	
 }

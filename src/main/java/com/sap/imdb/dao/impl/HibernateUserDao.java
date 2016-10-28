@@ -28,12 +28,21 @@ public class HibernateUserDao extends HibernateDaoSupport implements UserDao {
 		return (User) getHibernateTemplate().findByCriteria(criteria).get(0);
 
 	}
+	
+	@Override
+	public Boolean alreadyHasUsername(User user){
+		DetachedCriteria criteria = DetachedCriteria.forClass(User.class);
+		criteria.add(Restrictions.eq("username", user.getUsername()));
+		
+		return  getHibernateTemplate().findByCriteria(criteria).size()>0;
+	}
 
 	@Override
 	public void save(User user) {
 		Role role = new Role();
 		role.setRole("ROLE_USER");
-		role.setId(2L);
+		//Admin789 senha
+		role.setId(1L);
 		user.setRoles(Arrays.asList(role));
 		user.setLastLogin(LocalDateTime.now());
 		getHibernateTemplate().save(user);

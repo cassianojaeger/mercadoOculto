@@ -26,3 +26,5 @@ function checkPass()
         message.innerHTML = "Passwords Do Not Match!"
     }
 }  
+
+$('#popoverOption').popover({ trigger: "hover" });

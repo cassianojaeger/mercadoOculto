@@ -8,8 +8,8 @@
 	<title>Mega Filmes IMDb</title>
 </head>
 <body>
-	<label><h1>${success}</h1></label>
-	<a href="<c:url value="/home"/>"/>List all existing movies</a>
+	<div style="text-align: center; width: 100%"><label><h1>${success}</h1></label></br>
+	<a href="<c:url value="/home"/>"/>List all existing movies</a></div>
 </body>
 <jsp:include page="../footer.jsp"></jsp:include>
 </html>

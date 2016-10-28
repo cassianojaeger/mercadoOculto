@@ -8,7 +8,7 @@
 	<title>Mega Filmes IMDb</title>
 </head>
 <body>
-	<label><h1>${success}</h1></label>
+	<div style="text-align: center; width: 100%"><h1>${success}</h1></div>
 </body>
 <jsp:include page="../footer.jsp"></jsp:include>
 </html>

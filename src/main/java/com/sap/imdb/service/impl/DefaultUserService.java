@@ -1,19 +1,20 @@
 package com.sap.imdb.service.impl;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.Resource;
 
 import com.sap.imdb.dao.UserDao;
-import com.sap.imdb.model.Role;
 import com.sap.imdb.model.User;
 import com.sap.imdb.service.UserService;
+import com.sap.imdb.validations.ImdbValidate;
 
 public class DefaultUserService implements UserService{
 
 	@Resource
 	private UserDao userDao;
+	@Resource
+	private ImdbValidate ImdbValidate;
 	
 	@Override
     public User findByUsername(String username) {
@@ -21,17 +22,19 @@ public class DefaultUserService implements UserService{
     }
 	
 	@Override
-	public void saveUser(User user) {			
+	public void saveUser(User user) throws Exception {		
+		ImdbValidate.validateSignUp(user);
 		userDao.save(user);
 	}
 
 	@Override
-	public void updateUser(User user) {
+	public void updateUser(User user) throws Exception {
+		ImdbValidate.validateSignUp(user);
 		userDao.update(user);		
 	}
 
 	@Override
-	public void removeUser(User user) {		
+	public void removeUser(User user) {	
 		userDao.remove(user);
 	}
 
