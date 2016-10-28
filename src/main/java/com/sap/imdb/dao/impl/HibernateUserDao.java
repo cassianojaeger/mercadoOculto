@@ -20,8 +20,7 @@ public class HibernateUserDao extends HibernateDaoSupport implements UserDao {
 	private SessionFactory sessionFactory;
 
 	@Override
-	public User findByUserName(String username) {
-		
+	public User findByUserName(String username) {		
 		DetachedCriteria criteria = DetachedCriteria.forClass(User.class);
 		criteria.add(Restrictions.eq("username", username));
 		
@@ -55,12 +54,12 @@ public class HibernateUserDao extends HibernateDaoSupport implements UserDao {
 	}
 
 	@Override
-	public User getUser(int id) {
+	public User getUser(int id) {		
 		return (User) getHibernateTemplate().get(User.class, id);
 	}
 
 	@Override
-	public void update(User User) {
+	public void update(User User) {		
 		getHibernateTemplate().update(User);
 	}
 

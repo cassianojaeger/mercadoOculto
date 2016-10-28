@@ -2,8 +2,11 @@ package com.sap.imdb.service;
 
 import java.util.List;
 
+import org.springframework.transaction.annotation.Transactional;
+
 import com.sap.imdb.model.Movie;
 
+@Transactional
 public interface MovieService {
 	
 	void saveMovie(Movie movie);

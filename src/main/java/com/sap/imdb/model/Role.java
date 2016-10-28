@@ -3,11 +3,14 @@ package com.sap.imdb.model;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "role")
@@ -16,7 +19,7 @@ public class Role {
     @GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	private String role;
-	@ManyToMany(mappedBy="roles")
+	@ManyToMany(mappedBy="roles", fetch = FetchType.EAGER)
 	private List<User> users;
 	
 	public String getRole() {
@@ -33,7 +36,8 @@ public class Role {
 	public void setId(Long id) {
 		this.id = id;
 	}
-
+	
+	@JsonIgnore
 	public List<User> getUsers() {
 		return users;
 	}

@@ -8,7 +8,10 @@
 	<title>Mega Filmes IMDb</title>
 </head>
 <body>
-	<div style="text-align: center; width: 100%"><h1>${success}</h1></div>
+	<div style="text-align: center; width: 100%">
+	<h1>403 ERROR</h1>
+	Forbidden access
+	</div>
 </body>
 <jsp:include page="../footer.jsp"></jsp:include>
 </html>

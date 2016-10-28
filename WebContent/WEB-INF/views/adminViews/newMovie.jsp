@@ -6,6 +6,16 @@
 <head>
 <jsp:include page="../header.jsp"></jsp:include>
 <title>Mega Filmes IMDb</title>
+<!-- CSS --><!-- CSS --><!-- CSS --><!-- CSS --><!-- CSS -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+	crossorigin="anonymous">
+<link href="<c:url value="/resources/css/signup.css"/>" rel="stylesheet"
+	type="text/css" />
+<link rel="stylesheet" type="text/css" href="assets/css/bootstrap.css">
+<!-- CSS --><!-- CSS --><!-- CSS --><!-- CSS --><!-- CSS -->
+
 </head>
 <body>
 
@@ -18,7 +28,8 @@
 				<label class="control-label" for="title">Title</label>
 				<div class="controls">
 					<form:input path="title" placeholder="" class="form-control" />
-					<form:errors path="title" />
+						
+					<form:errors class ="error" path="title" />
 				</div>
 			</div>
 			<div class="control-group">
@@ -27,7 +38,7 @@
 				<div class="controls">
 					<form:input path="releaseDate" placeholder="" class="form-control"
 						type="datetime-local" />
-					<form:errors path="releaseDate" />
+					<form:errors class ="error" path="releaseDate" />
 				</div>
 			</div>
 
@@ -37,7 +48,7 @@
 				<div class="controls">
 					<form:textarea path="synopsis" placeholder="Synopsis..."
 						class="form-control" rows="5" cols="30" />
-					<form:errors path="synopsis" />
+					<form:errors class ="error" path="synopsis" />
 					<br>
 				</div>
 			</div>
@@ -47,7 +58,7 @@
 				<label class="control-label" for="length">Length</label>
 				<div class="controls">
 					<form:input path="length" placeholder="" class="form-control" />
-					<form:errors path="length" />
+					<form:errors class ="error" path="length" />
 				</div>
 			</div>
 
@@ -57,7 +68,7 @@
 				<div class="controls">
 					<form:select path="genre" placeholder="" class="form-control"
 						items="${genreList}" multiple="true" size="12" />
-					<form:errors path="genre" />
+					<form:errors class ="error" path="genre" />
 				</div>
 			</div>
 
@@ -67,7 +78,7 @@
 				<div class="controls">
 					<form:input path="rating" placeholder="" class="form-control"
 						type="number" min="0" max="5" step="0.1" />
-					<form:errors path="rating" />
+					<form:errors class ="error" path="rating" />
 				</div>
 			</div>
 			<div class="control-group">
@@ -77,7 +88,7 @@
 				<div class="controls">
 					<form:input path="thumbnail" placeholder="http://www.google.com/imageExample" class="form-control"
 						type="text" />
-					<form:errors path="thumbnail" />
+					<form:errors class ="error" path="thumbnail" />
 				</div>
 			</div>
 						

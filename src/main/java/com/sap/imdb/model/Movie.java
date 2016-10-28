@@ -8,9 +8,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Lob;
 import javax.validation.constraints.NotNull;
 
+import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.DateTimeFormat.ISO;
 
@@ -20,22 +20,22 @@ public class Movie {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
-	@NotNull
+	@NotBlank
 	private String title;
 	@NotNull
 	@DateTimeFormat(iso = ISO.DATE_TIME)
 	private LocalDateTime releaseDate;
-	@NotNull
+	@NotBlank
 	@Column(length = 2048)
 	private String synopsis;
 	@NotNull
 	private int length;
-	@NotNull //tentar melhorar e usar um enumeration com dropdown list
+	@NotNull//tentar melhorar e usar um enumeration com dropdown list
 	@Column(length = 1024)
 	private ArrayList<Genre> genre;
-	@NotNull
+	@NotBlank
 	private String rating;
-	@NotNull
+	@NotBlank
 	@Column(length = 1024)
 	private String thumbnail;
 

@@ -4,8 +4,6 @@ Fazer validação dos campos do filme sem annotation - server side
 
 Fazer o path para imagem
 
-Atualizar o lastLogin a cada login
-
 Pagina de erro 403
 
-Melhoras algumas partes do fronto (listagem de filme no console do admin, paginas de sucesso e etc)
+Melhoras algumas partes do fronto (listagem de filme no console do admin)

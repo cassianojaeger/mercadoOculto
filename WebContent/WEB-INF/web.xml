@@ -15,7 +15,7 @@
 		<param-value>
             /WEB-INF/applicationContext.xml
            /WEB-INF/*-servlet.xml
-  <!-- deletar-->        /WEB-INF/*-config.xml
+  		/WEB-INF/*-config.xml
        </param-value>
 	</context-param>
 

@@ -36,17 +36,13 @@ public class SignUpController {
 	}
 	
 	@RequestMapping(value="", method = RequestMethod.POST)
-	public String makeReservationForm(@Valid User user, 
-			BindingResult bindingResult,Model model, 
+	public String signUp(@Valid User user,Model model, 
 			RedirectAttributes redirectAttributes, HttpServletRequest request) throws Exception{
-		if(bindingResult.hasErrors()){
-			return "/signupViews/signup";
-		}
 		try{
 			ImdbValidate.passwordMatch(user, request.getParameter("pass2"));
 			userService.saveUser(user);
 			model.addAttribute("success", "User registration complete!");
-			return "/signupViews/success";
+			return "/internalViews/success";
 		}catch (Exception e){
 			String message = e.getMessage();
 			// TODO Auto-generated catch block

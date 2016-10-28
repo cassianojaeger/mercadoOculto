@@ -8,7 +8,8 @@
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
 	 	http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc.xsd
 	 	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
-
+	
+	<tx:annotation-driven transaction-manager="transactionManager" />
 
 	<!-- Data Source -->
 	<bean id="dataSourceDefault" class="org.apache.commons.dbcp.BasicDataSource">
@@ -52,26 +53,4 @@
 		class="org.springframework.orm.hibernate5.HibernateTransactionManager">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
-
-	<!-- the transactional advice (what 'happens'; see the <aop:advisor/> bean 
-		below) -->
-	<tx:advice id="txAdvice" transaction-manager="transactionManager">
-		<tx:attributes>
-			<tx:method name="get*" read-only="true" />
-			<tx:method name="list*" read-only="true" />
-			<tx:method name="update*" />
-			<tx:method name="save*" />
-			<tx:method name="make*" />
-			<tx:method name="remove*" />
-			<tx:method name="load*" />
-		</tx:attributes>
-	</tx:advice>
-
-	<!-- ensure that the above transactional advice runs for any execution of 
-		an operation defined by the DAO interface -->
-	<aop:config>
-		<aop:pointcut id="serviceOperation"
-			expression="execution(* com.sap.imdb.service.*.*(..))" />
-		<aop:advisor advice-ref="txAdvice" pointcut-ref="serviceOperation" />
-	</aop:config>
 </beans>

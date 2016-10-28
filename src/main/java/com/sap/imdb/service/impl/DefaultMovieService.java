@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.springframework.transaction.annotation.Transactional;
+
 import com.sap.imdb.dao.MovieDao;
 import com.sap.imdb.model.Movie;
 import com.sap.imdb.service.MovieService;

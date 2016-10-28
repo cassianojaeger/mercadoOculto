@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.springframework.transaction.annotation.Transactional;
+
 import com.sap.imdb.dao.UserDao;
 import com.sap.imdb.model.User;
 import com.sap.imdb.service.UserService;
@@ -31,6 +33,11 @@ public class DefaultUserService implements UserService{
 	public void updateUser(User user) throws Exception {
 		ImdbValidate.validateSignUp(user);
 		userDao.update(user);		
+	}
+	
+	@Override
+	public void updateUserLoginDate(User user) throws Exception {
+		userDao.update(user);
 	}
 
 	@Override
