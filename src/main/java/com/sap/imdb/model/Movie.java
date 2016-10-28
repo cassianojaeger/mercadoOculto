@@ -35,9 +35,10 @@ public class Movie {
 	private ArrayList<Genre> genre;
 	@NotNull
 	private String rating;
-//	@NotNull
-//	@Lob
-//	private String thumbnailPath;
+	@NotNull
+	@Column(length = 1024)
+	private String thumbnail;
+
 	public int getId() {
 		return id;
 	}
@@ -80,14 +81,10 @@ public class Movie {
 	public void setRating(String rating) {
 		this.rating = rating;
 	}
-	
-//	@ElementCollection
-//	private List<Rating> ratings = new ArrayList<Rating>();
-//	@ElementCollection
-//	private List<Comment> comments = new ArrayList<Comment>();
-	
-
-
-
-
+	public String getThumbnail() {
+		return thumbnail;
+	}
+	public void setThumbnail(String thumbnail) {
+		this.thumbnail = thumbnail;
+	}
 }

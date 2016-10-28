@@ -1,5 +1,7 @@
 //TODO 
 
+Fazer validação dos campos do filme sem annotation - server side
+
 Fazer o path para imagem
 
 Atualizar o lastLogin a cada login

@@ -34,11 +34,10 @@
 
 					<sec:authorize access="isAuthenticated()">
 						<li class="dropdown"><a href="#" class="dropdown-toggle"
-							data-toggle="dropdown" role="button" aria-expanded="false">
-								<p>
+							data-toggle="dropdown" role="button" aria-expanded="false">								
 									Hello
 									<sec:authentication property="principal.username" />
-								</p> <span class="caret"></span>
+								 <i class="caret"></i>
 						</a>
 							<ul class="dropdown-menu" role="menu">
 								<li><c:url var="logoutUrl" value="/logout" />
@@ -47,7 +46,7 @@
 										<input type="hidden" name="${_csrf.parameterName}"
 											value="${_csrf.token}" />
 									</form></li>
-								<li>
+								<li><sec:authorize access="hasRole('ROLE_ADMIN')" >
 									<form class="form-inline" action="/admconsole/registermovie"
 										method="GET">
 										<a class="btn btn-link" type="submit"
@@ -62,7 +61,7 @@
 										<a class="btn btn-link" type="submit"
 											href="<c:url value="/admconsole/movielist"/>" />Movie Console</a>
 									</form>
-								</li>
+								</li></sec:authorize>								
 							</ul></li>
 					</sec:authorize>
 				</ul>

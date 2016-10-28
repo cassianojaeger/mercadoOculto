@@ -30,7 +30,7 @@
 					<form:errors path="releaseDate" />
 				</div>
 			</div>
-			
+
 			<div class="control-group">
 				<!-- synopsis -->
 				<label class="control-label" for="synopsis">Synopsis</label>
@@ -56,7 +56,7 @@
 				<label class="control-label" for="genre">Genre</label>
 				<div class="controls">
 					<form:select path="genre" placeholder="" class="form-control"
-						items="${genreList}" multiple="true" size="12"/>
+						items="${genreList}" multiple="true" size="12" />
 					<form:errors path="genre" />
 				</div>
 			</div>
@@ -65,19 +65,29 @@
 				<!-- rating-->
 				<label class="control-label" for="rating">Rating</label>
 				<div class="controls">
-					<form:input path="rating" placeholder="" 
-					class="form-control" type="number" min="0" max="5" step="0.1"/>
+					<form:input path="rating" placeholder="" class="form-control"
+						type="number" min="0" max="5" step="0.1" />
 					<form:errors path="rating" />
 				</div>
-				
 			</div>
-			</br>
 			<div class="control-group">
+				<!-- 				thumbnail -->
+				<label class="control-label" for="thumbnail">Thumbnail URL
+					path</label>
+				<div class="controls">
+					<form:input path="thumbnail" placeholder="http://www.google.com/imageExample" class="form-control"
+						type="text" />
+					<form:errors path="thumbnail" />
+				</div>
+			</div>
+						
+			<div class="control-group" style="margin-top: 20px">
 				<!-- Button -->
 				<div class="controls">
 					<form:button class="btn btn-success">Register</form:button>
 				</div>
 			</div>
+			
 		</fieldset>
 	</form:form>
 

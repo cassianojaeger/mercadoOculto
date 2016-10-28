@@ -2,7 +2,7 @@
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <jsp:include page="../header.jsp"></jsp:include>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <!-- CSS --><!-- CSS --><!-- CSS --><!-- CSS --><!-- CSS -->
 <link rel="stylesheet"
@@ -11,25 +11,6 @@
 	crossorigin="anonymous">
 <link href="<c:url value="/resources/css/signup.css"/>" rel="stylesheet"
 	type="text/css" />
-<!-- CSS --><!-- CSS --><!-- CSS --><!-- CSS --><!-- CSS -->
-<!-- 	SCRIPTS --><!-- 	SCRIPTS --><!-- 	SCRIPTS -->		
-<script type="text/javascript"
-	src="<c:url value="/resources/js/signup.js"/>"></script>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<title>Mega Filmes IMDb</title>
-
-<script type="text/javascript" src="assets/js/bootstrap.js"></script>
-<!-- 	SCRIPTS --><!-- 	SCRIPTS --><!-- 	SCRIPTS -->
-
-</head>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.css">
 
 <!-- Website CSS style -->
@@ -44,8 +25,18 @@
 	rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Oxygen'
 	rel='stylesheet' type='text/css'>
-
-<title>Admin</title>
+<!-- CSS --><!-- CSS --><!-- CSS --><!-- CSS --><!-- CSS -->
+<!-- 	SCRIPTS --><!-- 	SCRIPTS --><!-- 	SCRIPTS -->		
+<script type="text/javascript"
+	src="<c:url value="/resources/js/signup.js"/>"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="assets/js/bootstrap.js"></script>
+<!-- 	SCRIPTS --><!-- 	SCRIPTS --><!-- 	SCRIPTS -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mega Filmes IMDb</title>
 </head>
 <body>
 	<div class="container" style="width: 20%; margin: 0 auto; margin-top: -5%">
@@ -125,9 +116,10 @@
 									class="fa fa-lock fa-lg" aria-hidden="true"></i></span> <input
 									type="password" class="form-control" name="pass2" id="pass2"
 									placeholder="Confirm your Password"
-									onkeyup="checkPass(); return false;" /> <span
-									id="confirmMessage" class="confirmMessage"></span>
+									onkeyup="checkPass(); return false;" /> 
 							</div>
+							<span
+									id="confirmMessage" class="confirmMessage"></span>
 						</div>
 					</div>
 

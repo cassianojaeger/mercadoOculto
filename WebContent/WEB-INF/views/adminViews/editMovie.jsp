@@ -71,10 +71,21 @@
 					<form:errors path="rating" />
 				</div>
 			</div>
-			</br>
+			
+			<div class="control-group">
+				<!-- 				thumbnail -->
+				<label class="control-label" for="thumbnail">Thumbnail URL
+					path</label>
+				<div class="controls">
+					<form:input path="thumbnail" class="form-control"
+						type="text" />
+					<form:errors path="thumbnail" />
+				</div>
+			</div>
+			
 			<div class="control-group">
 				<!-- Button -->
-				<div class="controls">
+				<div class="controls" style="margin-top: 20px">
 					<form:button class="btn btn-success">Register</form:button>
 					<a class="btn btn-danger" href="<c:url value="/admconsole/deleteMovie/${movie.id}"/>" role="button" style="float: right">Delete</a>
 				</div>

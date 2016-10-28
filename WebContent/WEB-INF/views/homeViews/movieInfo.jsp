@@ -14,8 +14,8 @@
 		<div class="panel-body">
 			<p>
 				<img class="media-object img-rounded img-responsive"
-					src="http://placehold.it/350x250" alt="placehold.it/350x250"
-					style="float: left">
+					src="${movie.thumbnail}" alt="placehold.it/350x250"
+					style="float: left; height:250px">
 			</p>
 			<div style="margin-left: 30%; max-width: 80%; ">
 				<h3>Synopsis</h3>

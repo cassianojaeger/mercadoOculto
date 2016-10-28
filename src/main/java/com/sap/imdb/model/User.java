@@ -30,9 +30,9 @@ public class User {
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name="USER_ROLE")
     private List<Role> roles;
-    private LocalDateTime lastLogin;
+    private LocalDateTime lastLogin;    
 
-    public LocalDateTime getLastLogin() {
+	public LocalDateTime getLastLogin() {
 		return lastLogin;
 	}
 
