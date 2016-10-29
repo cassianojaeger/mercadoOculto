@@ -39,9 +39,9 @@ public class HibernateUserDao extends HibernateDaoSupport implements UserDao {
 	@Override
 	public void save(User user) {
 		Role role = new Role();
-		role.setRole("ROLE_USER");
+		role.setRole("ROLE_MOD");
 		//Admin789 senha
-		role.setId(1L);
+		role.setId(3L);
 		user.setRoles(Arrays.asList(role));
 		user.setLastLogin(LocalDateTime.now());
 		getHibernateTemplate().save(user);

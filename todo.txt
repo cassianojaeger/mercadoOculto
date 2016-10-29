@@ -1,9 +1,5 @@
 //TODO 
 
-Fazer validação dos campos do filme sem annotation - server side
+mudar os delets e edits para a página principal, na lista de filmes
 
 Fazer o path para imagem
-
-Pagina de erro 403
-
-Melhoras algumas partes do fronto (listagem de filme no console do admin)
