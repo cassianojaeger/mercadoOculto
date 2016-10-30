@@ -17,7 +17,7 @@
 					src="${movie.thumbnail}" alt="placehold.it/350x250"
 					style="float: left; height:250px">
 			</p>
-			<div style="margin-left: 30%; max-width: 80%; ">
+			<div style="margin-left: 17%; max-width: 80%; ">
 				<h3>Synopsis</h3>
 				<p >${movie.synopsis}</p>
 			</div> 

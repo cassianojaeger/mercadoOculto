@@ -1,7 +1,7 @@
 //TODO 
 
-mudar os delets e edits para a página principal, na lista de filmes
+busca com ajax
 
-fazer o delet ser um post, nunca um get
+wishlist de filmes
 
 Fazer o path para imagem

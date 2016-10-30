@@ -28,17 +28,17 @@
 					<div class="post">
 						<div class="post-img-content"
 							style="float: left; padding-right: 10px; padding-bottom: 10px">
-							<img src="${movies.thumbnail}" class="img-responsive" />
+							<a href="<c:url value="/home/info/${movies.id}"/>"><img src="${movies.thumbnail}" class="img-responsive" /></a>
 						</div>
 						<div class="content" style="">
-							<span class="post-title"><b><h4>${movies.title}
-										(${movies.releaseDate.year})</h4></b></span>
-							<div class="author">
+							<a href="<c:url value="/home/info/${movies.id}"/>"><span class="post-title"><b><h4>${movies.title}
+										(${movies.releaseDate.year})</h4></b></span></a>
+							<div class="author" style="margin-bottom: 5px">
 								<small style="color: #666666"><b>${movies.genre}</b> | <time
 										datetime=${movies.releaseDate}>${movies.length} mins</time></small> </br>
 							</div>
 							<div>
-								<p>${movies.synopsis}</p>
+								<small style="color: #666666"><p>${movies.synopsis}</p></small>
 							</div>
 						</div>
 					</div>
