@@ -29,7 +29,7 @@
 						<div class="post-img-content"
 							style="float: left; padding-right: 10px; padding-bottom: 10px">
 							<a href="<c:url value="/home/info/${movies.id}"/>"><img
-								src="${movies.thumbnail}" class="img-responsive"
+								src="<c:url value="${movies.thumbnail}"/>" class="img-responsive"
 								style="width: 182px; height: 268px" /></a>
 						</div>
 						<div class="content" style="">
@@ -41,7 +41,7 @@
 										datetime=${movies.releaseDate}>${movies.length} mins</time></small> </br>
 							</div>
 							<div>
-								<small style="color: #666666"><p>${movies.synopsis}</p></small>
+								<small style="color: #666666; text-align:justify"><p>${movies.synopsis}</p></small>
 							</div>
 						</div>
 					</div>

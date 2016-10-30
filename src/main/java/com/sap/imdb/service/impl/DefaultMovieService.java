@@ -4,14 +4,18 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
-import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
+import com.sap.imdb.config.FileSaver;
 import com.sap.imdb.dao.MovieDao;
 import com.sap.imdb.model.Movie;
 import com.sap.imdb.service.MovieService;
 
 public class DefaultMovieService implements MovieService{
-
+	
+	@Resource
+	private FileSaver fileSaver;
+	
 	@Resource
 	private MovieDao movieDao;
 	
@@ -39,5 +43,10 @@ public class DefaultMovieService implements MovieService{
 	public List<Movie> getListMovie() {
 		return movieDao.getListMovie();
 	}
-
+	
+	@Override
+	public void uploadThumbnail(MultipartFile file, Movie movie) throws Exception{
+		String webPath = fileSaver.write("/resources/uploaded-thumbnails", file);
+		movie.setThumbnail(webPath);
+	}
 }

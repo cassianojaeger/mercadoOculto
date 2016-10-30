@@ -23,7 +23,7 @@ public class SignUpController {
 	@Resource
 	private UserService userService;
 	@Resource
-	private ImdbValidate ImdbValidate;
+	private ImdbValidate imdbValidate;
 	
 	@RequestMapping(value="", method = RequestMethod.GET)
 	public String makeReservationForm(Model model,@RequestParam(value = "error", required = false) String error){
@@ -39,7 +39,7 @@ public class SignUpController {
 	public String signUp(@Valid User user,Model model, 
 			RedirectAttributes redirectAttributes, HttpServletRequest request) throws Exception{
 		try{
-			ImdbValidate.passwordMatch(user, request.getParameter("pass2"));
+			imdbValidate.passwordMatch(user, request.getParameter("pass2"));
 			userService.saveUser(user);
 			model.addAttribute("success", "User registration complete!");
 			return "/internalViews/success";

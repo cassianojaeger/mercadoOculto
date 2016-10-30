@@ -3,6 +3,7 @@ package com.sap.imdb.service;
 import java.util.List;
 
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.sap.imdb.model.Movie;
 
@@ -18,4 +19,7 @@ public interface MovieService {
 	Movie getMovie(int id);
 	
 	List<Movie> getListMovie();
+
+	void uploadThumbnail(MultipartFile file, Movie movie) throws Exception;
+
 }

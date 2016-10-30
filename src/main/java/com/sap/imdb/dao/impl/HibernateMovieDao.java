@@ -1,5 +1,6 @@
 package com.sap.imdb.dao.impl;
 
+import java.io.File;
 import java.util.List;
 
 import org.springframework.orm.hibernate5.support.HibernateDaoSupport;
@@ -28,13 +29,25 @@ public class HibernateMovieDao extends HibernateDaoSupport implements MovieDao {
 	}
 	
 	@Override
-	public void update(Movie Movie){
-		getHibernateTemplate().update(Movie);
+	public void update(Movie movie){
+		getHibernateTemplate().update(movie);
 	}
 	
 	@Override
-	public void remove(Movie Movie){
-		getHibernateTemplate().delete(Movie);
+	public void remove(Movie movie){
+		try{
+
+    		File file = new File("C:/Users/i857753/Documents/WorkspaceIMDB/MFIMDB/src/main/webapp"+movie.getThumbnail());
+
+    		if(file.delete()){
+    			System.out.println(file.getName() + " is deleted!");
+    		}else{
+    			System.out.println("Filme nao possui thumbnail");
+    		}
+    		getHibernateTemplate().delete(movie);
+    	}catch(Exception e){
+    		e.printStackTrace();
+    	}
 	}
 
 }

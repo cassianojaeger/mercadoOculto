@@ -10,8 +10,9 @@
 <body>
 
 	<form:form class="form-horizontal" modelAttribute="movie"
-		servletRelativeAction="/admconsole/editMovie/${movie.id}"
-		method="POST">
+		servletRelativeAction="/admconsole/editMovie/${movie.id}?${_csrf.parameterName}=${_csrf.token}"
+		method="POST"
+		enctype="multipart/form-data">
 		<fieldset style="width: 50%; margin: 0 auto">
 			<label><h1>Movie Registration</h1></label>
 			<div class="control-group">
@@ -77,8 +78,8 @@
 				<label class="control-label" for="thumbnail">Thumbnail URL
 					path</label>
 				<div class="controls">
-					<form:input path="thumbnail" class="form-control"
-						type="text" />
+					<input name="file" class="form-control"
+						type="file" />
 					<form:errors path="thumbnail" />
 				</div>
 			</div>

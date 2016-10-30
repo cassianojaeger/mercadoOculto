@@ -14,6 +14,7 @@ import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.DateTimeFormat.ISO;
+import org.springframework.web.multipart.MultipartFile;
 
 @Entity
 public class Movie {
@@ -37,7 +38,6 @@ public class Movie {
 	private ArrayList<Genre> genre;
 	@NotBlank
 	private String rating;
-	@NotBlank
 	@Column(length = 1024)
 	private String thumbnail;
 
@@ -89,4 +89,6 @@ public class Movie {
 	public void setThumbnail(String thumbnail) {
 		this.thumbnail = thumbnail;
 	}
+
+	
 }

@@ -1,5 +1,7 @@
 package com.sap.imdb.validations;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import com.sap.imdb.model.User;
 
 public interface ImdbValidate {
@@ -17,5 +19,8 @@ public interface ImdbValidate {
 
 //	SIGN IN VALIDATIONS
 	void validateSignIn(User user) throws Exception;
+	
+// THUMNAIL VALIDATOINS
+	void validateThumbnail(MultipartFile thumbnail) throws Exception;
 	
 }

@@ -1,6 +1,5 @@
 package com.sap.imdb.config;
 
-import javax.activation.DataSource;
 import javax.annotation.Resource;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,16 +32,19 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.authorizeRequests().antMatchers("/admconsole/deleteMovie/**").hasRole("ADMIN")
+		http.authorizeRequests().antMatchers("/resources/**").permitAll()
+				.antMatchers("/admconsole/deleteMovie/**").hasRole("ADMIN")
 				.antMatchers("/admconsole/registermovie").hasRole("ADMIN")
 				.antMatchers("/admconsole/rest**").hasRole("ADMIN")
 				.antMatchers("/admconsole/editMovie/**").access("hasRole('ADMIN') or hasRole('MOD')")
-				.antMatchers("/home**").permitAll()
+				.antMatchers("/home**").permitAll()				
 				.and().formLogin().defaultSuccessUrl("/home")
 				.and().formLogin().loginPage("/login").failureUrl("/login?error")
 				.usernameParameter("username").passwordParameter("password")
 				.and().logout().logoutSuccessUrl("/login?logout")
 				.and().exceptionHandling().accessDeniedPage("/403")
-				.and().csrf();;
+				.and().csrf();
+		
+		
 	}
 }
