@@ -60,6 +60,7 @@ public class AdmController {
 	public String editMovie(@Valid Movie movie, BindingResult bindingResult, 
 			Model model, RedirectAttributes redirectAttributes) throws Exception{	
 		if(bindingResult.hasErrors()){			
+			model.addAttribute("genreList", Genre.values());
 			return "/adminViews/editMovie";
 		}		
 		movieService.updateMovie(movie);						

@@ -27,7 +27,7 @@ public class Movie {
 	@DateTimeFormat(iso = ISO.DATE_TIME)
 	private LocalDateTime releaseDate;
 	@NotBlank
-	@Length(min = 0, max = 256)
+	@Length(min = 0, max = 512)
 	@Column(length = 2048)
 	private String synopsis;
 	@NotNull
