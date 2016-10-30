@@ -28,13 +28,6 @@ public class AdmController {
 	@Resource
 	private MovieService movieService;
 	
-	@RequestMapping(value="/movielist", method = RequestMethod.GET)
-	public String userList(Model model){
-		List<Movie> movies = movieService.getListMovie();
-		model.addAttribute("movies", movies);
-		return "/adminViews/movieConsole";
-	}
-	
 	@RequestMapping(value="/registermovie", method = RequestMethod.GET)
 	public String registerMovie(Movie movie, Model model){		
 		model.addAttribute("genreList", Genre.values());			
@@ -70,14 +63,14 @@ public class AdmController {
 			return "/adminViews/editMovie";
 		}		
 		movieService.updateMovie(movie);						
-		return "redirect:/admconsole/movielist";		
+		return "redirect:/home";		
 	}
 	
-	@RequestMapping("/deleteMovie/{id}")
+	@RequestMapping(value="/deleteMovie/{id}", method = RequestMethod.POST)
 	public String deleteMovie(@PathVariable("id") Integer id){
 		Movie movie = movieService.getMovie(id);
 		movieService.removeMovie(movie);
-		return "redirect:/admconsole/movielist";		
+		return "redirect:/home";		
 	}
 			
 	@ResponseBody

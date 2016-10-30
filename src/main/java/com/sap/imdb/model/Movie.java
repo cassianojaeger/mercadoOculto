@@ -10,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 
+import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.DateTimeFormat.ISO;
@@ -26,6 +27,7 @@ public class Movie {
 	@DateTimeFormat(iso = ISO.DATE_TIME)
 	private LocalDateTime releaseDate;
 	@NotBlank
+	@Length(min = 0, max = 256)
 	@Column(length = 2048)
 	private String synopsis;
 	@NotNull

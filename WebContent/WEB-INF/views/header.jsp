@@ -46,7 +46,8 @@
 										<input type="hidden" name="${_csrf.parameterName}"
 											value="${_csrf.token}" />
 									</form></li>
-								<li><sec:authorize access="hasRole('ROLE_ADMIN')" >
+								<li>
+								<sec:authorize access="hasRole('ROLE_ADMIN')" >
 									<form class="form-inline" action="/admconsole/registermovie"
 										method="GET">
 										<a class="btn btn-link" type="submit"
@@ -55,13 +56,7 @@
 									</form>
 
 								</li>
-								<li>
-									<form class="form-inline" action="/admconsole/movielist"
-										method="GET">
-										<a class="btn btn-link" type="submit"
-											href="<c:url value="/admconsole/movielist"/>" />Movie Console</a>
-									</form>
-								</li></sec:authorize>								
+								</sec:authorize>								
 							</ul></li>
 					</sec:authorize>
 				</ul>

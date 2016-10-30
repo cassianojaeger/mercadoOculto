@@ -15,6 +15,11 @@ public class HTTPErrorHandler {
     public String error404() {
         return "/internalViews/404";
     }
+    
+    @RequestMapping(value="/405")
+    public String error405() {
+        return "/internalViews/405";
+    }
 //    @RequestMapping(value="/404")
 //    public String error404() {
 //        return "/internalViews/404.jsp";

@@ -34,8 +34,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests().antMatchers("/admconsole/delete**").hasAnyRole("ROLE_ADMIN")
+				.antMatchers("/admconsole/registermovie").hasRole("ROLE_ADMIN")
+				.antMatchers("/admconsole/rest**").hasRole("ROLE_ADMIN")
 				.antMatchers("/admconsole/edit**").hasAnyRole("ROLE_ADMIN","ROLE_MOD")
-				.antMatchers("/admconsole/movielist").hasAnyRole("ROLE_ADMIN","ROLE_MOD")
 				.antMatchers("/home**").permitAll()
 				.and().formLogin().defaultSuccessUrl("/home")
 				.and().formLogin().loginPage("/login").failureUrl("/login?error")

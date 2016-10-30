@@ -86,8 +86,7 @@
 			<div class="control-group">
 				<!-- Button -->
 				<div class="controls" style="margin-top: 20px">
-					<form:button class="btn btn-success">Register</form:button>
-					<a class="btn btn-danger" href="<c:url value="/admconsole/deleteMovie/${movie.id}"/>" role="button" style="float: right">Delete</a>
+					<form:button class="btn btn-success">Register</form:button>					
 				</div>
 
 			</div>

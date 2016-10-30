@@ -32,8 +32,6 @@
 			<c:forEach items="${movie.genre}" var="genre">
 				${genre} |			
 			</c:forEach></small>
-			
-			
 			</li>
 			<li class="list-group-item">Rating: ${movie.rating}</li>
 		</ul>

@@ -1,4 +1,6 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="sec"
+	uri="http://www.springframework.org/security/tags"%>
 <jsp:include page="../header.jsp"></jsp:include>
 <!-- RETIRAR -->
 <%@page session="true"%>
@@ -16,46 +18,51 @@
 	<br>
 	<br>
 	<br>
-		<c:forEach var="movies" items="${movies}">
-			<div class="container">
-				<div class="row">
-					<div class="well">
-						<div class="list-group">
-							<a href="<c:url value="/home/info/${movies.id}"/>"
-								class="list-group-item active">
-								<div class="media col-md-3">
-									<figure class="pull-left">
-										<img class="media-object img-rounded img-responsive"
-											src="${movies.thumbnail}" style="height: 198px;"/>
-									</figure>
-								</div>
-								<div class="col-md-6">
-									<h2 class="list-group-item-heading">${movies.title}</h2>
-									<br>
-									<div class="stars" style="font-size: 40px;">
-										<span class="glyphicon glyphicon-star"></span> <span
-											class="glyphicon glyphicon-star"></span> <span
-											class="glyphicon glyphicon-star"></span> <span
-											class="glyphicon glyphicon-star"></span> <span
-											class="glyphicon glyphicon-star-empty"></span>
-									</div>
-									<p>
-										Average ${movies.rating} <small> / </small> 5
-									</p>
-								</div>
-								<div class="col-md-3 text-center">
-									<br> <br> <br> <br>
-									<button type="button" class="btn btn-default btn-lg btn-block">
-										See more!</button>
-								</div>
-							</a>
+
+	<div class="container">
+		<div class="row">
+			<c:forEach var="movies" items="${movies}">
+				<!-- PEGAR DAQUI -->
+				<div class="col-sm-8 col-md-6"
+					style="background-color: #f6f6f5; border: #fff 1px solid;">
+					<div class="post">
+						<div class="post-img-content"
+							style="float: left; padding-right: 10px; padding-bottom: 10px">
+							<img src="${movies.thumbnail}" class="img-responsive" />
+						</div>
+						<div class="content" style="">
+							<span class="post-title"><b><h4>${movies.title}
+										(${movies.releaseDate.year})</h4></b></span>
+							<div class="author">
+								<small style="color: #666666"><b>${movies.genre}</b> | <time
+										datetime=${movies.releaseDate}>${movies.length} mins</time></small> </br>
+							</div>
+							<div>
+								<p>${movies.synopsis}</p>
+							</div>
 						</div>
 					</div>
+					<div style="position: absolute; bottom: 10px; margin-left:40%">
+						<a href="<c:url value="/home/info/${movies.id}"/>"
+							class="btn btn-primary btn-sm">More info</a>
+						<sec:authorize access="hasAnyRole('ROLE_MOD', 'ROLE_ADMIN')">
+							<a href="<c:url value="/admconsole/editMovie/${movies.id}"/>"
+								class="btn btn-warning btn-sm">&nbsp;&nbsp;&nbsp;Edit&nbsp;&nbsp;&nbsp;</a>
+							<sec:authorize access="hasRole('ROLE_ADMIN')">
+								<a href="<c:url value="/admconsole/deleteMovie/${movies.id}"/>"
+									class="btn btn-danger btn-sm">Delete</a>
+							</sec:authorize>
+						</sec:authorize>
+					</div>
 				</div>
-			</div>
-		</c:forEach>
+			</c:forEach>
+			<!-- PEGAR DAQUI -->
+		</div>
+	</div>
 
-		<br>
+
+
+	<br>
 </body>
 <jsp:include page="../footer.jsp"></jsp:include>
 </html>

@@ -2,4 +2,6 @@
 
 mudar os delets e edits para a página principal, na lista de filmes
 
+fazer o delet ser um post, nunca um get
+
 Fazer o path para imagem
