@@ -30,6 +30,11 @@ public class User {
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name="USER_ROLE")
     private List<Role> roles;
+    
+//    @ManyToMany(fetch = FetchType.EAGER)
+//    @JoinTable(name="USER_FILMS")
+//    private List<Movie> wishlist;
+    
     private LocalDateTime lastLogin;    
 
 	public LocalDateTime getLastLogin() {

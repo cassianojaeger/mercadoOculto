@@ -14,4 +14,6 @@ void save(Movie movie);
 	Movie getMovie(int id);
 	
 	List<Movie> getListMovie();
+
+	List<Movie> getMoviesByTitle(String title);
 }

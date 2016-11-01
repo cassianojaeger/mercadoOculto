@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate5.support.HibernateDaoSupport;
 
 import com.sap.imdb.dao.UserDao;
+import com.sap.imdb.model.Movie;
 import com.sap.imdb.model.Role;
 import com.sap.imdb.model.User;
 
@@ -67,5 +68,4 @@ public class HibernateUserDao extends HibernateDaoSupport implements UserDao {
 	public void remove(User User) {
 		getHibernateTemplate().delete(User);
 	}
-
 }

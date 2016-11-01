@@ -33,9 +33,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests().antMatchers("/resources/**").permitAll()
-				.antMatchers("/admconsole/deleteMovie/**").hasRole("ADMIN")
-				.antMatchers("/admconsole/registermovie").hasRole("ADMIN")
-				.antMatchers("/admconsole/rest**").hasRole("ADMIN")
+				.antMatchers("/admconsole/**").hasRole("ADMIN")
 				.antMatchers("/admconsole/editMovie/**").access("hasRole('ADMIN') or hasRole('MOD')")
 				.antMatchers("/home**").permitAll()				
 				.and().formLogin().defaultSuccessUrl("/home")

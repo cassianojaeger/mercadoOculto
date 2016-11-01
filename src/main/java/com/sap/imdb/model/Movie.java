@@ -2,19 +2,21 @@ package com.sap.imdb.model;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.DateTimeFormat.ISO;
-import org.springframework.web.multipart.MultipartFile;
 
 @Entity
 public class Movie {
@@ -40,7 +42,10 @@ public class Movie {
 	private String rating;
 	@Column(length = 1024)
 	private String thumbnail;
-
+	
+//	@ManyToMany(mappedBy="wishlist", fetch = FetchType.LAZY)
+//	private List<User> users;
+	
 	public int getId() {
 		return id;
 	}

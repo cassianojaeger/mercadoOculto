@@ -22,10 +22,5 @@ public interface UserService {
 	List<User> getListUser();
 
 	void updateUserLoginDate(User user) throws Exception;
-
-	
-
-
-
 	
 }

@@ -49,4 +49,9 @@ public class DefaultMovieService implements MovieService{
 		String webPath = fileSaver.write("/resources/uploaded-thumbnails", file);
 		movie.setThumbnail(webPath);
 	}
+	
+	@Override
+	public List<Movie> getMoviesByTitle(String title){
+		return movieDao.getMoviesByTitle(title);
+	}
 }

@@ -22,4 +22,6 @@ public interface MovieService {
 
 	void uploadThumbnail(MultipartFile file, Movie movie) throws Exception;
 
+	List<Movie> getMoviesByTitle(String title);
+
 }

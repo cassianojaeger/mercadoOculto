@@ -7,8 +7,9 @@
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
 	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
 	crossorigin="anonymous">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+<script type="text/javascript"
+	src="<c:url value="/resources/js/jquery-3.1.1.js"/>"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
@@ -60,6 +61,7 @@
 							</ul></li>
 					</sec:authorize>
 				</ul>
+				
 				<div id="login" class="navbar-form navbar-right">
 					<sec:authorize access="isAnonymous()">
 						<a class="btn btn-primary" href="<c:url value="/login"/>" />Sign in</a>
@@ -71,11 +73,5 @@
 			</div>
 		</div>
 	</nav>
-
-	<script>
-		$(document).ready(function() {
-			$(".dropdown-toggle").dropdown();
-		});
-	</script>
 </body>
 </html>

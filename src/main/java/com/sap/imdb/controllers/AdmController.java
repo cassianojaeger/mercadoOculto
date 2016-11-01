@@ -1,6 +1,5 @@
 package com.sap.imdb.controllers;
 
-import java.io.IOException;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -12,12 +11,10 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.sap.imdb.config.FileSaver;
 import com.sap.imdb.model.Genre;
 import com.sap.imdb.model.Movie;
 import com.sap.imdb.model.User;
@@ -73,7 +70,7 @@ public class AdmController {
 	}
 
 	@RequestMapping(value = "/editMovie/{id}", method = RequestMethod.POST)
-	public String editMovie(MultipartFile file,@Valid Movie movie, BindingResult bindingResult, Model model,
+	public String editMovie(MultipartFile file, @Valid Movie movie, BindingResult bindingResult, Model model,
 			RedirectAttributes redirectAttributes) throws Exception {
 		if (bindingResult.hasErrors()) {
 			model.addAttribute("genreList", Genre.values());

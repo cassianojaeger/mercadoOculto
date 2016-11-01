@@ -11,29 +11,13 @@
 	crossorigin="anonymous">
 <link href="<c:url value="/resources/css/signup.css"/>" rel="stylesheet"
 	type="text/css" />
-<link rel="stylesheet" type="text/css" href="assets/css/bootstrap.css">
-
-<!-- Website CSS style -->
-<link rel="stylesheet" type="text/css" href="assets/css/main.css">
-
-<!-- Website Font style -->
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
-
 <!-- Google Fonts -->
 <link href='https://fonts.googleapis.com/css?family=Passion+One'
-	rel='stylesheet' type='text/css'>
-<link href='https://fonts.googleapis.com/css?family=Oxygen'
 	rel='stylesheet' type='text/css'>
 <!-- CSS --><!-- CSS --><!-- CSS --><!-- CSS --><!-- CSS -->
 <!-- 	SCRIPTS --><!-- 	SCRIPTS --><!-- 	SCRIPTS -->		
 <script type="text/javascript"
 	src="<c:url value="/resources/js/signup.js"/>"></script>
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="assets/js/bootstrap.js"></script>
 <!-- 	SCRIPTS --><!-- 	SCRIPTS --><!-- 	SCRIPTS -->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Mega Filmes IMDb</title>
