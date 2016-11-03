@@ -31,11 +31,19 @@ public class User {
     @JoinTable(name="USER_ROLE")
     private List<Role> roles;
     
-//    @ManyToMany(fetch = FetchType.EAGER)
-//    @JoinTable(name="USER_FILMS")
-//    private List<Movie> wishlist;
+    @ManyToMany
+    @JoinTable(name="USER_FILMS")
+    private List<Movie> wishlist;
     
-    private LocalDateTime lastLogin;    
+    public List<Movie> getWishlist() {
+		return wishlist;
+	}
+
+	public void setWishlist(List<Movie> wishlist) {
+		this.wishlist = wishlist;
+	}
+
+	private LocalDateTime lastLogin;    
 
 	public LocalDateTime getLastLogin() {
 		return lastLogin;

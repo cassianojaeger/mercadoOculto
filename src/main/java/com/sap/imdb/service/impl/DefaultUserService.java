@@ -1,10 +1,13 @@
 package com.sap.imdb.service.impl;
 
+import java.security.Principal;
 import java.util.List;
 
 import javax.annotation.Resource;
 
+import com.sap.imdb.dao.MovieDao;
 import com.sap.imdb.dao.UserDao;
+import com.sap.imdb.model.Movie;
 import com.sap.imdb.model.User;
 import com.sap.imdb.service.UserService;
 import com.sap.imdb.validations.ImdbValidate;
@@ -15,6 +18,8 @@ public class DefaultUserService implements UserService{
 	private UserDao userDao;
 	@Resource
 	private ImdbValidate ImdbValidate;
+	@Resource
+	private MovieDao movieDao;
 	
 	@Override
     public User findByUsername(String username) {
@@ -51,6 +56,27 @@ public class DefaultUserService implements UserService{
 	@Override
 	public List<User> getListUser() {
 		return userDao.getListUser();
+	}
+	
+	@Override
+	public String saveRemoveWishlist(int movieId, Principal principal){
+		String username = principal.getName();
+		Movie movie = movieDao.getMovie(movieId);
+		for(Movie userMovie: userDao.findByUserName(username).getWishlist()){
+			if(userMovie.getId() == movie.getId()){
+				userDao.findByUserName(username).getWishlist().remove(movie);
+				return "Filme removido da wishlist";
+			}
+		}
+		userDao.findByUserName(username).getWishlist().add(movie);
+		return "Filme adicionado no wishlist";
+	}
+	
+	@Override		
+	public List<Movie> showWishlist(Principal principal){
+		String username = principal.getName();
+		User user = userDao.findByUserName(username);
+		return movieDao.getListMovieByUsername(user);
 	}
 	
 }

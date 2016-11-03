@@ -5,8 +5,6 @@ $(document).ready(function() {
 			data : {
 				filter : $('#search').val()
 			}
-		}).done(function(result) {
-			$('#movies-display').html(result);
 		});
 	});
 });

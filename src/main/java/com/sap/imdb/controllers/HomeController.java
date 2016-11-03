@@ -2,7 +2,6 @@ package com.sap.imdb.controllers;
 
 
 
-import java.security.Principal;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -25,11 +24,9 @@ public class HomeController {
 	private MovieService movieService;
 	
 	@RequestMapping("")
-	public String movieList(Model model, Principal principal){
+	public String movieList(Model model){
 		List<Movie> movies = movieService.getListMovie();
 		model.addAttribute("movies", movies);
-		String name = principal.getName();
-		model.addAttribute("username", name);
 		return "/homeViews/movielist";
 	}
 	

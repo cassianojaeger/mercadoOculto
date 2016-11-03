@@ -2,20 +2,6 @@
 <%@ taglib prefix="sec"
 	uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<!-- <!-- <script> --> -->
-<!-- // $(document).ready(function() { -->
-<!-- // 	$("#wishlistButton").click(function(){ -->
-<!-- // 		$.ajax({ -->
-<!-- // 			url : '/imdb/user/saveRemoveWishlist', -->
-<!-- // 			data : { -->
-<!-- // 				movie : $("#wishlistButton").attr("data-id"), -->
-<!-- // 				user  : $("#wishlistButton").attr("user-username") -->
-<!-- // 			} -->
-<!-- // 		}) -->
-<!-- // 	}); -->
-<!-- // }); -->
-	
-<!-- <!-- </script> --> -->
 <div class="row">
 	<c:forEach var="movies" items="${movies}">
 		<!-- PEGAR DAQUI -->
@@ -40,21 +26,7 @@
 						<small style="color: #666666; text-align: justify"><p>${movies.synopsis}</p></small>
 					</div>
 				</div>
-			</div>
-			<div style="position: absolute; bottom: 10px; margin-left: 33%">
-				<sec:authorize access="isAuthenticated()">
-				<form:form class="form-inline"
-					servletRelativeAction="/user/addWishlist/${movies.id}"
-					method="POST">
-					<div data-toggle="buttons" style="display: inline">
-						<button id="wishlistButton" type="submit" class="btn btn-default btn-sm" onclick="wishList()" 
-							data-id="${movies.id}" user-username="<sec:authentication property="principal.username" />">
-							<i class="glyphicon glyphicon-ok"></i> Wishlist
-						</button>
-					</div>
-				</form:form>
-			</sec:authorize>
-			</div>
+			</div>			
 			<div style="position: absolute; bottom: 10px; margin-left: 66%">
 				<sec:authorize access="hasAnyRole('ROLE_MOD', 'ROLE_ADMIN')">
 					<a href="<c:url value="/admconsole/editMovie/${movies.id}"/>"
@@ -70,7 +42,7 @@
 						</button>
 					</form:form>
 				</sec:authorize>
-			</div>	
+			</div>
 		</div>
 	</c:forEach>
 </div>

@@ -30,8 +30,8 @@ public class DefaultMovieService implements MovieService{
 	}
 
 	@Override
-	public void removeMovie(Movie movie) {		
-		movieDao.remove(movie);
+	public void removeMovie(Movie movie) {	
+		movieDao.remove(movie);		
 	}
 
 	@Override

@@ -43,8 +43,8 @@ public class Movie {
 	@Column(length = 1024)
 	private String thumbnail;
 	
-//	@ManyToMany(mappedBy="wishlist", fetch = FetchType.LAZY)
-//	private List<User> users;
+	@ManyToMany(mappedBy="wishlist")
+	private List<User> users;
 	
 	public int getId() {
 		return id;

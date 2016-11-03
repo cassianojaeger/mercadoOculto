@@ -3,6 +3,7 @@ package com.sap.imdb.dao;
 import java.util.List;
 
 import com.sap.imdb.model.Movie;
+import com.sap.imdb.model.User;
 
 public interface MovieDao {
 void save(Movie movie);
@@ -16,4 +17,6 @@ void save(Movie movie);
 	List<Movie> getListMovie();
 
 	List<Movie> getMoviesByTitle(String title);
+
+	List<Movie> getListMovieByUsername(User user);
 }

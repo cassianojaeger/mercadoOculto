@@ -40,7 +40,6 @@ public class AdmController {
 		return "/adminViews/newMovie";
 	}
 
-	// NAO USAR MODEL AND VIEW
 	@RequestMapping(value = "/registermovie", method = RequestMethod.POST)
 	public String registerMovie(MultipartFile file, @Valid Movie movie, BindingResult bindingResult, Model model,
 			RedirectAttributes redirectAttributes) throws Exception {
@@ -89,33 +88,14 @@ public class AdmController {
 	}
 
 	@RequestMapping(value = "/deleteMovie/{id}", method = RequestMethod.POST)
-	public String deleteMovie(@PathVariable("id") Integer id) {
+	public String deleteMovie(@PathVariable("id") Integer id, RedirectAttributes redirectAttributes) {
 		Movie movie = movieService.getMovie(id);
-		movieService.removeMovie(movie);
+		try{
+			movieService.removeMovie(movie);
+			redirectAttributes.addFlashAttribute("deleteError", "Filme deletado");
+		}catch(Exception e){
+			redirectAttributes.addFlashAttribute("deleteError", "Filme não pode ser deletado pois está atrelado a uma wishlist");
+		}		
 		return "redirect:/home";
 	}
-
-	@ResponseBody
-	@RequestMapping("/restAllMovies")
-	public List<Movie> requestJsonMovies() {
-		return movieService.getListMovie();
-	}
-
-	@RequestMapping("/restAllMovies/{id}")
-	public Movie requestJsonMovieById(@PathVariable("id") Integer id) {
-		return movieService.getMovie(id);
-	}
-
-	@ResponseBody
-	@RequestMapping("/restAllUsers")
-	public List<User> requestJsonUsers() {
-		return userService.getListUser();
-	}
-
-	@ResponseBody
-	@RequestMapping("/restAllUsers/{id}")
-	public User requestJsonUsers(@PathVariable("id") Integer id) {
-		return userService.getUser(id);
-	}
-
 }
