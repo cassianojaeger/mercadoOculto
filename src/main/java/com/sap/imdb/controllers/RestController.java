@@ -1,4 +1,4 @@
-package com.sap.imdb.controllers;
+	package com.sap.imdb.controllers;
 
 import java.util.List;
 
@@ -28,7 +28,8 @@ public class RestController {
 	public List<Movie> requestJsonMovies() {
 		return movieService.getListMovie();
 	}
-
+	
+	@ResponseBody
 	@RequestMapping("/restAllMovies/{id}")
 	public Movie requestJsonMovieById(@PathVariable("id") Integer id) {
 		return movieService.getMovie(id);

@@ -7,13 +7,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-<script>
-jQuery(document).ready(function($) {
-    $(".clickable-row").click(function() {
-        window.document.location = $(this).data("href");
-    });
-});
-</script>
+<script type="text/javascript"
+	src="<c:url value="/resources/js/tablelink.js"/>"></script>
+<script src="https://code.jquery.com/jquery-3.1.1.js"
+	integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="
+	crossorigin="anonymous"></script>
 <title>Mega Filmes IMDb</title>
 </head>
 <body>

@@ -18,6 +18,8 @@ import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.DateTimeFormat.ISO;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Movie {
 	
@@ -46,6 +48,13 @@ public class Movie {
 	@ManyToMany(mappedBy="wishlist")
 	private List<User> users;
 	
+	@JsonIgnore
+	public List<User> getUsers() {
+		return users;
+	}
+	public void setUsers(List<User> users) {
+		this.users = users;
+	}
 	public int getId() {
 		return id;
 	}
