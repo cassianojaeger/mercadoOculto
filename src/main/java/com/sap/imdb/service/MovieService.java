@@ -24,4 +24,6 @@ public interface MovieService {
 
 	List<Movie> getMoviesByTitle(String title);
 
+	void deleteThumbnail(Movie movie);
+
 }

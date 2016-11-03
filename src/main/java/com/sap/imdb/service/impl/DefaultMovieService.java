@@ -1,5 +1,6 @@
 package com.sap.imdb.service.impl;
 
+import java.io.File;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -53,5 +54,15 @@ public class DefaultMovieService implements MovieService{
 	@Override
 	public List<Movie> getMoviesByTitle(String title){
 		return movieDao.getMoviesByTitle(title);
+	}
+	
+	@Override
+	public void deleteThumbnail(Movie movie){
+		File file = new File("C:/Users/i857753/Documents/WorkspaceIMDB/MFIMDB/src/main/webapp" + movie.getThumbnail());		
+		if (file.delete()) {
+			System.out.println(file.getName() + " is deleted!");
+		} else {
+			System.out.println("Filme nao possui thumbnail");
+		}
 	}
 }

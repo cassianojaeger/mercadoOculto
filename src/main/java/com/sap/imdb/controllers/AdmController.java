@@ -1,7 +1,5 @@
 package com.sap.imdb.controllers;
 
-import java.util.List;
-
 import javax.annotation.Resource;
 import javax.validation.Valid;
 
@@ -11,13 +9,11 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.sap.imdb.model.Genre;
 import com.sap.imdb.model.Movie;
-import com.sap.imdb.model.User;
 import com.sap.imdb.service.MovieService;
 import com.sap.imdb.service.UserService;
 import com.sap.imdb.validations.ImdbValidate;
@@ -32,7 +28,6 @@ public class AdmController {
 	private MovieService movieService;
 	@Resource
 	private ImdbValidate imdbValidate;
-
 
 	@RequestMapping(value = "/registermovie", method = RequestMethod.GET)
 	public String registerMovie(Movie movie, Model model) {
@@ -92,6 +87,7 @@ public class AdmController {
 		Movie movie = movieService.getMovie(id);
 		try{
 			movieService.removeMovie(movie);
+			movieService.deleteThumbnail(movie);
 			redirectAttributes.addFlashAttribute("deleteError", "Filme deletado");
 		}catch(Exception e){
 			redirectAttributes.addFlashAttribute("deleteError", "Filme não pode ser deletado pois está atrelado a uma wishlist");

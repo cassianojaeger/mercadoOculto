@@ -22,29 +22,23 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	UserDetailsService userDetailsService;
 	
 	@Autowired
-	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-//		auth.inMemoryAuthentication().withUser("cassiano").password("123456").roles("USER");
-//		auth.inMemoryAuthentication().withUser("admin").password("123456").roles("ADMIN");
-		
+	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {		
 		auth.userDetailsService(userDetailsService);
-		 
 	}
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests().antMatchers("/resources/**").permitAll()
-				.antMatchers("/admconsole/**").hasRole("ADMIN")
-				.antMatchers("/admconsole/editMovie/**").access("hasRole('ADMIN') or hasRole('MOD')")
-				.antMatchers("/home**").permitAll()		
-				.antMatchers("/home/info/**").permitAll()
-				.antMatchers("/user/wishlist/**").authenticated()
-				.and().formLogin().defaultSuccessUrl("/home")
-				.and().formLogin().loginPage("/login").failureUrl("/login?error")
-				.usernameParameter("username").passwordParameter("password")
-				.and().logout().logoutSuccessUrl("/login?logout")
-				.and().exceptionHandling().accessDeniedPage("/403")
-				.and().csrf();
-		
-		
+		.antMatchers("/admconsole/**").hasRole("ADMIN")
+		.antMatchers("/admconsole/editMovie/**").access("hasRole('ADMIN') or hasRole('MOD')")
+		.antMatchers("/home**").permitAll()		
+		.antMatchers("/user/wishlist/**").authenticated()
+		.antMatchers("/rest/**").hasRole("ADMIN")
+		.and().formLogin().defaultSuccessUrl("/home")
+		.and().formLogin().loginPage("/login").failureUrl("/login?error")
+		.usernameParameter("username").passwordParameter("password")
+		.and().logout().logoutSuccessUrl("/login?logout")
+		.and().exceptionHandling().accessDeniedPage("/403")
+		.and().csrf();			
 	}
 }

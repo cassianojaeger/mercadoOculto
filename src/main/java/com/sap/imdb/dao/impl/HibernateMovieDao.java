@@ -35,18 +35,7 @@ public class HibernateMovieDao extends HibernateDaoSupport implements MovieDao {
 
 	@Override
 	public void remove(Movie movie) {
-		try {
-
-			File file = new File(
-					"C:/Users/i857753/Documents/WorkspaceIMDB/MFIMDB/src/main/webapp" + movie.getThumbnail());
-			getHibernateTemplate().delete(movie);
-			if (file.delete()) {
-				System.out.println(file.getName() + " is deleted!");
-			} else {
-				System.out.println("Filme nao possui thumbnail");
-			}						
-		} catch (ConstraintViolationException e) {			
-		}
+		getHibernateTemplate().delete(movie);
 	}
 
 	@SuppressWarnings("unchecked")
@@ -55,10 +44,10 @@ public class HibernateMovieDao extends HibernateDaoSupport implements MovieDao {
 		String query = "from com.sap.imdb.model.Movie where title like :title";
 		return (List<Movie>) getHibernateTemplate().findByNamedParam(query, "title", '%' + title + '%');
 	}
-	
+
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Movie> getListMovieByUsername(User user){
+	public List<Movie> getListMovieByUsername(User user) {
 		String query = "select wishlist from com.sap.imdb.model.User where username like :username";
 		return (List<Movie>) getHibernateTemplate().findByNamedParam(query, "username", user.getUsername());
 	}

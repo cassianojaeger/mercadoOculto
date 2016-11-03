@@ -18,7 +18,7 @@
 			<p>
 				<img class="media-object img-rounded img-responsive"
 					src="<c:url value="${movie.thumbnail}"/>"
-					alt="placehold.it/350x250" style="float: left; height: 250px">
+					style="float: left; height: 268; width: 168px">
 			</p>
 			<div style="margin-left: 17%; max-width: 80%;">
 				<h3>Synopsis</h3>

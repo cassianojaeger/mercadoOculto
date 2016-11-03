@@ -64,11 +64,15 @@ public class DefaultUserService implements UserService{
 		Movie movie = movieDao.getMovie(movieId);
 		for(Movie userMovie: userDao.findByUserName(username).getWishlist()){
 			if(userMovie.getId() == movie.getId()){
-				userDao.findByUserName(username).getWishlist().remove(movie);
+				User user = userDao.findByUserName(username);
+				user.getWishlist().remove(movie);
+				userDao.update(user);
 				return "Filme removido da wishlist";
 			}
 		}
-		userDao.findByUserName(username).getWishlist().add(movie);
+		User user = userDao.findByUserName(username);
+		user.getWishlist().add(movie);
+		userDao.update(user);
 		return "Filme adicionado no wishlist";
 	}
 	
