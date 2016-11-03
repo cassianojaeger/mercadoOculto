@@ -55,9 +55,19 @@
 											href="<c:url value="/admconsole/registermovie"/>" />Add
 										Movie</a>
 									</form>
-
+								</sec:authorize>
 								</li>
-								</sec:authorize>								
+								<li>
+								<sec:authorize access="isAuthenticated()" >
+									<form class="form-inline" action="/user/wishlist"
+										method="GET">
+										<a class="btn btn-link" type="submit"
+											href="<c:url value="/user/wishlist"/>" />Show
+										Wishlist</a>
+									</form>
+								</sec:authorize>
+								</li>
+																
 							</ul></li>
 					</sec:authorize>
 				</ul>

@@ -33,7 +33,7 @@ public class WishlistController {
 	@RequestMapping("/wishlist")
 	public String showWishlist(Principal principal, Model model){
 		List<Movie> wishlist = userService.showWishlist(principal);
-		model.addAttribute("movies", wishlist);
+		model.addAttribute("userMovies", wishlist);
 		return "/userViews/wishlist";
 	}
 }
