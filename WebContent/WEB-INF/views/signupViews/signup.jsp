@@ -35,7 +35,7 @@
 				<form:form class="form-horizontal" modelAttribute="user"
 					servletRelativeAction="/signup" method="POST">
 					<c:if test="${not empty error}">
-						<div class="error">${error}</div>
+						<div class="error" style="text-align: center">${error}</div>
 					</c:if>
 					<div class="form-group">
 						<label for="name" class="cols-sm-2 control-label">Your
