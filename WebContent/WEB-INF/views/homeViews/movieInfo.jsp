@@ -1,4 +1,4 @@
-<%@page session="false"%>
+<%@page session="true"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="sec"
 	uri="http://www.springframework.org/security/tags"%>
@@ -34,9 +34,8 @@
 							<i class="glyphicon glyphicon-ok"></i> Wishlist
 						</button>
 						<c:if test="${not empty message}">
-							<div class="alert alert-info" style="display: inline; padding: 5px">
-								${message}								
-							</div>
+							<div class="alert alert-info"
+								style="display: inline; padding: 5px">${message}</div>
 						</c:if>
 
 					</form:form>
@@ -58,6 +57,44 @@
 			</li>
 			<li class="list-group-item">Rating: ${movie.rating}</li>
 		</ul>
+	</div>
+	<div id="commentDiv" style="width: 90%; margin: 50px auto;">
+		<sec:authorize access="isAuthenticated()">			
+			<form:form servletRelativeAction="/user/comment/${movie.id}"
+				method="POST">
+				<h2>Comment session</h2>
+				<input name="comment" id="comment"
+					class="form-control"  />
+					<br>
+				<button type="submit" class="btn btn-success green"><i class="fa fa-share"></i> Share</button>
+			</form:form>
+		</sec:authorize>
+		<!-- 		COMMENT HTML -->
+		
+		<c:forEach items="${movie.comments}" var="comment">
+			<div class="row">
+				<div class="col-sm-1">
+					<div class="thumbnail">
+						<img class="img-responsive user-photo"
+							src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
+					</div>
+					<!-- /thumbnail -->
+				</div>
+				<!-- /col-sm-1 -->
+
+				<div class="col-sm-5">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<strong>${comment.user}</strong>
+						</div>
+						<div class="panel-body">${comment.comment}</div>
+						<!-- /panel-body -->
+					</div>
+					<!-- /panel panel-default -->
+				</div>
+				<!-- /col-sm-5 -->
+			</div>
+		</c:forEach>
 	</div>
 </body>
 <jsp:include page="../footer.jsp"></jsp:include>

@@ -5,14 +5,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.validation.constraints.NotNull;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -46,9 +48,20 @@ public class Movie {
 	private String thumbnail;
 	
 	@ManyToMany(mappedBy="wishlist")
+	@JsonIgnore
 	private List<User> users;
 	
-	@JsonIgnore
+	@ElementCollection
+	@LazyCollection(LazyCollectionOption.FALSE)
+	private List<Comment> comments;
+	
+	public List<Comment> getComments() {
+		return comments;
+	}
+	public void setComments(List<Comment> comments) {
+		this.comments = comments;
+	}
+	
 	public List<User> getUsers() {
 		return users;
 	}

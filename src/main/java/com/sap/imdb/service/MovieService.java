@@ -1,5 +1,6 @@
 package com.sap.imdb.service;
 
+import java.security.Principal;
 import java.util.List;
 
 import org.springframework.transaction.annotation.Transactional;
@@ -25,5 +26,6 @@ public interface MovieService {
 	List<Movie> getMoviesByTitle(String title);
 
 	void deleteThumbnail(Movie movie);
-
+	
+	void saveComment(Principal principal, String comment, Integer movieId);
 }

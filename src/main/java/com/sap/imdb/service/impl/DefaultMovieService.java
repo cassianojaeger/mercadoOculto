@@ -1,6 +1,7 @@
 package com.sap.imdb.service.impl;
 
 import java.io.File;
+import java.security.Principal;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -9,16 +10,19 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.sap.imdb.config.FileSaver;
 import com.sap.imdb.dao.MovieDao;
+import com.sap.imdb.dao.UserDao;
+import com.sap.imdb.model.Comment;
 import com.sap.imdb.model.Movie;
 import com.sap.imdb.service.MovieService;
 
 public class DefaultMovieService implements MovieService{
 	
 	@Resource
-	private FileSaver fileSaver;
-	
+	private FileSaver fileSaver;	
 	@Resource
 	private MovieDao movieDao;
+	@Resource
+	private UserDao userDao;
 	
 	@Override
 	public void saveMovie(Movie movie) {		
@@ -64,5 +68,15 @@ public class DefaultMovieService implements MovieService{
 		} else {
 			System.out.println("Filme nao possui thumbnail");
 		}
+	}
+
+	@Override
+	public void saveComment(Principal principal, String comment, Integer movieId) {
+		Comment commentInstance = new Comment();
+		commentInstance.setComment(comment);
+		commentInstance.setUser(principal.getName());
+		Movie movie = movieDao.getMovie(movieId);
+		movie.getComments().add(commentInstance);
+		movieDao.update(movie);
 	}
 }

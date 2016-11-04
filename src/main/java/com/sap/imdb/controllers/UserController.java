@@ -4,6 +4,7 @@ import java.security.Principal;
 import java.util.List;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,14 +14,17 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.sap.imdb.model.Movie;
+import com.sap.imdb.service.MovieService;
 import com.sap.imdb.service.UserService;
 
 @Controller
 @RequestMapping("/user")
-public class WishlistController {
+public class UserController {
 	
 	@Resource
 	UserService userService;
+	@Resource
+	MovieService movieService;
 	
 	@RequestMapping(value="/saveRemoveWishlist/{movieId}", method = RequestMethod.POST)
 	public String wishlist(@PathVariable("movieId") Integer movieId, Principal principal, 
@@ -35,5 +39,12 @@ public class WishlistController {
 		List<Movie> wishlist = userService.showWishlist(principal);
 		model.addAttribute("userMovies", wishlist);
 		return "/userViews/wishlist";
+	}
+	
+	@RequestMapping(value="/comment/{movieId}", method = RequestMethod.POST)
+	public String comment(@PathVariable("movieId") Integer movieId, HttpServletRequest req, Principal principal){
+		String comment = req.getParameter("comment");
+		movieService.saveComment(principal, comment, movieId);
+		return "redirect:/home/info/"+movieId;
 	}
 }

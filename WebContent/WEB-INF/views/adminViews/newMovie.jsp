@@ -17,6 +17,8 @@
 	crossorigin="anonymous">
 <link href="<c:url value="/resources/css/signup.css"/>" rel="stylesheet"
 	type="text/css" />
+<link href="<c:url value="/resources/css/comment.css"/>" rel="stylesheet"
+	type="text/css" />
 <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.css">
 <!-- CSS -->
 <!-- CSS -->
