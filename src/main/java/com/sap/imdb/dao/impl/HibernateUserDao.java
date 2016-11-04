@@ -4,22 +4,19 @@ import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.List;
 
-import org.hibernate.SessionFactory;
+import javax.annotation.Resource;
+import javax.persistence.EntityManager;
+
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Restrictions;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate5.support.HibernateDaoSupport;
 
 import com.sap.imdb.dao.UserDao;
-import com.sap.imdb.model.Movie;
 import com.sap.imdb.model.Role;
 import com.sap.imdb.model.User;
 
 public class HibernateUserDao extends HibernateDaoSupport implements UserDao {
-
-	@Autowired
-	private SessionFactory sessionFactory;
-
+	
 	@Override
 	public User findByUserName(String username) {		
 		DetachedCriteria criteria = DetachedCriteria.forClass(User.class);
