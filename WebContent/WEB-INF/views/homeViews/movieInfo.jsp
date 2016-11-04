@@ -3,9 +3,14 @@
 <%@ taglib prefix="sec"
 	uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+
 <jsp:include page="../header.jsp"></jsp:include>
 <html>
 <head>
+<link href="<c:url value="/resources/css/star.css"/>" rel="stylesheet"
+	type="text/css" />
+<script type="text/javascript"
+	src="<c:url value="/resources/js/star.js"/>"></script>
 <title>Mega Filmes IMDb</title>
 </head>
 <body>
@@ -55,7 +60,7 @@
 				${genre} |			
 			</c:forEach></small>
 			</li>
-			<li class="list-group-item">Rating: ${movie.rating}</li>
+			<li class="list-group-item">Rating: <div id="hearts-existing" class="starrr" data-rating='${movie.rating}'>${movie.rating}/5</div></li>
 		</ul>
 	</div>
 	<div id="commentDiv" style="width: 90%; margin: 50px auto;">

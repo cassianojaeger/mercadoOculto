@@ -44,6 +44,5 @@ public class LoginController {
 		model.setViewName("/signupViews/login");;
 
 		return model;
-
 	}
 }

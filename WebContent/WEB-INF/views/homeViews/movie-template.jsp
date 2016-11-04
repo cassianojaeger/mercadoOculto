@@ -2,6 +2,10 @@
 <%@ taglib prefix="sec"
 	uri="http://www.springframework.org/security/tags"%>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<link href="<c:url value="/resources/css/star.css"/>" rel="stylesheet"
+	type="text/css" />
+<script type="text/javascript"
+	src="<c:url value="/resources/js/star.js"/>"></script>
 <div class="row">
 	<c:forEach var="movies" items="${movies}">
 		<!-- PEGAR DAQUI -->
@@ -18,6 +22,7 @@
 					<a href="<c:url value="/home/info/${movies.id}"/>"><span
 						class="post-title"><b><h4>${movies.title}
 									(${movies.releaseDate.year})</h4></b></span></a>
+					<div id="hearts-existing" class="starrr" data-rating='${movies.rating}'>${movies.rating}/5</div>
 					<div class="author" style="margin-bottom: 5px">
 						<small style="color: #666666"><b>${movies.genre}</b> | <time
 								datetime=${movies.releaseDate}>${movies.length} mins</time></small> </br>
@@ -26,7 +31,7 @@
 						<small style="color: #666666; text-align: justify"><p>${movies.synopsis}</p></small>
 					</div>
 				</div>
-			</div>			
+			</div>
 			<div style="position: absolute; bottom: 10px; margin-left: 66%">
 				<sec:authorize access="hasAnyRole('ROLE_MOD', 'ROLE_ADMIN')">
 					<a href="<c:url value="/admconsole/editMovie/${movies.id}"/>"
