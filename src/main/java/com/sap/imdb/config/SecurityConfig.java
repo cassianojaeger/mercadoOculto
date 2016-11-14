@@ -12,33 +12,31 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 
 import com.sap.imdb.dao.UserDao;
 
+
 @Configuration
 @EnableWebSecurity
-public class SecurityConfig extends WebSecurityConfigurerAdapter {
+public class SecurityConfig extends WebSecurityConfigurerAdapter
+{
 
 	@Resource
 	private UserDao userDao;
 	@Resource
 	UserDetailsService userDetailsService;
-	
+
 	@Autowired
-	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {		
+	public void configureGlobal(final AuthenticationManagerBuilder auth) throws Exception
+	{
 		auth.userDetailsService(userDetailsService);
 	}
 
 	@Override
-	protected void configure(HttpSecurity http) throws Exception {
-		http.authorizeRequests().antMatchers("/resources/**").permitAll()
-		.antMatchers("/admconsole/**").hasRole("ADMIN")
-		.antMatchers("/admconsole/editMovie/**").access("hasRole('ADMIN') or hasRole('MOD')")
-		.antMatchers("/home**").permitAll()		
-		.antMatchers("/user/wishlist/**").authenticated()
-		.antMatchers("/rest/**").hasRole("ADMIN")
-		.and().formLogin().defaultSuccessUrl("/home")
-		.and().formLogin().loginPage("/login").failureUrl("/login?error")
-		.usernameParameter("username").passwordParameter("password")
-		.and().logout().logoutSuccessUrl("/login?logout")
-		.and().exceptionHandling().accessDeniedPage("/403")
-		.and().csrf();			
+	protected void configure(final HttpSecurity http) throws Exception
+	{
+		http.authorizeRequests().antMatchers("/resources/**").permitAll().antMatchers("/admconsole/registermovie").hasRole("ADMIN")
+				.antMatchers("/admconsole/delete**").hasRole("ADMIN").antMatchers("/admconsole/edit*").hasAnyRole("ADMIN", "MOD")
+				.antMatchers("/home**").permitAll().antMatchers("/user/wishlist/**").authenticated().antMatchers("/rest/**")
+				.hasRole("ADMIN").and().formLogin().defaultSuccessUrl("/home").and().formLogin().loginPage("/login")
+				.failureUrl("/login?error").usernameParameter("username").passwordParameter("password").and().logout()
+				.logoutSuccessUrl("/login?logout").and().exceptionHandling().accessDeniedPage("/403").and().csrf();
 	}
 }
