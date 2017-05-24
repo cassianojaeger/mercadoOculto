@@ -1,7 +1,0 @@
-//TODO 
-
-busca com ajax
-
-wishlist de filmes
-
-

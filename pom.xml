@@ -2,7 +2,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.sap</groupId>
-	<artifactId>imdb</artifactId>
+	<artifactId>mercadoOculto</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
 
@@ -23,12 +23,12 @@
 				<configuration>
 					<warSourceDirectory>WebContent</warSourceDirectory>
 					<failOnMissingWebXml>false</failOnMissingWebXml>
-					<warName>imdb</warName>
+					<warName>mercadoOculto</warName>
 				</configuration>
 			</plugin>
 		</plugins>
 	</build>
-
+	
 	<dependencies>
 		<!-- Spring -->
 		<dependency>

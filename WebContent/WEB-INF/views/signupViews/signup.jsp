@@ -4,7 +4,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- CSS --><!-- CSS --><!-- CSS --><!-- CSS --><!-- CSS -->
+<!-- CSS -->
+
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
 	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
@@ -14,20 +15,24 @@
 <!-- Google Fonts -->
 <link href='https://fonts.googleapis.com/css?family=Passion+One'
 	rel='stylesheet' type='text/css'>
-<!-- CSS --><!-- CSS --><!-- CSS --><!-- CSS --><!-- CSS -->
-<!-- 	SCRIPTS --><!-- 	SCRIPTS --><!-- 	SCRIPTS -->		
+<!-- CSS -->
+
+<!-- 	SCRIPTS -->
+
 <script type="text/javascript"
 	src="<c:url value="/resources/js/signup.js"/>"></script>
-<!-- 	SCRIPTS --><!-- 	SCRIPTS --><!-- 	SCRIPTS -->
+<!-- 	SCRIPTS -->
+
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Mega Filmes IMDb</title>
+<title>Mercado Oculto</title>
 </head>
 <body>
-	<div class="container" style="width: 20%; margin: 0 auto; margin-top: -5%">
+	<div class="container"
+		style="width: 20%; margin: 0 auto; margin-top: -5%">
 		<div class="row main">
 			<div class="panel-heading">
 				<div class="panel-title text-center">
-					<h1 class="title">Sign Up</h1>
+					<h1 class="title">Registre-se</h1>
 					<hr />
 				</div>
 			</div>
@@ -37,34 +42,35 @@
 					<c:if test="${not empty error}">
 						<div class="error" style="text-align: center">${error}</div>
 					</c:if>
+					
+					<div class="jsError" style="text-align: center"></div>
+					
 					<div class="form-group">
-						<label for="name" class="cols-sm-2 control-label">Your
-							Name</label>
+						<label for="name" class="cols-sm-2 control-label">Nome</label>
 						<div class="cols-sm-10">
 							<div class="input-group">
 								<span class="input-group-addon"><i class="fa fa-user fa"
 									aria-hidden="true"></i></span>
 								<form:input type="text" class="form-control" path="name"
-									id="name" placeholder="Enter your Name" />
+									id="name" placeholder="Digite seu nome" />
 								<form:errors path="name" />
 							</div>
 						</div>
 					</div>
 
 					<div class="form-group">
-						<label for="email" class="cols-sm-2 control-label">Your
-							Email</label>
+						<label for="email" class="cols-sm-2 control-label">E-mail</label>
 						<div class="cols-sm-10">
 							<div class="input-group">
 								<span class="input-group-addon"><i
 									class="fa fa-envelope fa" aria-hidden="true"></i></span>
 								<form:input type="text" class="form-control" path="email"
-									id="email" placeholder="Enter your Email" />
+									id="email" placeholder="Digite seu e-mail" />
 								<form:errors path="name" />
 							</div>
 						</div>
 					</div>
-					
+
 					<div class="form-group">
 						<label for="username" class="cols-sm-2 control-label">Username</label>
 						<div class="cols-sm-10">
@@ -72,44 +78,56 @@
 								<span class="input-group-addon"><i class="fa fa-users fa"
 									aria-hidden="true"></i></span>
 								<form:input type="text" class="form-control" path="username"
-									id="username" placeholder="Enter your Username" />
+									id="username" placeholder="Digite seu username" />
 								<form:errors path="username" />
 							</div>
 						</div>
 					</div>
 
 					<div class="form-group">
-						<label for="password" class="cols-sm-2 control-label">Password</label>
+						<label for="userTypes" class="cols-sm-2 control-label">Tipo de usuário</label>
+						<div class="cols-sm-10">
+							<div class="input-group">
+								<span class="input-group-addon"><i class="fa fa-users fa"
+									aria-hidden="true"></i></span>
+								<form:select path="userTypes" placeholder="" class="form-control"
+									items="${userTypeList}" multiple="false" size="3" />
+								<form:errors class="error" path="userTypes" /> 
+							</div>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label for="password" class="cols-sm-2 control-label">Senha</label>
 						<div class="cols-sm-10">
 							<div class="input-group">
 								<span class="input-group-addon"><i
 									class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
 								<form:input type="password" class="form-control" path="password"
-									id="password" placeholder="Enter your Password" />
+									id="password" placeholder="Digite sua senha" />
 								<form:errors path="password" />
 							</div>
 						</div>
 					</div>
 
 					<div class="form-group">
-						<label for="confirm" class="cols-sm-2 control-label">Confirm
-							Password</label>
+						<label for="confirmMessage" class="cols-sm-2 control-label">Confirme a senha
+							</label>
 						<div class="cols-sm-10">
 							<div class="input-group">
 								<span class="input-group-addon"><i
 									class="fa fa-lock fa-lg" aria-hidden="true"></i></span> <input
 									type="password" class="form-control" name="pass2" id="pass2"
-									placeholder="Confirm your Password"
-									onkeyup="checkPass(); return false;" /> 
+									placeholder="Confirme sua senha"
+									onkeyup="checkPass(); return false; " />
 							</div>
-							<span
-									id="confirmMessage" class="confirmMessage"></span>
+							<span id="confirmMessage" class="confirmMessage"></span>
 						</div>
 					</div>
 
-					<div class="form-group ">
-						<form:button type="submit"
-							class="btn btn-primary btn-lg btn-block login-button">Register</form:button>
+					<div class="form-group">
+						<form:button type="button" id="submitButton"
+							class="btn btn-primary btn-lg btn-block login-button">Registrar</form:button>
 					</div>
 				</form:form>
 			</div>

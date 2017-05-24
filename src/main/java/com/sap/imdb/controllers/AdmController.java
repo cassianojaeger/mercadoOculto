@@ -1,97 +1,100 @@
 package com.sap.imdb.controllers;
 
+import java.security.Principal;
+import java.util.List;
+
 import javax.annotation.Resource;
-import javax.validation.Valid;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.sap.imdb.model.Genre;
-import com.sap.imdb.model.Movie;
-import com.sap.imdb.service.MovieService;
+import com.sap.imdb.model.Product;
+import com.sap.imdb.model.User;
+import com.sap.imdb.service.ProductService;
 import com.sap.imdb.service.UserService;
 import com.sap.imdb.validations.ImdbValidate;
 
+
 @Controller
-@RequestMapping("/admconsole")
-public class AdmController {
+@RequestMapping(value = "/moderator-console")
+public class AdmController
+{
 
 	@Resource
 	private UserService userService;
 	@Resource
-	private MovieService movieService;
-	@Resource
 	private ImdbValidate imdbValidate;
+	@Resource
+	private ProductService productService;
 
-	@RequestMapping(value = "/registermovie", method = RequestMethod.GET)
-	public String registerMovie(Movie movie, Model model) {
-		model.addAttribute("genreList", Genre.values());
-		return "/adminViews/newMovie";
+
+	@RequestMapping(value = "/view-all-products", method = RequestMethod.GET)
+	public String manageAllProducts(final Product product, final Model model)
+	{
+		final List<Product> products = productService.getProductList();
+		model.addAttribute("products", products);
+		return "/adminViews/allProducts";
 	}
 
-	@RequestMapping(value = "/registermovie", method = RequestMethod.POST)
-	public String registerMovie(MultipartFile file, @Valid Movie movie, BindingResult bindingResult, Model model,
-			RedirectAttributes redirectAttributes) throws Exception {
-		if (bindingResult.hasErrors()) {
-			model.addAttribute("genreList", Genre.values());
-			return "/adminViews/newMovie";
-		}		
-		try {
-			imdbValidate.validateThumbnail(file);
-			movieService.uploadThumbnail(file, movie);			
-		} catch (Exception re) {
-			bindingResult.rejectValue("thumbnail", "message0", re.getMessage());
-			model.addAttribute("genreList", Genre.values());
-			return "/adminViews/newMovie";
+	@RequestMapping(value = "/view-all-users", method = RequestMethod.GET)
+	public String manageAllUsers(final User user, final Model model)
+	{
+		final List<User> users = userService.getListUser();
+		model.addAttribute("users", users);
+		return "/adminViews/allUsers";
+	}
+
+	@RequestMapping(value = "/delete-user/{id}", method = RequestMethod.POST)
+	public String deleteUser(@PathVariable("id") final Integer id, final RedirectAttributes redirectAttributes,
+			final Principal principal)
+	{
+		final User user = userService.getUser(id);
+		try
+		{
+			userService.removeUser(user, principal);
+			redirectAttributes.addFlashAttribute("deleteError", "Usuario deletado");
 		}
-		movieService.saveMovie(movie);
-		model.addAttribute("success", "Movie registration complete!");
-		return "/internalViews/success";
-	}
-
-	@RequestMapping(value = "/editMovie/{id}", method = RequestMethod.GET)
-	public String editMovie(@PathVariable("id") Integer id, Model model) {
-		Movie movie = movieService.getMovie(id);
-		model.addAttribute("movie", movie);
-		model.addAttribute("genreList", Genre.values());
-		return "/adminViews/editMovie";
-	}
-
-	@RequestMapping(value = "/editMovie/{id}", method = RequestMethod.POST)
-	public String editMovie(MultipartFile file, @Valid Movie movie, BindingResult bindingResult, Model model,
-			RedirectAttributes redirectAttributes) throws Exception {
-		if (bindingResult.hasErrors()) {
-			model.addAttribute("genreList", Genre.values());
-			return "/adminViews/editMovie";
+		catch (final Exception e)
+		{
+			final String message = e.getMessage();
+			redirectAttributes.addFlashAttribute("deleteError", message);
 		}
-		try {
-			imdbValidate.validateThumbnail(file);
-			movieService.uploadThumbnail(file, movie);			
-		} catch (Exception re) {
-			//bindingResult.rejectValue("thumbnail", "message0", re.getMessage());
-			model.addAttribute("genreList", Genre.values());
-			return "/adminViews/editMovie";
-		}
-		movieService.updateMovie(movie);
-		return "redirect:/home";
+		return "redirect:/moderator-console/view-all-users";
 	}
 
-	@RequestMapping(value = "/deleteMovie/{id}", method = RequestMethod.POST)
-	public String deleteMovie(@PathVariable("id") Integer id, RedirectAttributes redirectAttributes) {
-		Movie movie = movieService.getMovie(id);
-		try{
-			movieService.removeMovie(movie);
-			movieService.deleteThumbnail(movie);
-			redirectAttributes.addFlashAttribute("deleteError", "Filme deletado");
-		}catch(Exception e){
-			redirectAttributes.addFlashAttribute("deleteError", "Filme não pode ser deletado pois está atrelado a uma wishlist");
-		}		
-		return "redirect:/home";
+	@RequestMapping(value = "/delete-product/{id}", method = RequestMethod.POST)
+	public String deleteProduct(@PathVariable("id") final Integer id, final RedirectAttributes redirectAttributes)
+	{
+		final Product product = productService.getProduct(id);
+		try
+		{
+			productService.removeProduct(product);
+			redirectAttributes.addFlashAttribute("deleteError", "Produto deletado");
+		}
+		catch (final Exception e)
+		{
+			redirectAttributes.addFlashAttribute("deleteError", "Produto não deletado");
+		}
+		return "redirect:/moderator-console/view-all-products";
 	}
+
+	/*
+	 * Mudar isso para edit de perfil de usuário!
+	 *
+	 * @RequestMapping(value = "/editMovie/{id}", method = RequestMethod.GET) public String editMovie(@PathVariable("id")
+	 * final Integer id, final Model model) { final Movie movie = movieService.getMovie(id); model.addAttribute("movie",
+	 * movie); model.addAttribute("genreList", Genre.values()); return "/adminViews/editMovie"; }
+	 *
+	 * @RequestMapping(value = "/editMovie/{id}", method = RequestMethod.POST) public String editMovie(final
+	 * MultipartFile file, @Valid final Movie movie, final BindingResult bindingResult, final Model model, final
+	 * RedirectAttributes redirectAttributes) throws Exception { if (bindingResult.hasErrors()) {
+	 * model.addAttribute("genreList", Genre.values()); return "/adminViews/editMovie"; } try {
+	 * imdbValidate.validateThumbnail(file); movieService.uploadThumbnail(file, movie); } catch (final Exception re) {
+	 * //bindingResult.rejectValue("thumbnail", "message0", re.getMessage()); model.addAttribute("genreList",
+	 * Genre.values()); return "/adminViews/editMovie"; } movieService.updateMovie(movie); return "redirect:/home"; }
+	 */
 }

@@ -12,7 +12,7 @@
 	
 	<!-- Beans de service -->
 	<bean name="userService" class="com.sap.imdb.service.impl.DefaultUserService" />
-	<bean name="movieService" class="com.sap.imdb.service.impl.DefaultMovieService" />
+	<bean name="productService" class="com.sap.imdb.service.impl.DefaultProductService" />
 	<bean name="userDetailsService" class="com.sap.imdb.service.impl.MyUserDetailsService" />
 
 
@@ -21,13 +21,14 @@
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 
-	<bean name="hibernateMovieDao" class="com.sap.imdb.dao.impl.HibernateMovieDao">
+	<bean name="hibernateProductDao" class="com.sap.imdb.dao.impl.HibernateProductDao">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 
 	<!-- Permite diversas implementações, só muda o name -->
 	<alias name="hibernateUserDao" alias="userDao" />
-	<alias name="hibernateMovieDao" alias="movieDao" />
+	<alias name="hibernateProductDao" alias="productDao" />
 	<alias name="userDetailsService" alias="userDetailsService" />
+
 
 </beans>

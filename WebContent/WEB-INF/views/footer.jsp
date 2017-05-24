@@ -16,10 +16,10 @@ container{
 <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" integrity="sha256-MfvZlkHCEqatNoGiOXveE8FIwMzZg4W85qfrfIFBfYc= sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
 <!-- // -->
-<div class="container">
+<div class="container h5 text-muted">
     <hr>
         <div class="text-center center-block">
-            <p class="txt-railway">- Mega Filmes IMDb -</p>
+            <p class="txt-railway">- Mercado Oculto S.A. -</p>
             <br />
                 <a href="https://www.facebook.com/cassiano.jaeger"><i id="social-fb" class="fa fa-facebook-square fa-3x social"></i></a>
 	            <a href=""><i id="social-tw" class="fa fa-twitter-square fa-3x social"></i></a>

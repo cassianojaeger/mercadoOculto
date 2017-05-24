@@ -11,95 +11,143 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 
+
 @Entity
 @Table(name = "user")
-public class User {
-	
+public class User
+{
+
 	@Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
-    private String name;
-    private String email;
-    @Column(name = "username")
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private int id;
+	private String name;
+	private String email;
+	@Column(name = "username")
 	private String username;
-    private String password;
-    
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name="USER_ROLE")
-    private List<Role> roles;
-    
-    @ManyToMany
-    @LazyCollection(LazyCollectionOption.FALSE)
-    @JoinTable(name="USER_FILMS")
-    private List<Movie> wishlist;
-    
-    public List<Movie> getWishlist() {
-		return wishlist;
+	private String password;
+	private float vendorGrade;
+	@NotNull
+	private UserTypes userTypes;
+
+	//mappedBy referencia a variavel do outro lado da relação
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "owner")
+	private List<Product> productsOnwed;
+
+	@ManyToMany(fetch = FetchType.EAGER)
+	@JoinTable(name = "USER_ROLE")
+	private List<Role> roles;
+
+	@ManyToMany
+	@LazyCollection(LazyCollectionOption.FALSE)
+	@JoinTable(name = "USER_CART")
+	private List<Product> cartList;
+
+	public List<Product> getCartList()
+	{
+		return cartList;
 	}
 
-	public void setWishlist(List<Movie> wishlist) {
-		this.wishlist = wishlist;
+	public void setCartList(final List<Product> cartList)
+	{
+		this.cartList = cartList;
 	}
 
-	private LocalDateTime lastLogin;    
+	private LocalDateTime lastLogin;
 
-	public LocalDateTime getLastLogin() {
+	public LocalDateTime getLastLogin()
+	{
 		return lastLogin;
 	}
 
-	public void setLastLogin(LocalDateTime lastLogin) {
+	public void setLastLogin(final LocalDateTime lastLogin)
+	{
 		this.lastLogin = lastLogin;
 	}
 
-    public int getId() {
-        return id;
-    }
+	public int getId()
+	{
+		return id;
+	}
 
-    public void setId(int id) {
-        this.id = id;
-    }
-    public String getName() {
+	public void setId(final int id)
+	{
+		this.id = id;
+	}
+
+	public String getName()
+	{
 		return name;
 	}
 
-	public void setName(String name) {
+	public void setName(final String name)
+	{
 		this.name = name;
 	}
 
-	public String getEmail() {
+	public String getEmail()
+	{
 		return email;
 	}
 
-	public void setEmail(String email) {
+	public void setEmail(final String email)
+	{
 		this.email = email;
 	}
 
-    public String getUsername() {
-        return username;
-    }
+	public String getUsername()
+	{
+		return username;
+	}
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
+	public void setUsername(final String username)
+	{
+		this.username = username;
+	}
 
-    public String getPassword() {
-        return password;
-    }
+	public String getPassword()
+	{
+		return password;
+	}
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
+	public void setPassword(final String password)
+	{
+		this.password = password;
+	}
 
-    public List<Role> getRoles() {
-        return roles;
-    }
+	public List<Role> getRoles()
+	{
+		return roles;
+	}
 
-    public void setRoles(List<Role> roles) {
-        this.roles = roles;
-    }
+	public void setRoles(final List<Role> roles)
+	{
+		this.roles = roles;
+	}
+
+	public UserTypes getUserTypes()
+	{
+		return userTypes;
+	}
+
+	public void setUserTypes(final UserTypes userTypes)
+	{
+		this.userTypes = userTypes;
+	}
+
+	public float getVendorGrade()
+	{
+		return vendorGrade;
+	}
+
+	public void setVendorGrade(final float vendorGrade)
+	{
+		this.vendorGrade = vendorGrade;
+	}
 }

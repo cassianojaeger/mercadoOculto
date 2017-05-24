@@ -27,3 +27,16 @@ function checkPass()
     }
 }  
 
+
+$(function(){
+	$("#submitButton").click(function (e) {
+		if ($("#userTypes").val() === "" || $("#userTypes").val() === null) {
+			$(".jsError").empty().append("<b>Appended text</b>").addClass("error");
+		   }
+		   else{
+			   $("#user").submit();
+		   }
+	});
+
+});
+

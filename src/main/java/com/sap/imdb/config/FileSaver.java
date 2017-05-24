@@ -19,7 +19,7 @@ public class FileSaver
 
 	public String write(final String baseFolder, final MultipartFile file) throws Exception
 	{
-		final String realPath = "C:/Users/i857753/workspace/imdb-master/src/main/webapp" + baseFolder;
+		final String realPath = "C:/Users/i857753/workspace/mercadoOculto/src/main/webapp" + baseFolder;
 		try
 		{
 			final String path = realPath + "/" + file.getOriginalFilename();
@@ -28,7 +28,7 @@ public class FileSaver
 		}
 		catch (final IOException e)
 		{
-			throw new Exception("Erro na hora de salvar o arquivo");
+			throw new Exception("Error when trying to save file");
 		}
 
 	}

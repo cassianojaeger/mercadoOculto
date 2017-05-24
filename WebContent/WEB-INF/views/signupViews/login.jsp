@@ -31,8 +31,7 @@
 				<div class="panel panel-login">
 					<div class="panel-heading">
 						<div class="row">
-							<a href="#" class="active" id="login-form-link">Sign in your
-								account</a>
+							<a href="#" class="active" id="login-form-link">Entre na sua conta</a>
 						</div>
 						<hr>
 					</div>
@@ -53,7 +52,7 @@
 									</div>
 									<div class="form-group">
 										<input type="password" name="password" id="password1"
-											tabindex="2" class="form-control" placeholder="Password">
+											tabindex="2" class="form-control" placeholder="Senha">
 										<input type="hidden" name="${_csrf.parameterName}"
 											value="${_csrf.token}" />
 									</div>
@@ -62,7 +61,7 @@
 											<div class="col-sm-6 col-sm-offset-3">
 												<input type="submit" name="login-submit" id="login-submit"
 													tabindex="4" class="form-control btn btn-login"
-													value="Log In">
+													value="Logar">
 											</div>
 										</div>
 									</div>

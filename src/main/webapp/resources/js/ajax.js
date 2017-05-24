@@ -1,9 +1,9 @@
 $(document).ready(function() {
 	$('#search').keyup(function() {
-	   $.ajax({ url: '/imdb/home/filterByName' , 
+	   $.ajax({ url: '/mercadoOculto/home/filterByName' , 
 	           data:{ filter: $('#search').val() }
 	   		 }).done(function(result){
-		   			$('#movies-display').html(result);
+		   			$('#products-display').html(result);
 		   });
 	});
 });
