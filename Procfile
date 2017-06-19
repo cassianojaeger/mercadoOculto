@@ -1,1 +1,1 @@
-web: java -cp target/classes:target/dependecy/* Main
+web: sh target/bin/webapp
