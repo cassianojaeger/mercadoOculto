@@ -13,7 +13,6 @@
     <param-name>contextConfigLocation</param-name>
     <param-value>
             /WEB-INF/applicationContext.xml
-            /WEB-INF/*-servlet.xml
   		      /WEB-INF/*-config.xml
        </param-value>
   </context-param>
