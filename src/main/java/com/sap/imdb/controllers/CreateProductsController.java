@@ -74,7 +74,7 @@ public class CreateProductsController
 	@RequestMapping(value = "/magicService", method = RequestMethod.POST)
 	public String createMagicService(final MultipartFile file, @Valid final MagicServices magicService,
 			final BindingResult bindingResult, final Model model, final RedirectAttributes redirectAttributes,
-			final Principal principal) throws Exception
+			final Principal principal, final HttpServletRequest req) throws Exception
 	{
 		if (bindingResult.hasErrors())
 		{
@@ -83,7 +83,7 @@ public class CreateProductsController
 		try
 		{
 			imdbValidate.validateThumbnail(file);
-			productService.uploadThumbnail(file, magicService);
+			productService.uploadThumbnail(file, magicService, req.getServletContext().getRealPath(""));
 			imdbValidate.validateMagicService(magicService);
 		}
 		catch (final Exception re)
