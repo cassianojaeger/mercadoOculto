@@ -18,7 +18,7 @@ public interface ProductService
 
 	void saveMagicItem(MagicItems magicItem, Principal principal);
 
-	void uploadThumbnail(MultipartFile file, Product product) throws Exception;
+	void uploadThumbnail(MultipartFile file, Product product, String webContextPath) throws Exception;
 
 	public void saveMagicService(MagicServices magicService, Principal principal);
 

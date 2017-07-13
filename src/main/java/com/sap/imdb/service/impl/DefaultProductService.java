@@ -36,9 +36,9 @@ public class DefaultProductService implements ProductService
 	}
 
 	@Override
-	public void uploadThumbnail(final MultipartFile file, final Product product) throws Exception
+	public void uploadThumbnail(final MultipartFile file, final Product product, final String webContextPath) throws Exception
 	{
-		final String webPath = fileSaver.write("/resources/uploaded-thumbnails", file);
+		final String webPath = fileSaver.write("/resources/uploaded-thumbnails", file, webContextPath);
 		product.setThumbnail(webPath);
 	}
 
@@ -110,5 +110,4 @@ public class DefaultProductService implements ProductService
 			return false;
 		}
 	}
-
 }

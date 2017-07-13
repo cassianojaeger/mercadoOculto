@@ -17,9 +17,9 @@ public class FileSaver
 	@Autowired
 	private ServletContext servletContext;
 
-	public String write(final String baseFolder, final MultipartFile file) throws Exception
+	public String write(final String baseFolder, final MultipartFile file, final String webContextPath) throws Exception
 	{
-		final String realPath = "C:/Users/i857753/workspace/mercadoOculto/src/main/webapp" + baseFolder;
+		final String realPath = webContextPath + baseFolder;
 		try
 		{
 			final String path = realPath + "/" + file.getOriginalFilename();

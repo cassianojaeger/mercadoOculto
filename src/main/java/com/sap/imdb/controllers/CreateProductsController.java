@@ -3,6 +3,7 @@ package com.sap.imdb.controllers;
 import java.security.Principal;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.springframework.stereotype.Controller;
@@ -38,7 +39,8 @@ public class CreateProductsController
 
 	@RequestMapping(value = "/magicItem", method = RequestMethod.POST)
 	public String createMagicItem(final MultipartFile file, @Valid final MagicItems magicItem, final BindingResult bindingResult,
-			final Model model, final RedirectAttributes redirectAttributes, final Principal principal) throws Exception
+			final Model model, final RedirectAttributes redirectAttributes, final Principal principal, final HttpServletRequest req)
+			throws Exception
 	{
 		if (bindingResult.hasErrors())
 		{
@@ -47,7 +49,7 @@ public class CreateProductsController
 		try
 		{
 			imdbValidate.validateThumbnail(file);
-			productService.uploadThumbnail(file, magicItem);
+			productService.uploadThumbnail(file, magicItem, req.getServletContext().getRealPath(""));
 			imdbValidate.validateMagicItem(magicItem);
 		}
 		catch (final Exception re)
