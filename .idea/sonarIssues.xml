@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="issues">
+    <option name="index">
+      <map>
+        <entry key="C:/java-spring-training/javaspringtraining-day3-complete/pom.xml">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="C:/java-spring-training/javaspringtraining-day3-complete/src/main/java/com/sap/training/config/SecurityConfig.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="C:/java-spring-training/javaspringtraining-day3-complete/src/main/java/com/sap/training/config/SpringSecurityInitializer.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="C:/java-spring-training/javaspringtraining-day3-complete/src/main/java/com/sap/training/model/Role.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="C:/java-spring-training/javaspringtraining-day3-complete/src/main/java/com/sap/training/model/User.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="C:/java-spring-training/javaspringtraining-day3-complete/src/main/java/com/sap/training/service/UserService.java">
+          <value>
+            <set />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

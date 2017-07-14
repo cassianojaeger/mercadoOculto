@@ -41,7 +41,5 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter
 				.hasRole("ADMIN").and().formLogin().defaultSuccessUrl("/home").and().formLogin().loginPage("/login")
 				.failureUrl("/login?error").usernameParameter("username").passwordParameter("password").and().logout()
 				.logoutSuccessUrl("/login?logout").and().exceptionHandling().accessDeniedPage("/403").and().csrf();
-
-
 	}
 }
