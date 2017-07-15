@@ -13,6 +13,7 @@ import com.sap.imdb.dao.UserDao;
 import com.sap.imdb.model.MagicItems;
 import com.sap.imdb.model.MagicServices;
 import com.sap.imdb.model.Product;
+import com.sap.imdb.model.User;
 import com.sap.imdb.service.ProductService;
 import com.sap.imdb.service.UserService;
 
@@ -28,6 +29,12 @@ public class DefaultProductService implements ProductService
 	private UserDao userDao;
 	@Resource
 	UserService userService;
+
+	@Override
+	public List<Product> getProductListByUser(final User user)
+	{
+		return productDao.getProductsByUser(user);
+	}
 
 	@Override
 	public List<Product> getProductList()

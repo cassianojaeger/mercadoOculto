@@ -80,7 +80,7 @@ public class HibernateProductDao extends HibernateDaoSupport implements ProductD
 	@Override
 	public List<Product> getProductsByUser(final User user)
 	{
-		final String query = "select cartList from com.sap.imdb.model.User where username like :username";
+		final String query = "select productsOnwed from com.sap.imdb.model.User where username like :username";
 		return (List<Product>) getHibernateTemplate().findByNamedParam(query, "username", user.getUsername());
 	}
 }

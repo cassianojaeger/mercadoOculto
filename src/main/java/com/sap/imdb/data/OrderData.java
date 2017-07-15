@@ -1,0 +1,44 @@
+package com.sap.imdb.data;
+
+import com.sap.imdb.model.Order;
+import com.sap.imdb.model.Product;
+
+
+public class OrderData
+{
+	private Order orderModel;
+	private Product productsInOrder;
+	private String pendentAvaliation;
+
+	public Product getProductsInOrder()
+	{
+		return productsInOrder;
+	}
+
+	public void setProductsInOrder(final Product productsInOrder)
+	{
+		this.productsInOrder = productsInOrder;
+	}
+
+	public String getPendentAvaliation()
+	{
+		return pendentAvaliation;
+	}
+
+	public void setPendentAvaliation(final String pendentAvaliation)
+	{
+		this.pendentAvaliation = pendentAvaliation;
+	}
+
+	public Order getOrderModel()
+	{
+		return orderModel;
+	}
+
+	public void setOrderModel(Order orderModel)
+	{
+		this.orderModel = orderModel;
+	}
+
+
+}

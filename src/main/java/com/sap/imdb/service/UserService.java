@@ -5,7 +5,6 @@ import java.util.List;
 
 import org.springframework.transaction.annotation.Transactional;
 
-import com.sap.imdb.model.Product;
 import com.sap.imdb.model.User;
 
 
@@ -27,7 +26,7 @@ public interface UserService
 
 	void removeUser(User user, Principal principal) throws Exception;
 
-	String saveCart(Product product, Principal principal);
+	void saveComment(Principal principal, String comment, Integer userId);
 
-	List<Product> showCart(Principal principal);
+	void calculateVendorRating(User vendor, String rating);
 }

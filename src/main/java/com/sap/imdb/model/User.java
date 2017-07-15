@@ -34,6 +34,7 @@ public class User
 	private String username;
 	private String password;
 	private float vendorGrade;
+	private int numOfRatings;
 	@NotNull
 	private UserTypes userTypes;
 
@@ -139,5 +140,25 @@ public class User
 	public void setVendorGrade(final float vendorGrade)
 	{
 		this.vendorGrade = vendorGrade;
+	}
+
+	public List<Comment> getComments()
+	{
+		return comments;
+	}
+
+	public void setComments(final List<Comment> comments)
+	{
+		this.comments = comments;
+	}
+
+	public int getNumOfRatings()
+	{
+		return numOfRatings;
+	}
+
+	public void setNumOfRatings(final int numOfRatings)
+	{
+		this.numOfRatings = numOfRatings;
 	}
 }

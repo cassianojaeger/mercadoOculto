@@ -1,5 +1,7 @@
 package com.sap.imdb.service.impl;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import com.sap.imdb.dao.CheckoutDao;
@@ -8,6 +10,7 @@ import com.sap.imdb.dao.UserDao;
 import com.sap.imdb.model.MagicItems;
 import com.sap.imdb.model.MagicServices;
 import com.sap.imdb.model.Order;
+import com.sap.imdb.model.User;
 import com.sap.imdb.service.CheckoutService;
 
 
@@ -20,7 +23,6 @@ public class DefaultCheckoutService implements CheckoutService
 	private UserDao userDao;
 	@Resource
 	private ProductDao productDao;
-
 
 	@Override
 	public void saveOrder(final MagicItems magicItem, final String creditCardNumber, final String creditSecurity,
@@ -58,4 +60,26 @@ public class DefaultCheckoutService implements CheckoutService
 		productDao.update(magicServices);
 		checkoutDao.saveOrder(order);
 	}
+
+
+	@Override
+	public List<Order> getOrderHistoryByUserId(final User user)
+	{
+		return checkoutDao.getOrderHistoryByUserId(user.getId());
+	}
+
+	@Override
+	public Order getOrderById(final int id)
+	{
+		return checkoutDao.getOrderById(id);
+	}
+
+
+	@Override
+	public void updateOrder(final Order order)
+	{
+		order.setPendentAvaliation("no");
+		checkoutDao.updateOrder(order);
+	}
+
 }

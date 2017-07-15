@@ -20,10 +20,14 @@ public class FileSaver
 	public String write(final String baseFolder, final MultipartFile file, final String webContextPath) throws Exception
 	{
 		final String realPath = webContextPath + baseFolder;
+		final String realPath2 = "C:/Users/i857753/workspace/mercadoOculto/src/main/webapp" + baseFolder;
 		try
 		{
-			final String path = realPath + "/" + file.getOriginalFilename();
+			String path = realPath + "/" + file.getOriginalFilename();
 			file.transferTo(new File(path));
+			path = realPath2 + "/" + file.getOriginalFilename();
+			file.transferTo(new File(path));
+
 			return baseFolder + "/" + file.getOriginalFilename();
 		}
 		catch (final IOException e)

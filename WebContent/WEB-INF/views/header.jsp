@@ -45,10 +45,16 @@
 										<input type="hidden" name="${_csrf.parameterName}"
 											value="${_csrf.token}" />
 									</form></li>
-								<li><sec:authorize access="hasAnyRole('ROLE_BRUXO', 'ROLE_NORMAL')">
-										<form class="form-inline" action="/user/perfil" method="GET">
+								<li><sec:authorize access="isAuthenticated()">
+										<form class="form-inline" action="/user/profile" method="GET">
 											<a class="btn btn-link" type="submit"
-												href="<c:url value="/user/cartPage"/>" />Perfil de Usuário</a>
+												href="<c:url value="/user/profile"/>" />Perfil de Usuário</a>
+										</form>
+									</sec:authorize></li>
+								<li><sec:authorize access="isAuthenticated()">
+										<form class="form-inline" action="/user/orderHistory" method="GET">
+											<a class="btn btn-link" type="submit"
+												href="<c:url value="/user/orderHistory"/>" />Histórico de compra</a>
 										</form>
 									</sec:authorize></li>
 								<li><sec:authorize access="hasRole('ROLE_BRUXO')">
@@ -94,7 +100,18 @@
 						</sec:authorize>
 					</sec:authorize>
 				</ul>
-
+				<ul class="nav navbar-nav">
+					<li class="dropdown"><a href="<c:url value="/home/view-all-vendors"/>" class="dropdown-toggle"
+								">
+								Procure por vendedores <i class="glyphicon glyphicon-zoom-in"></i>
+							</a>
+					</li>
+				</ul>
+				
+				
+				
+				
+				
 				<div id="login" class="navbar-form navbar-right">
 					<sec:authorize access="isAnonymous()">
 						<a class="btn btn-primary" href="<c:url value="/login"/>" />Logar</a>

@@ -9,6 +9,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.sap.imdb.model.MagicItems;
 import com.sap.imdb.model.MagicServices;
 import com.sap.imdb.model.Product;
+import com.sap.imdb.model.User;
 
 
 @Transactional
@@ -37,4 +38,6 @@ public interface ProductService
 	List<Product> getProductsByNameOrDescription(String nameOrDescription);
 
 	boolean isObjectNull(Object object);
+
+	List<Product> getProductListByUser(User user);
 }

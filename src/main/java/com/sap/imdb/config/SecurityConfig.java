@@ -32,13 +32,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter
 	@Override
 	protected void configure(final HttpSecurity http) throws Exception
 	{
-		http.authorizeRequests().antMatchers("/resources/**").permitAll().antMatchers("/create-products/**").hasRole("BRUXO") //seller security*/
+		http.authorizeRequests().antMatchers("/resources/**").permitAll()
+				.antMatchers("/create-products/**").hasRole("BRUXO") //seller security*/
 				.antMatchers("/admconsole/registermovie").hasRole("ADMIN") /* CHANGE TO VENDOR AREA */
-				.antMatchers("/admconsole/delete**").hasRole("ADMIN").antMatchers("/admconsole/edit*")
-				.hasAnyRole("ADMIN", "MOD") /* CHANGE TO MODERATOR AREA */
+				.antMatchers("/admconsole/delete**").hasRole("ADMIN")
+				.antMatchers("/admconsole/edit*").hasAnyRole("ADMIN", "MOD") /* CHANGE TO MODERATOR AREA */
 				.antMatchers("/home**").permitAll().antMatchers("/user/wishlist/**").authenticated()
-				.antMatchers("/rest/**") /* DELETE REST PAGE */
-				.hasRole("ADMIN").and().formLogin().defaultSuccessUrl("/home").and().formLogin().loginPage("/login")
+				.antMatchers("/user/**").authenticated()
+				.and().formLogin().defaultSuccessUrl("/home").and().formLogin().loginPage("/login")
 				.failureUrl("/login?error").usernameParameter("username").passwordParameter("password").and().logout()
 				.logoutSuccessUrl("/login?logout").and().exceptionHandling().accessDeniedPage("/403").and().csrf();
 	}

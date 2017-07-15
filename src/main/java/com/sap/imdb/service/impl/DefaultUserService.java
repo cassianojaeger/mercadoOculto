@@ -7,7 +7,7 @@ import javax.annotation.Resource;
 
 import com.sap.imdb.dao.ProductDao;
 import com.sap.imdb.dao.UserDao;
-import com.sap.imdb.model.Product;
+import com.sap.imdb.model.Comment;
 import com.sap.imdb.model.User;
 import com.sap.imdb.service.UserService;
 import com.sap.imdb.validations.ImdbValidate;
@@ -22,6 +22,7 @@ public class DefaultUserService implements UserService
 	private ImdbValidate ImdbValidate;
 	@Resource
 	private ProductDao productDao;
+
 
 	@Override
 	public User findByUsername(final String username)
@@ -76,30 +77,22 @@ public class DefaultUserService implements UserService
 	}
 
 	@Override
-	public String saveCart(final Product product, final Principal principal)
+	public void saveComment(final Principal principal, final String comment, final Integer userId)
 	{
-		/*final String username = principal.getName();
-		final User user = userDao.findByUserName(username);
-		for (final Product userProducts : user.getCartList())
-		{
-			if (userProducts.getId() == product.getId())
-			{
-				user.getCartList().remove(userProducts);
-				userDao.update(user);
-				return "Item removido do carrinho";
-			}
-		}
-		user.getCartList().add(product);
+		final Comment newComment = new Comment();
+		newComment.setComment(comment);
+		newComment.setUser(principal.getName());
+		final User user = userDao.getUser(userId);
+		user.getComments().add(newComment);
 		userDao.update(user);
-		return "Item adicionado no carrinho";*/
-		return null;
 	}
 
 	@Override
-	public List<Product> showCart(final Principal principal)
+	public void calculateVendorRating(final User vendor, final String rating)
 	{
-		/*final User user = userDao.findByUserName(principal.getName());
-		return user.getCartList();*/
-		return null;
+		final int newRating = vendor.getNumOfRatings() + 1;
+		vendor.setNumOfRatings(newRating);
+		vendor.setVendorGrade((vendor.getVendorGrade() + Integer.parseUnsignedInt(rating)) / newRating);
+		userDao.update(vendor);
 	}
 }
