@@ -46,9 +46,9 @@
 											value="${_csrf.token}" />
 									</form></li>
 								<li><sec:authorize access="hasAnyRole('ROLE_BRUXO', 'ROLE_NORMAL')">
-										<form class="form-inline" action="/user/wishlist" method="GET">
+										<form class="form-inline" action="/user/perfil" method="GET">
 											<a class="btn btn-link" type="submit"
-												href="<c:url value="/user/cartPage"/>" />Mostrar Carrinho</a>
+												href="<c:url value="/user/cartPage"/>" />Perfil de Usuário</a>
 										</form>
 									</sec:authorize></li>
 								<li><sec:authorize access="hasRole('ROLE_BRUXO')">

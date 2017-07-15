@@ -78,7 +78,7 @@ public class DefaultUserService implements UserService
 	@Override
 	public String saveCart(final Product product, final Principal principal)
 	{
-		final String username = principal.getName();
+		/*final String username = principal.getName();
 		final User user = userDao.findByUserName(username);
 		for (final Product userProducts : user.getCartList())
 		{
@@ -91,13 +91,15 @@ public class DefaultUserService implements UserService
 		}
 		user.getCartList().add(product);
 		userDao.update(user);
-		return "Item adicionado no carrinho";
+		return "Item adicionado no carrinho";*/
+		return null;
 	}
 
 	@Override
 	public List<Product> showCart(final Principal principal)
 	{
-		final User user = userDao.findByUserName(principal.getName());
-		return user.getCartList();
+		/*final User user = userDao.findByUserName(principal.getName());
+		return user.getCartList();*/
+		return null;
 	}
 }

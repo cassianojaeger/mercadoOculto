@@ -46,14 +46,14 @@ public class DefaultProductService implements ProductService
 	public void saveMagicService(final MagicServices magicService, final Principal principal)
 	{
 		magicService.setOwner(userService.findByUsername(principal.getName()));
-		productDao.save(magicService, principal);
+		productDao.save(magicService);
 	}
 
 	@Override
 	public void saveMagicItem(final MagicItems magicItem, final Principal principal)
 	{
 		magicItem.setOwner(userService.findByUsername(principal.getName()));
-		productDao.save(magicItem, principal);
+		productDao.save(magicItem);
 	}
 
 	@Override

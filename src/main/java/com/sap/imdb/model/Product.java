@@ -1,24 +1,16 @@
 package com.sap.imdb.model;
 
-import java.util.List;
-
 import javax.persistence.Column;
-import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
-import org.hibernate.annotations.LazyCollection;
-import org.hibernate.annotations.LazyCollectionOption;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
 /**
@@ -43,17 +35,6 @@ public class Product
 	@Column(length = 1024)
 	private String thumbnail;
 
-
-	@ManyToMany(mappedBy = "cartList")
-	@JsonIgnore
-	private List<User> users;
-
-
-	@ElementCollection
-	@LazyCollection(LazyCollectionOption.FALSE)
-	private List<Comment> comments;
-
-
 	public String getName()
 	{
 		return name;
@@ -72,16 +53,6 @@ public class Product
 	public void setDescription(final String description)
 	{
 		this.description = description;
-	}
-
-	public List<Comment> getComments()
-	{
-		return comments;
-	}
-
-	public void setComments(final List<Comment> comments)
-	{
-		this.comments = comments;
 	}
 
 	public String getThumbnail()

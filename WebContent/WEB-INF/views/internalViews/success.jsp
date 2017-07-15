@@ -9,7 +9,7 @@
 </head>
 <body>
 	<div style="text-align: center; width: 100%">
-	<h1>${success}</h1>
+	<h1>${success} ${error}</h1>
 	<a href="<c:url value="/home"/>">Home page</a>
 	</div>
 </body>

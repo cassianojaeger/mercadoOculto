@@ -42,4 +42,6 @@ public interface ImdbValidate
 
 	void validateMagicService(MagicServices magicService) throws Exception;
 
+	void validadeCreditCard(String creditCardNumber, String creditCardSecurity) throws Exception;
+
 }

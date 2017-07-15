@@ -1,6 +1,5 @@
 package com.sap.imdb.dao.impl;
 
-import java.security.Principal;
 import java.util.List;
 
 import org.springframework.orm.hibernate5.support.HibernateDaoSupport;
@@ -22,9 +21,15 @@ public class HibernateProductDao extends HibernateDaoSupport implements ProductD
 	}
 
 	@Override
-	public <T extends Product> void save(final T obj, final Principal principal)
+	public <T extends Product> void save(final T obj)
 	{
 		getHibernateTemplate().save(obj);
+	}
+
+	@Override
+	public <T extends Product> void update(final T obj)
+	{
+		getHibernateTemplate().update(obj);
 	}
 
 	@Override

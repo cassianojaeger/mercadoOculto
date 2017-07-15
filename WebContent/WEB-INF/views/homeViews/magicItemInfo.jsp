@@ -20,7 +20,7 @@
 			<p>
 				<img class="media-object img-rounded img-responsive"
 					src="<c:url value="${magicItem.thumbnail}"/>"
-					style="float: left; height: 268; width: 168px">
+					style="float: left; height: 168px; width: 168px">
 			</p>
 			<div style="margin-left: 17%; max-width: 80%;">
 				<h3>Descrição do item mágico</h3>
@@ -40,8 +40,8 @@
 	<div style="bottom: 10px; float: right; margin-right: 10%; padding-top: 25px">
 				<sec:authorize access="isAuthenticated()">
 					<form:form class="form-inline"
-						servletRelativeAction="/user/addToCart/${magicItem.id}"
-						method="POST">
+						servletRelativeAction="/user/confirmPurchase/${magicItem.id}"
+						method="GET">
 
 						<button type="submit" class="btn btn-default btn-sm btn-primary">
 							<h4><i class="glyphicon glyphicon-ok"></i>Adicionar ao carrinho</h4>
@@ -53,40 +53,6 @@
 
 					</form:form>
 				</sec:authorize>
-	</div>
-	<div id="commentDiv" style="width: 90%; margin: 50px auto;">
-		<sec:authorize access="isAuthenticated()">			
-			<form:form servletRelativeAction="/user/comment/${magicItem.id}"
-				method="POST">
-				<h2>Comment session</h2>
-				<input name="comment" id="comment"
-					class="form-control"  />
-					<br>
-				<button type="submit" class="btn btn-success green"><i class="fa fa-share"></i>Comente</button>
-			</form:form>
-		</sec:authorize>
-		<!-- 		COMMENT HTML -->
-		
-		<c:forEach items="${magicItem.comments}" var="comment">
-			<div class="row">
-				<div class="col-sm-1">
-					<div class="thumbnail">
-						<img class="img-responsive user-photo"
-							src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
-					</div>
-					<!-- /thumbnail -->
-				</div>
-				<div class="col-sm-5">
-					<div class="panel panel-default">
-						<div class="panel-heading">
-							<strong>${comment.user}</strong>
-						</div>
-						<div class="panel-body">${comment.comment}</div>
-					</div>
-				</div> 
-				<!-- /col-sm-5 -->
-			</div>
-		</c:forEach>
 	</div>
 </body>
 <jsp:include page="../footer.jsp"></jsp:include>

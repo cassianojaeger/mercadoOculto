@@ -34,7 +34,7 @@
 	<bean name="userService" class="com.sap.imdb.service.impl.DefaultUserService" />
 	<bean name="productService" class="com.sap.imdb.service.impl.DefaultProductService" />
 	<bean name="userDetailsService" class="com.sap.imdb.service.impl.MyUserDetailsService" />
-
+	<bean name="checkoutService" class="com.sap.imdb.service.impl.DefaultCheckoutService" />
 
 	<!-- Beans de dao -->
 	<bean name="hibernateUserDao" class="com.sap.imdb.dao.impl.HibernateUserDao">
@@ -42,6 +42,10 @@
 	</bean>
 
 	<bean name="hibernateProductDao" class="com.sap.imdb.dao.impl.HibernateProductDao">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	
+	<bean name="hibernateCheckoutDao" class="com.sap.imdb.dao.impl.HibernateCheckoutDao">
 		<property name="sessionFactory" ref="sessionFactory" />
 	</bean>
 

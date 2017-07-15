@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -44,20 +45,9 @@ public class User
 	@JoinTable(name = "USER_ROLE")
 	private List<Role> roles;
 
-	@ManyToMany
+	@ElementCollection
 	@LazyCollection(LazyCollectionOption.FALSE)
-	@JoinTable(name = "USER_CART")
-	private List<Product> cartList;
-
-	public List<Product> getCartList()
-	{
-		return cartList;
-	}
-
-	public void setCartList(final List<Product> cartList)
-	{
-		this.cartList = cartList;
-	}
+	private List<Comment> comments;
 
 	private LocalDateTime lastLogin;
 

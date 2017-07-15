@@ -1,6 +1,5 @@
 package com.sap.imdb.dao;
 
-import java.security.Principal;
 import java.util.List;
 
 import org.springframework.transaction.annotation.Transactional;
@@ -16,7 +15,7 @@ public interface ProductDao
 {
 	List<Product> getProductList();
 
-	<T extends Product> void save(T obj, Principal principal);
+	<T extends Product> void save(T obj);
 
 	MagicItems getMagicItem(int id);
 
@@ -33,4 +32,6 @@ public interface ProductDao
 	List<Product> getProductsByNameOrDescription(String nameOrDescription);
 
 	List<Product> getProductsByUser(User user);
+
+	<T extends Product> void update(T obj);
 }
