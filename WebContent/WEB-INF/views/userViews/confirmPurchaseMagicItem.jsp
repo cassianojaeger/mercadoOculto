@@ -32,7 +32,8 @@
 					<th>Nome</th>
 					<th>Descrição</th>
 					<th>Preço</th>
-					<th>Quantidade</th>
+					<th>Quantidade disponível</th>
+					<th>Quantidade a comprar</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -49,7 +50,8 @@
 					<th>${cart.id}</th>
 					<td>${cart.name}</td>								
 					<td>${cart.description}</td>
-					<td id="cartPrice">${cart.price}</td>		
+					<td id="cartPrice">${cart.price}</td>	
+					<th>${cart.stockQuantity} units</th>	
 					<td >
 						<div class="controls">
 							<input id="cartQuantity" oninput="total_value()" name="itemQuantity" placeholder="Stock Quantity..." class="form-control" type="number" value="1" />

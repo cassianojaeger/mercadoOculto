@@ -26,6 +26,13 @@ public class HibernateUserDao extends HibernateDaoSupport implements UserDao
 	}
 
 	@Override
+	public List<User> getUsersByNameOrEmail(final String filter)
+	{
+		final String query = "from com.sap.imdb.model.User where name like :filter or email like :filter";
+		return (List<User>) getHibernateTemplate().findByNamedParam(query, "filter", '%' + filter + '%');
+	}
+
+	@Override
 	public Boolean alreadyHasUsername(final User user)
 	{
 		final DetachedCriteria criteria = DetachedCriteria.forClass(User.class);
@@ -76,5 +83,7 @@ public class HibernateUserDao extends HibernateDaoSupport implements UserDao
 
 		return (Role) getHibernateTemplate().findByCriteria(criteria).get(0);
 	}
+
+
 }
 

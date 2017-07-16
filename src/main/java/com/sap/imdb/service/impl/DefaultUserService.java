@@ -95,4 +95,10 @@ public class DefaultUserService implements UserService
 		vendor.setVendorGrade((vendor.getVendorGrade() + Integer.parseUnsignedInt(rating)) / newRating);
 		userDao.update(vendor);
 	}
+
+	@Override
+	public List<User> getUsersByNameOrEmail(final String filter)
+	{
+		return userDao.getUsersByNameOrEmail(filter);
+	}
 }

@@ -29,4 +29,6 @@ public interface UserService
 	void saveComment(Principal principal, String comment, Integer userId);
 
 	void calculateVendorRating(User vendor, String rating);
+
+	List<User> getUsersByNameOrEmail(String filter);
 }

@@ -5,7 +5,9 @@
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <link href="<c:url value="/resources/css/movielist.css"/>" rel="stylesheet"
 	type="text/css" />
-	
+<link href="<c:url value="/resources/css/star.css"/>" rel="stylesheet"
+	type="text/css" />
+
 <jsp:include page="../header.jsp" />
 <html>
 
@@ -47,7 +49,21 @@
 						<c:when test="${order.pendentAvaliation == 'yes'}">
 							<td>								
 								<div class="controls" id="avaliado${order.orderModel.id}">
-									<input id="rating${order.orderModel.id}" placeholder="Nota do vendedor" class="form-control" type="number" value="1" min="0" max="5"  />
+									<!-- <input id="rating${order.orderModel.id}" placeholder="Nota do vendedor" class="form-control" type="number" value="1" min="0" max="5"  /> -->
+									<div class="stars">
+										  <form action="">
+										    <input class="star star-5" id="star-5" type="radio" name="star"/>
+										    <label class="star star-5" for="star-5"></label>
+										    <input class="star star-4" id="star-4" type="radio" name="star"/>
+										    <label class="star star-4" for="star-4"></label>
+										    <input class="star star-3" id="star-3" type="radio" name="star"/>
+										    <label class="star star-3" for="star-3"></label>
+										    <input class="star star-2" id="star-2" type="radio" name="star"/>
+										    <label class="star star-2" for="star-2"></label>
+										    <input class="star star-1" id="star-1" type="radio" name="star"/>
+										    <label class="star star-1" for="star-1"></label>
+										  </form>
+									</div>
 								<br>
 								</div>
 								
@@ -71,22 +87,29 @@
 <jsp:include page="../footer.jsp"></jsp:include>
 </html>
 <script>
+var starId;
+var starRate;
 $(document).ready(function() {
 	$("button").click(function() {
-	    var orderId = this.id;
-	    var orderIdParsed = orderId.replace( /^\D+/g, '');
-		 var inputId = "#".concat("rating".concat(orderIdParsed));
+		 
+	    var buttonId = this.id;
+	    var orderId = buttonId.replace( /^\D+/g, '');
 	    
 	    $.ajax({ url: '/mercadoOculto/user/orderHistory/rate' , 
 	        data:{ 
-	        			rating:       $(inputId).val(),
-	        			orderModelId: orderIdParsed
+	        			rating:       starRate,
+	        			orderModelId: orderId
 	        		 }
 			 });
 	    
-	    	$('#'+orderId).remove();
-			$(inputId).remove();
-			$('#avaliado'+orderIdParsed).html('<label>Vendedor já avaliado</label>');
+	    	$('#'+buttonId).remove();
+	    	$('#avaliado'+orderId).empty();
+			$('#avaliado'+orderId).html('<label>Vendedor já avaliado</label>');
 	});
+});
+
+$('input').click(function(){
+	starId = this.id;
+	starRate = starId.replace( /^\D+/g, '');
 });
 </script>

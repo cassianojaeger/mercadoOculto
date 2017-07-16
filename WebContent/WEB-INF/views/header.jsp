@@ -27,7 +27,10 @@
 						class="icon-bar"></span>
 				</button>
 				<a class="navbar-brand" href="<c:url value="/home/"/>"> Mercado
-					Oculto </a>
+					Oculto <img
+							src="<c:url value="/resources/uploaded-thumbnails/hat.png"/>" class="img-responsive"
+							style="width: 40px; height: 40px; display: inline; margin-top: -10px"/></a>
+				
 			</div>
 			<div class="collapse navbar-collapse"
 				id="bs-example-navbar-collapse-1">
