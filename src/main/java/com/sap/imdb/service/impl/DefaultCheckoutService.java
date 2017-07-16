@@ -63,9 +63,9 @@ public class DefaultCheckoutService implements CheckoutService
 
 
 	@Override
-	public List<Order> getOrderHistoryByUserId(final User user)
+	public List<Order> getOrderHistoryByUserId(final User user, final String buyer_seller)
 	{
-		return checkoutDao.getOrderHistoryByUserId(user.getId());
+		return checkoutDao.getOrderHistoryByUserId(user.getId(), buyer_seller);
 	}
 
 	@Override

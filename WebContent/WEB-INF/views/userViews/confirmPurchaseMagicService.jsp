@@ -22,7 +22,7 @@
 	
 	
 </head>
-<body>
+<body onload="total_value()">
 
 <div  style="height: 70%">
 	<form:form
@@ -55,7 +55,7 @@
 					<th>${cart.id}</th>
 					<td>${cart.name}</td>								
 					<td>${cart.description}</td>
-					<td>${cart.price}</td>				
+					<td id="cartPrice">${cart.price}</td>				
 				</tr>		
 			</tbody>
 			
@@ -81,3 +81,16 @@
 	type="text/css" />
 <jsp:include page="../footer.jsp"></jsp:include>
 </html>
+
+<script>
+
+
+function total_value(){
+    var x = document.getElementById("cartPrice").innerHTML;
+    
+    var s = document.getElementById("totalValue");
+    s.innerHTML = x;
+}
+
+
+</script>

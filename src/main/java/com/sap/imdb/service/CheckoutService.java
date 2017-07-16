@@ -16,7 +16,7 @@ public interface CheckoutService
 	void saveOrder(MagicItems magicItem, String creditCardNumber, String creditSecurity, String buyerUsername,
 			String quantityBought) throws Exception;
 
-	List<Order> getOrderHistoryByUserId(User user);
+	List<Order> getOrderHistoryByUserId(User user, String buyer_seller);
 
 	Order getOrderById(int id);
 

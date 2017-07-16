@@ -19,10 +19,19 @@ public class HibernateCheckoutDao extends HibernateDaoSupport implements Checkou
 	}
 
 	@Override
-	public List<Order> getOrderHistoryByUserId(final int user_id)
+	public List<Order> getOrderHistoryByUserId(final int user_id, final String buyer_seller)
 	{
-		final String query = "from com.sap.imdb.model.Order where product_buyer_id like :user_id";
-		return (List<Order>) getHibernateTemplate().findByNamedParam(query, "user_id", user_id);
+		if (buyer_seller.equals("buyer"))
+		{
+			final String query = "from com.sap.imdb.model.Order where product_buyer_id like :user_id";
+			return (List<Order>) getHibernateTemplate().findByNamedParam(query, "user_id", user_id);
+		}
+		else
+		{
+			final String query = "from com.sap.imdb.model.Order where product_owner_id like :user_id";
+			return (List<Order>) getHibernateTemplate().findByNamedParam(query, "user_id", user_id);
+		}
+
 	}
 
 	@Override

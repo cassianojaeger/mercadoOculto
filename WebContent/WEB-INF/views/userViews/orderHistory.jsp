@@ -68,7 +68,7 @@
 								</div>
 								
 								<button id="button${order.orderModel.id}" type="submit" class="btn btn-default btn-sm btn-primary" style="float: right; margin-right: 20%; margin-top: 80px">
-									<h4>Checkout</h4>
+									<h4>Avalie</h4>
 								</button>
 									
 							</td>
@@ -83,6 +83,47 @@
 		</tbody>
 	</table>
 </div>
+
+
+<div class="container" style="margin-top: 50px; width: 82%">
+	<h2>Histórico de Vendas</h2>
+	<p>Abaixo encontra-se todas suas vendas</p>
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>Imagem do produto</th>
+				<th>Nome do produto</th>
+				<th>Descrição do produto</th>
+				<th>Nome do Comprador</th>
+			</tr>
+		</thead>
+		<tbody>
+			<c:forEach var="orderSeller" items="${orderListSeller}">
+				<c:if test="${orderSeller.productsInOrder.id != null}" >
+				<tr>
+					<td>
+						<div class="post-img-content"
+							style="float: left; padding-right: 10px; padding-bottom: 10px">
+							<a href="<c:url value="/home/info/${orderSeller.productsInOrder.id}"/>"><img
+							src="<c:url value="${orderSeller.productsInOrder.thumbnail}"/>" class="img-responsive"
+							style="width: 100px; height: 100px" /></a>
+						</div>
+					</td>
+					<td>${orderSeller.productsInOrder.name}</td>
+					<td>${orderSeller.productsInOrder.description}</td>
+					<td>
+						<a href="<c:url value="/user/profile/${orderSeller.orderModel.product_buyer_id}"/>">
+							${orderSeller.productBuyerName}
+						</a>
+					</td>
+					
+				</tr>
+				</c:if>
+			</c:forEach>
+		</tbody>
+	</table>
+</div>
+
 
 <jsp:include page="../footer.jsp"></jsp:include>
 </html>

@@ -12,7 +12,7 @@ public interface CheckoutDao
 {
 	public void saveOrder(Order order);
 
-	List<Order> getOrderHistoryByUserId(int user_id);
+	List<Order> getOrderHistoryByUserId(int user_id, String buyer_seller);
 
 	Order getOrderById(int id);
 

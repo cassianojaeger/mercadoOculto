@@ -9,6 +9,7 @@ public class OrderData
 	private Order orderModel;
 	private Product productsInOrder;
 	private String pendentAvaliation;
+	private String productBuyerName;
 
 	public Product getProductsInOrder()
 	{
@@ -35,9 +36,19 @@ public class OrderData
 		return orderModel;
 	}
 
-	public void setOrderModel(Order orderModel)
+	public void setOrderModel(final Order orderModel)
 	{
 		this.orderModel = orderModel;
+	}
+
+	public String getProductBuyerName()
+	{
+		return productBuyerName;
+	}
+
+	public void setProductBuyerName(String productBuyerName)
+	{
+		this.productBuyerName = productBuyerName;
 	}
 
 

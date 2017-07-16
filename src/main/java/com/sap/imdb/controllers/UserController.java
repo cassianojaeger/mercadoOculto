@@ -143,20 +143,35 @@ public class UserController
 	public String showOrderHistory(final Model model, final Principal principal, final RedirectAttributes redirectAttributes)
 	{
 		final User user = userService.findByUsername(principal.getName());
-		final List<Order> ordersHistory = checkoutService.getOrderHistoryByUserId(user);
-		final List<OrderData> orderHistoryData = new ArrayList<OrderData>();
+		final List<Order> ordersHistoryBuyer = checkoutService.getOrderHistoryByUserId(user, "buyer");
+		final List<Order> ordersHistorySeller = checkoutService.getOrderHistoryByUserId(user, "seller");
+		final List<OrderData> orderHistoryBuyerData = new ArrayList<OrderData>();
+		final List<OrderData> orderHistorySellerData = new ArrayList<OrderData>();
 
-		for (final Order order : ordersHistory)
+		for (final Order order : ordersHistoryBuyer)
 		{
 			final OrderData orderData = new OrderData();
 			orderData.setProductsInOrder(productService.getProduct(order.getProduct_id()));
 			orderData.setPendentAvaliation(order.getPendentAvaliation());
 			orderData.setOrderModel(order);
 
-			orderHistoryData.add(orderData);
+			orderHistoryBuyerData.add(orderData);
 		}
 
-		model.addAttribute("orderList", orderHistoryData);
+		for (final Order order : ordersHistorySeller)
+		{
+			final OrderData orderData = new OrderData();
+			orderData.setProductsInOrder(productService.getProduct(order.getProduct_id()));
+			orderData.setPendentAvaliation(order.getPendentAvaliation());
+			orderData.setOrderModel(order);
+			orderData.setProductBuyerName(userService.getUser(order.getProduct_buyer_id()).getName());
+
+			orderHistorySellerData.add(orderData);
+		}
+
+
+		model.addAttribute("orderList", orderHistoryBuyerData);
+		model.addAttribute("orderListSeller", orderHistorySellerData);
 		return "userViews/orderHistory";
 	}
 
