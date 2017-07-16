@@ -112,9 +112,17 @@ public class UserController
 	@RequestMapping(value = "/profile", method = RequestMethod.GET)
 	public String showLoggedUserProfile(final Model model, final Principal principal, final RedirectAttributes redirectAttributes)
 	{
-		final User user = userService.findByUsername(principal.getName());
-		model.addAttribute("products", productService.getProductListByUser(user));
-		model.addAttribute("user", user);
+		try
+		{
+			final User user = userService.findByUsername(principal.getName());
+			model.addAttribute("products", productService.getProductListByUser(user));
+			model.addAttribute("user", user);
+		}
+		catch (final Exception e)
+		{
+			return "internalViews/405";
+		}
+
 
 		return "userViews/userProfile";
 	}

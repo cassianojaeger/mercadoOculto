@@ -64,10 +64,11 @@ public class HibernateProductDao extends HibernateDaoSupport implements ProductD
 	}
 
 	@Override
-	public List<Product> getProductsByNameOrDescription(final String nameOrDescription)
+	public <T extends Product> List<T> getProductsByNameOrDescription(final String nameOrDescription, final Class<T> class1)
 	{
-		final String query = "from com.sap.imdb.model.Product where name like :nameOrDescription or description like :nameOrDescription";
-		return (List<Product>) getHibernateTemplate().findByNamedParam(query, "nameOrDescription", '%' + nameOrDescription + '%');
+		final String query = "from " + class1.getName()
+				+ " where name like :nameOrDescription or description like :nameOrDescription";
+		return (List<T>) getHibernateTemplate().findByNamedParam(query, "nameOrDescription", '%' + nameOrDescription + '%');
 	}
 
 	@Override
@@ -83,4 +84,6 @@ public class HibernateProductDao extends HibernateDaoSupport implements ProductD
 		final String query = "select productsOnwed from com.sap.imdb.model.User where username like :username";
 		return (List<Product>) getHibernateTemplate().findByNamedParam(query, "username", user.getUsername());
 	}
+
+
 }

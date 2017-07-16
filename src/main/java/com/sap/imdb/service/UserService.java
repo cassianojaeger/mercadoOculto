@@ -30,5 +30,5 @@ public interface UserService
 
 	void calculateVendorRating(User vendor, String rating);
 
-	List<User> getUsersByNameOrEmail(String filter);
+	List<User> getUsersByNameOrEmail(String filter, String orderDisplay);
 }

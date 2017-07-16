@@ -42,11 +42,28 @@ public class HomeController
 	}
 
 	@RequestMapping(value = "/products/filterByName", method = RequestMethod.GET)
-	public String filterByName(@RequestParam("filter") final String filter, final Model model)
+	public String filterByName(@RequestParam("filter") final String filter,
+			@RequestParam("productsToBeListed") final String productsToBeListed, final Model model)
 	{
-		final List<Product> products = productService.getProductsByNameOrDescription(filter);
+		List<Product> products = new ArrayList<>();
+		List<MagicItems> itens = new ArrayList<>();
+		List<MagicServices> magics = new ArrayList<>();
+		if (productsToBeListed.equals("ambos"))
+		{
+			products = productService.getProductsByNameOrDescription(filter, Product.class);
+			model.addAttribute("products", products);
+		}
+		else if (productsToBeListed.equals("item"))
+		{
+			itens = productService.getProductsByNameOrDescription(filter, MagicItems.class);
+			model.addAttribute("products", itens);
+		}
+		else if (productsToBeListed.equals("feitiço"))
+		{
+			magics = productService.getProductsByNameOrDescription(filter, MagicServices.class);
+			model.addAttribute("products", magics);
+		}
 
-		model.addAttribute("products", products);
 		return "/homeViews/products-grid";
 	}
 
@@ -68,9 +85,10 @@ public class HomeController
 	}
 
 	@RequestMapping(value = "/view-all-vendors/filterByName", method = RequestMethod.GET)
-	public String showVendorsList(@RequestParam("filter") final String filter, final Model model)
+	public String showVendorsList(@RequestParam("filter") final String filter,
+			@RequestParam("orderDisplay") final String orderDisplay, final Model model)
 	{
-		final List<User> users = userService.getUsersByNameOrEmail(filter);
+		final List<User> users = userService.getUsersByNameOrEmail(filter, orderDisplay);
 		final List<User> magicians = new ArrayList<>();
 		for (final User user : users)
 		{

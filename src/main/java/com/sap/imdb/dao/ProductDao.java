@@ -29,9 +29,9 @@ public interface ProductDao
 
 	List<Product> getProductsByDescription(String description);
 
-	List<Product> getProductsByNameOrDescription(String nameOrDescription);
-
 	List<Product> getProductsByUser(User user);
 
 	<T extends Product> void update(T obj);
+
+	<T extends Product> List<T> getProductsByNameOrDescription(String nameOrDescription, Class<T> class1);
 }

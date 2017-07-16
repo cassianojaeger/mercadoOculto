@@ -100,9 +100,9 @@ public class DefaultProductService implements ProductService
 	}
 
 	@Override
-	public List<Product> getProductsByNameOrDescription(final String nameOrDescription)
+	public <T extends Product> List<T> getProductsByNameOrDescription(final String nameOrDescription, final Class<T> class1)
 	{
-		return productDao.getProductsByNameOrDescription(nameOrDescription);
+		return productDao.getProductsByNameOrDescription(nameOrDescription, class1);
 	}
 
 	@Override
@@ -117,4 +117,6 @@ public class DefaultProductService implements ProductService
 			return false;
 		}
 	}
+
+
 }

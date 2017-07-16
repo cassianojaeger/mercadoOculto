@@ -25,11 +25,17 @@ public class HibernateUserDao extends HibernateDaoSupport implements UserDao
 		return (User) getHibernateTemplate().findByCriteria(criteria).get(0);
 	}
 
+
 	@Override
-	public List<User> getUsersByNameOrEmail(final String filter)
+	public List<User> getUsersByNameOrEmail(final String filter, final String orderDisplay)
 	{
-		final String query = "from com.sap.imdb.model.User where name like :filter or email like :filter";
-		return (List<User>) getHibernateTemplate().findByNamedParam(query, "filter", '%' + filter + '%');
+		final String query = "FROM com.sap.imdb.model.User as u where u.name like ? OR u.email like ? ORDER BY u.vendorGrade "
+				+ orderDisplay;
+
+		final Object[] params =
+		{ '%' + filter + '%', '%' + filter + '%' };
+
+		return (List<User>) getHibernateTemplate().find(query, params);
 	}
 
 	@Override
@@ -83,6 +89,7 @@ public class HibernateUserDao extends HibernateDaoSupport implements UserDao
 
 		return (Role) getHibernateTemplate().findByCriteria(criteria).get(0);
 	}
+
 
 
 }

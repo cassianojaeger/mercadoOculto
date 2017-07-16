@@ -38,7 +38,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter
 				.antMatchers("/admconsole/delete**").hasRole("ADMIN")
 				.antMatchers("/admconsole/edit*").hasAnyRole("ADMIN", "MOD") /* CHANGE TO MODERATOR AREA */
 				.antMatchers("/home**").permitAll().antMatchers("/user/wishlist/**").authenticated()
-				.antMatchers("/user/**").authenticated()
+				.antMatchers("/user/confirmPurchase/**").authenticated()
 				.and().formLogin().defaultSuccessUrl("/home").and().formLogin().loginPage("/login")
 				.failureUrl("/login?error").usernameParameter("username").passwordParameter("password").and().logout()
 				.logoutSuccessUrl("/login?logout").and().exceptionHandling().accessDeniedPage("/403").and().csrf();

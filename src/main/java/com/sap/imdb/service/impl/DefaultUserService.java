@@ -97,8 +97,8 @@ public class DefaultUserService implements UserService
 	}
 
 	@Override
-	public List<User> getUsersByNameOrEmail(final String filter)
+	public List<User> getUsersByNameOrEmail(final String filter, final String orderDisplay)
 	{
-		return userDao.getUsersByNameOrEmail(filter);
+		return userDao.getUsersByNameOrEmail(filter, orderDisplay);
 	}
 }

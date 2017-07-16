@@ -17,13 +17,21 @@
 			<div id="custom-search-input">
 				<div class="input-group col-md-12">
 					<input type="text" class="  search-query form-control"
-						placeholder="Search" id="search1" /> <span class="input-group-btn">
-						<button class="btn btn-danger" type="button">
+						placeholder="Search" id="searchVendors" /> <span class="input-group-btn">
+						<button class="btn btn-danger" type="button" id="searchButtonVendors">
 							<span class=" glyphicon glyphicon-search"></span>
 						</button>
 					</span>
+					
 				</div>
 			</div>
+		</div>
+		<div class="form-group" style="margin-left: -15px">
+		  <label for="sel1">Ordene por avaliações</label>
+		  <select class="form-control" id="orderingSelect" style="width: 15%">
+		  	 <option value="ASC">Menor Avaliação</option>
+		    <option value="DESC">Maior Avaliação</option>
+		  </select>
 		</div>
 	</div>
 	<div class="container" id="products-display">

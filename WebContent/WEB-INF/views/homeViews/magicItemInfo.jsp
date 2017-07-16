@@ -38,21 +38,21 @@
 		</ul>
 	</div>
 	<div style="bottom: 10px; float: right; margin-right: 10%; padding-top: 25px">
-				<sec:authorize access="isAuthenticated()">
-					<form:form class="form-inline"
-						servletRelativeAction="/user/confirmPurchase/${magicItem.id}"
-						method="GET">
+				
+		<form:form class="form-inline"
+			servletRelativeAction="/user/confirmPurchase/${magicItem.id}"
+			method="GET">
 
-						<button type="submit" class="btn btn-default btn-sm btn-primary">
-							<h4><i class="glyphicon glyphicon-ok"></i>Adicionar ao carrinho</h4>
-						</button>
-						<c:if test="${not empty message}">
-							<div class="alert alert-info"
-								style="display: inline; padding: 5px">${message}</div>
-						</c:if>
+			<button type="submit" class="btn btn-default btn-sm btn-primary">
+				<h4><i class="glyphicon glyphicon-ok"></i>Adicionar ao carrinho</h4>
+			</button>
+			<c:if test="${not empty message}">
+				<div class="alert alert-info"
+					style="display: inline; padding: 5px">${message}</div>
+			</c:if>
 
-					</form:form>
-				</sec:authorize>
+		</form:form>
+
 	</div>
 </body>
 <jsp:include page="../footer.jsp"></jsp:include>

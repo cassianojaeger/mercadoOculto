@@ -22,6 +22,6 @@ public interface UserDao
 
 	Boolean alreadyHasUsername(User user);
 
-	List<User> getUsersByNameOrEmail(String filter);
+	List<User> getUsersByNameOrEmail(String filter, String orderDisplay);
 }
 

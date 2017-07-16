@@ -35,7 +35,7 @@ public interface ProductService
 
 	List<Product> getProductsByDescription(String description);
 
-	List<Product> getProductsByNameOrDescription(String nameOrDescription);
+	<T extends Product> List<T> getProductsByNameOrDescription(String nameOrDescription, Class<T> class1);
 
 	boolean isObjectNull(Object object);
 
