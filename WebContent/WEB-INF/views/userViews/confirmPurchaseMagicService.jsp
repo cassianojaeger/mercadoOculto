@@ -12,11 +12,20 @@
 <script src="https://code.jquery.com/jquery-3.1.1.js"
 	integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="
 	crossorigin="anonymous"></script>
+	
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.13.1/jquery.validate.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.payment/1.2.3/jquery.payment.min.js"></script>
+
+<!-- If you're using Stripe for payments -->
+<script type="text/javascript" src="https://js.stripe.com/v2/"></script>	
+	
+	
 </head>
 <body>
 
 <div  style="height: 70%">
-	<form:form class="form-inline"
+	<form:form
 		servletRelativeAction="/user/confirmPurchase/${cart.id}"
 		method="POST"
 		modelAttribute="cart">
@@ -61,42 +70,14 @@
 				</div>
 			</li>
 		</ul>
-		<div class="panel-group" id="accordion" style="width: 60% !important; margin: auto">
-		  <div class="panel panel-default">
-		    <div class="panel-heading">
-		      <h4 class="panel-title">
-		        <a data-toggle="collapse" data-parent="#accordion" href="#collapse1">
-		        Numero do cartão de crédito</a>
-		      </h4>
-		    </div>
-		    <div id="collapse1" class="panel-collapse collapse in">
-		      <div class="panel-body">
-		      	<input name="creditNumber" placeholder="Numero do cartão" class="form-control" type="text" />
-		      </div>
-		    </div>
-		  </div>
-		  <div class="panel panel-default">
-		    <div class="panel-heading">
-		      <h4 class="panel-title">
-		        <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
-		        Digitos de segurança do cartão</a>
-		      </h4>
-		    </div>
-		    <div id="collapse2" class="panel-collapse collapse">
-		      <div class="panel-body">
-		      	<input name="creditSecurity" placeholder="Numero de segurança" class="form-control" type="text" />
-		      </div>
-		    </div>
-		  </div>
-		</div>
-		<br>
-		<hr style="width: 70%; margin: auto; padding-top: 30px">
-		<label style="margin-left:70%; font-size: 20px">Total:&nbsp R$ &nbsp<span id="totalValue">${cart.price}</span></label>
-		<button type="submit" class="btn btn-default btn-sm btn-primary" style="float: right; margin-right: 20%; margin-top: 10px	">
-			<h4>Confirmar Compra</h4>
-		</button>
+		<jsp:include page="creditCard.jsp"></jsp:include>
+		
 	</form:form>
 </div>
 </body>
+<script type="text/javascript"
+	src="<c:url value="/resources/js/credit.js"/>"></script>
+<link href="<c:url value="/resources/css/credit.css"/>" rel="stylesheet"
+	type="text/css" />
 <jsp:include page="../footer.jsp"></jsp:include>
 </html>

@@ -66,8 +66,8 @@ public class UserController
 	public String confirmPurchase(@PathVariable("id") final Integer id, final Model model, final Principal principal,
 			final RedirectAttributes redirectAttributes, final HttpServletRequest req)
 	{
-		final String creditCardNumber = req.getParameter("creditNumber");
-		final String creditCardSecurity = req.getParameter("creditSecurity");
+		final String creditCardNumber = req.getParameter("cardNumber");
+		final String creditCardSecurity = req.getParameter("cardCVC");
 
 		final MagicItems magicItem = productService.getMagicItem(id);
 		if (productService.isObjectNull(magicItem))

@@ -168,8 +168,9 @@ public class ImdbValidateHandler implements ImdbValidate
 	@Override
 	public void validadeCreditCard(final String creditCardNumber, final String creditCardSecurity) throws Exception
 	{
-		final String regex = "[0-9]+";
-		if (!creditCardNumber.matches(regex) || !creditCardSecurity.matches(regex))
+		final String regexCardNumber = "[0-9]{16}";
+		final String regexCardCVC = "[0-9]{4}";
+		if (!creditCardNumber.matches(regexCardNumber) || !creditCardSecurity.matches(regexCardCVC))
 		{
 			throw new Exception("Cartão de crédito inválido!");
 		}
