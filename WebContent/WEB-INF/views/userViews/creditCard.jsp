@@ -62,8 +62,14 @@
                                     />
                                 </div>
                             </div>
-                        </div>            
-                        <label style="margin-left:70%; font-size: 20px">Total:&nbsp R$ &nbsp<span id="totalValue"></span></label>            
+                        </div>          
+                        <input 
+                                        type="hidden"                                       
+                                        name="totalValue" 
+                                        id="totalValueInput"                                       
+                                  /></span>  
+                        <label style="margin-left:70%; font-size: 20px">Total:&nbsp R$ &nbsp<span id="totalValue">
+                        	</label>            
                         <div class="row">
                             <div class="col-xs-12">
                                 <button class="subscribe btn btn-success btn-lg btn-block" type="submit">Confirmar Compra</button>

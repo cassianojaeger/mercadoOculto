@@ -79,9 +79,11 @@ public class DefaultUserService implements UserService
 	@Override
 	public void saveComment(final Principal principal, final String comment, final Integer userId)
 	{
+		final User commentarist = userDao.findByUserName((principal.getName()));
 		final Comment newComment = new Comment();
 		newComment.setComment(comment);
-		newComment.setUser(principal.getName());
+		newComment.setUser(commentarist.getName());
+		newComment.setUserId(commentarist.getId());
 		final User user = userDao.getUser(userId);
 		user.getComments().add(newComment);
 		userDao.update(user);

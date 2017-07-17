@@ -26,7 +26,7 @@ public class DefaultCheckoutService implements CheckoutService
 
 	@Override
 	public void saveOrder(final MagicItems magicItem, final String creditCardNumber, final String creditSecurity,
-			final String buyerUsername, final String quantityBought) throws Exception
+			final String buyerUsername, final String quantityBought, final int totalValue) throws Exception
 	{
 		final Order order = new Order();
 		order.setProduct_buyer_id(userDao.findByUserName(buyerUsername).getId());
@@ -40,6 +40,7 @@ public class DefaultCheckoutService implements CheckoutService
 		}
 
 		order.setPendentAvaliation("yes");
+		order.setTotalValue(totalValue);
 		magicItem.setStockQuantity(magicItem.getStockQuantity() - order.getQuantity());
 		productDao.update(magicItem);
 		checkoutDao.saveOrder(order);
@@ -48,19 +49,19 @@ public class DefaultCheckoutService implements CheckoutService
 
 	@Override
 	public void saveOrder(final MagicServices magicServices, final String creditCardNumber, final String creditSecurity,
-			final String buyerUsername, final String requirementList)
+			final String buyerUsername, final String requirementList, final int totalValue)
 	{
 		final Order order = new Order();
 		order.setProduct_buyer_id(userDao.findByUserName(buyerUsername).getId());
 		order.setProduct_id(magicServices.getId());
 		order.setProduct_owner_id(magicServices.getOwner().getId());
 		order.setRequirementList(requirementList);
-
+		order.setTotalValue(totalValue);
 		order.setPendentAvaliation("yes");
+
 		productDao.update(magicServices);
 		checkoutDao.saveOrder(order);
 	}
-
 
 	@Override
 	public List<Order> getOrderHistoryByUserId(final User user, final String buyer_seller)

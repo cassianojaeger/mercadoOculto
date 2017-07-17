@@ -33,7 +33,7 @@
 					<td>
 						<div class="post-img-content"
 							style="float: left; padding-right: 10px; padding-bottom: 10px">
-							<a href="<c:url value="/home/info/${order.productsInOrder.id}"/>"><img
+							<a href="<c:url value="/user/orderHistory/${order.orderModel.id}"/>"><img
 							src="<c:url value="${order.productsInOrder.thumbnail}"/>" class="img-responsive"
 							style="width: 100px; height: 100px" /></a>
 						</div>
@@ -104,7 +104,7 @@
 					<td>
 						<div class="post-img-content"
 							style="float: left; padding-right: 10px; padding-bottom: 10px">
-							<a href="<c:url value="/home/info/${orderSeller.productsInOrder.id}"/>"><img
+							<a href="<c:url value="/user/orderHistory/${orderSeller.orderModel.id}"/>"><img
 							src="<c:url value="${orderSeller.productsInOrder.thumbnail}"/>" class="img-responsive"
 							style="width: 100px; height: 100px" /></a>
 						</div>

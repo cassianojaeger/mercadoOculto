@@ -26,7 +26,7 @@
 
 <div  style="height: 70%">
 	<form:form
-		servletRelativeAction="/user/confirmPurchase/${cart.id}"
+		servletRelativeAction="/checkout/confirmPurchase/${cart.id}"
 		method="POST"
 		modelAttribute="cart">
 		
@@ -90,6 +90,9 @@ function total_value(){
     
     var s = document.getElementById("totalValue");
     s.innerHTML = x;
+    
+    var t = document.getElementById("totalValueInput");
+    t.value = x;
 }
 
 

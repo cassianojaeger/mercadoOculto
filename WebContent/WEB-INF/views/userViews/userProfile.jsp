@@ -115,7 +115,7 @@
 			<div class="col-sm-5">
 				<div class="panel panel-default">
 					<div class="panel-heading">
-						<strong>${comment.user}</strong>
+						<strong><a href="<c:url value="/user/profile/${comment.userId}"/>">${comment.user}</a></strong>
 					</div>
 					<div class="panel-body">${comment.comment}</div>
 				</div>

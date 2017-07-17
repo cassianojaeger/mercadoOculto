@@ -25,12 +25,14 @@
 
 <div  style="height: 70%">
 	<form:form
-		servletRelativeAction="/user/confirmPurchase/${cart.id}"
+		servletRelativeAction="/checkout/confirmPurchase/${cart.id}"
 		method="POST"
 		modelAttribute="cart">
 		<c:set var="cardCVC" />
 		<c:set var="cardNumber" />
 		<c:set var="itemQuantity" />
+		<c:set var="totalValue" />
+		
 		<table class="table table-hover" style="width: 60%; margin: auto;">
 			<thead>
 				<tr>
@@ -88,7 +90,11 @@ function total_value(){
     var y = document.getElementById("cartQuantity").value;
     
     var s = document.getElementById("totalValue");
+    
     s.innerHTML = x*y;
+    
+    var t = document.getElementById("totalValueInput");
+    t.value = x*y;
 }
 
 

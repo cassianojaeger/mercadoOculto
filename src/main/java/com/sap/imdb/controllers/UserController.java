@@ -17,8 +17,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.sap.imdb.data.OrderData;
 import com.sap.imdb.model.MagicItems;
-import com.sap.imdb.model.MagicServices;
 import com.sap.imdb.model.Order;
+import com.sap.imdb.model.Product;
 import com.sap.imdb.model.User;
 import com.sap.imdb.service.CheckoutService;
 import com.sap.imdb.service.ProductService;
@@ -39,75 +39,6 @@ public class UserController
 	CheckoutService checkoutService;
 	@Resource
 	ImdbValidate imdbValidate;
-
-
-	@RequestMapping(value = "/confirmPurchase/{id}", method = RequestMethod.GET)
-	public String confirmPurchase(@PathVariable("id") final Integer id, final Model model, final Principal principal,
-			final RedirectAttributes redirectAttributes)
-	{
-		final MagicItems magicItem = productService.getMagicItem(id);
-		if (productService.isObjectNull(magicItem))
-		{
-			final MagicServices magicService = productService.getMagicService(id);
-			if (productService.isObjectNull(magicService))
-			{
-				return "internalViews/404";
-			}
-
-			model.addAttribute("cart", magicService);
-			return "userViews/confirmPurchaseMagicService";
-		}
-
-		model.addAttribute("cart", magicItem);
-		return "userViews/confirmPurchaseMagicItem";
-	}
-
-	@RequestMapping(value = "/confirmPurchase/{id}", method = RequestMethod.POST)
-	public String confirmPurchase(@PathVariable("id") final Integer id, final Model model, final Principal principal,
-			final RedirectAttributes redirectAttributes, final HttpServletRequest req)
-	{
-		final String creditCardNumber = req.getParameter("cardNumber");
-		final String creditCardSecurity = req.getParameter("cardCVC");
-
-		final MagicItems magicItem = productService.getMagicItem(id);
-		if (productService.isObjectNull(magicItem))
-		{
-			final MagicServices magicService = productService.getMagicService(id);
-			if (productService.isObjectNull(magicService))
-			{
-				return "internalViews/404";
-			}
-
-			try
-			{
-				final String requirementList = req.getParameter("requirementList");
-				imdbValidate.validadeCreditCard(creditCardNumber, creditCardSecurity);
-				checkoutService.saveOrder(magicService, creditCardNumber, creditCardSecurity, principal.getName(), requirementList);
-				model.addAttribute("success", "O feitiço " + magicService.getName() + " foi comprado com sucesso!");
-				return "/internalViews/success";
-			}
-			catch (final Exception e)
-			{
-				model.addAttribute("success", e.getMessage());
-				return "internalViews/success";
-			}
-		}
-
-		try
-		{
-			final String itemQuantity = req.getParameter("itemQuantity");
-			imdbValidate.validadeCreditCard(creditCardNumber, creditCardSecurity);
-			checkoutService.saveOrder(magicItem, creditCardNumber, creditCardSecurity, principal.getName(), itemQuantity);
-			model.addAttribute("success",
-					"Foram compradas " + itemQuantity + " unidades do item " + magicItem.getName() + " com sucesso!");
-			return "/internalViews/success";
-		}
-		catch (final Exception e)
-		{
-			model.addAttribute("success", e.getMessage());
-			return "internalViews/success";
-		}
-	}
 
 	@RequestMapping(value = "/profile", method = RequestMethod.GET)
 	public String showLoggedUserProfile(final Model model, final Principal principal, final RedirectAttributes redirectAttributes)
@@ -194,4 +125,30 @@ public class UserController
 		return "redirect:/user/profile/" + userId;
 	}
 
+
+	@RequestMapping(value = "/orderHistory/{id}", method = RequestMethod.GET)
+	public String showOneOrderHistory(@PathVariable("id") final Integer orderId, final Model model, final Principal principal,
+			final RedirectAttributes redirectAttributes)
+	{
+		final Order order = checkoutService.getOrderById(orderId);
+		final Product orderProduct = productService.getProduct(order.getProduct_id());
+		final User productBuyer = userService.getUser(order.getProduct_buyer_id());
+		final OrderData orderData = new OrderData();
+
+		orderData.setOrderModel(order);
+		orderData.setPendentAvaliation(order.getPendentAvaliation());
+		orderData.setProductsInOrder(orderProduct);
+		orderData.setProductBuyerName(productBuyer.getName());
+
+		model.addAttribute("orderData", orderData);
+
+		if (orderProduct instanceof MagicItems)
+		{
+			return "userViews/orderMagicItemHistory";
+		}
+		else
+		{
+			return "userViews/orderMagicServiceHistory";
+		}
+	}
 }

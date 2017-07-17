@@ -20,6 +20,7 @@ public class Order
 	private int quantity;
 	private String requirementList;
 	private String pendentAvaliation;
+	private int totalValue;
 
 	/**
 	 * @return the product_id
@@ -128,8 +129,18 @@ public class Order
 		return id;
 	}
 
-	public void setId(int id)
+	public void setId(final int id)
 	{
 		this.id = id;
+	}
+
+	public int getTotalValue()
+	{
+		return totalValue;
+	}
+
+	public void setTotalValue(final int totalValue)
+	{
+		this.totalValue = totalValue;
 	}
 }

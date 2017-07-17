@@ -42,7 +42,7 @@
 	<div style="bottom: 10px; float: right; margin-right: 10%; padding-top: 25px">
 				<sec:authorize access="isAuthenticated()">
 					<form:form class="form-inline"
-						servletRelativeAction="/user/confirmPurchase/${magicService.id}"
+						servletRelativeAction="/checkout/confirmPurchase/${magicService.id}"
 						method="GET">
 
 						<button type="submit" class="btn btn-default btn-sm btn-primary">
