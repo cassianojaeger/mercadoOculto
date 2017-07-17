@@ -35,7 +35,7 @@
 			<thead>
 				<tr>
 					<th></th>
-					<th>Product ID</th>
+					<th>ID Produto</th>
 					<th>Nome</th>
 					<th>Descrição</th>
 					<th>Preço</th>

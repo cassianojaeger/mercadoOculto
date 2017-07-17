@@ -10,7 +10,7 @@
             <div class="panel panel-default credit-card-box">
                 <div class="panel-heading display-table" >
                     <div class="row display-tr" >
-                        <h3 class="panel-title display-td" >Payment Details</h3>
+                        <h3 class="panel-title display-td" >Detalhes do pagamento</h3>
                         <div class="display-td" >                            
                             <img class="img-responsive pull-right" src="http://i76.imgup.net/accepted_c22e0.png">
                         </div>
@@ -20,7 +20,7 @@
                         <div class="row">
                             <div class="col-xs-12">
                                 <div class="form-group">
-                                    <label for="cardNumber">CARD NUMBER</label>
+                                    <label for="cardNumber">NUMERO DO CARTÃO</label>
                                     <div class="input-group">
                                         <input 
                                             type="tel"
@@ -66,7 +66,7 @@
                         <label style="margin-left:70%; font-size: 20px">Total:&nbsp R$ &nbsp<span id="totalValue"></span></label>            
                         <div class="row">
                             <div class="col-xs-12">
-                                <button class="subscribe btn btn-success btn-lg btn-block" type="submit">Start Subscription</button>
+                                <button class="subscribe btn btn-success btn-lg btn-block" type="submit">Confirmar Compra</button>
                             </div>
                         </div>
                         <div class="row" style="display:none;">
